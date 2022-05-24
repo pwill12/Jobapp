@@ -9,7 +9,7 @@ import FilterCat from './Pages/FilterCat';
 
 function App() {
   return (
-      <FilterCat />
+      <Home />
     
   );
 }

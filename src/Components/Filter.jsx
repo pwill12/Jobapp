@@ -18,7 +18,7 @@ const Container = styled.div`
   background-color: rgb(251, 251, 255);
   height: 100%;
   ${Mobile({
-    overFlow: "hidden",
+    overFlow: "hidden",padding: '0px'
   })}
 `;
 
@@ -40,7 +40,7 @@ const Left = styled.div`
   width: 1vw;
   ${Mobile({
     width: "100%",
-    flex: 1,
+    flex: 1,padding: '20px'
   })}
 `;
 
@@ -73,7 +73,7 @@ const Right = styled.div`
   ${"" /* align-items: center; */}
   margin-left: 20px;
   ${Mobile({
-    marginRight: '20px'
+    margin: '0px',flex: 1
   })}
 `;
 
@@ -89,6 +89,9 @@ const RightCon = styled.div`
   ${"" /* width: 60vw; */}
   ${"" /* background-color: white; */}
   ${"" /* width: 100%; */}
+  ${Mobile({
+    margin: '0px',width: '100vw'
+  })}
 
 `;
 
@@ -100,7 +103,7 @@ const JobList = styled.div`
   align-items: center;
   border-radius: 5px;
   ${Mobile({
-    flexDirection: 'column',padding: '20px',alignItems: 'start',marginTop: '20px',width: '100%'
+    flexDirection: 'column',padding: '20px',alignItems: 'start',marginTop: '20px'
   })}
 `;
 
@@ -135,6 +138,9 @@ const Item = styled.div`
     box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
     transition: all 0.5s ease;
   }
+  ${Mobile({
+    flexDirection: 'column', padding: '20px',height: '250px',alignItems: 'start',justifyContent: 'space-around'
+  })}
 `;
 
 const Img = styled.img`
