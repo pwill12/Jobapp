@@ -9,65 +9,64 @@ export const category = [
         id: 1,
         bg: 'teal',
         img: <ApiIcon sx={size}/>,
-        title: 'home work',
+        title: 'Javascript Jobs',
+        tag: 'javascript',
         Total: 200
     },
     {
         id: 2,
         bg: 'blue',
         img: <IntegrationInstructionsOutlinedIcon sx={size}/>,
-        title: 'Software Developement',
+        title: 'Ruby',
+        tag: 'ruby on rails',
         Total: 300
     },
     {
         id: 3,
         bg: 'gray',
         img: <IntegrationInstructionsOutlinedIcon sx={size}/>,
-        title: 'Software Developement',
+        title: 'C++ Developers',
+        tag: 'c++',
         Total: 300
     },
     {
         id: 4,
         bg: 'pink',
         img: <IntegrationInstructionsOutlinedIcon sx={size}/>,
-        title: 'Software Developement',
+        title: 'Php Developer',
+        tag: 'Php',
         Total: 300
     },
     {
         id: 5,
         bg: 'blue',
         img: <IntegrationInstructionsOutlinedIcon sx={size}/>,
-        title: 'Software Developement',
+        tag: 'Go lang',
+        title: 'Go lang',
         Total: 300
     },
     {
         id: 6,
         bg: 'black',
         img: <IntegrationInstructionsOutlinedIcon sx={size}/>,
-        title: 'Software Developement',
+        title: 'Python Developer',
+        tag: 'Python',
         Total: 300
     },
     {
         id: 7,
         bg: 'black',
         img: <IntegrationInstructionsOutlinedIcon sx={size}/>,
-        title: 'Software Developement',
+        title: 'UI & UX',
         Total: 300
     },
     {
         id: 8,
         bg: 'black',
         img: <IntegrationInstructionsOutlinedIcon sx={size}/>,
-        title: 'Software Developement',
+        title: 'Graphic Designer',
         Total: 300
     },
-    {
-        id: 9,
-        bg: 'black',
-        img: <IntegrationInstructionsOutlinedIcon sx={size}/>,
-        title: 'Software Developement',
-        Total: 300
-    }
     
     
 ]

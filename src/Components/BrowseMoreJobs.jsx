@@ -8,6 +8,7 @@ import styled from 'styled-components'
 const Container = styled.div`
   padding: 20px;
   background-color: rgb(249, 249, 253);
+  scroll-behavior: smooth;
 
 
 `

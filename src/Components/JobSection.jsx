@@ -1,9 +1,14 @@
 
 import { Jobitems } from "../Data";
 import styled from "styled-components";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Mobile } from "../Mobile";
+import axios from 'axios'
 import { FavoriteBorder, FavoriteBorderOutlined, LocationOnOutlined, SavedSearch } from "@mui/icons-material";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 
 
@@ -123,7 +128,7 @@ const ImgCon = styled.div`
   background-color: rgb(240, 240, 240);
   object-fit: cover;
   ${Mobile({
-      marginRight: '0px',
+      marginRight: '0px',minWidth: '95px',
   })}
 
 
@@ -134,7 +139,7 @@ const Img = styled.img`
   max-width: 95px;
   max-height: 95px;
   ${Mobile({
-      width: '70px',
+      maxHeight: '70px',maxWidth: '90px',minWidth: '75px',
   })}
 
 
@@ -209,7 +214,7 @@ const Bottom = styled.h3`
   text-align: right;
   ${'' /* font-family: cursive; */}
   ${Mobile({
-    marginRight: '50px',
+    marginRight: '',textAlign: 'start'
   })}
 
   
@@ -236,18 +241,41 @@ const Tag = styled.span`
 
 
 function JobSection() {
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
+
+  const [jobs, setjobs] = useState([])
+
+  useEffect(() => {
+    const Jobsapicall = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:8000/api/findjobs"
+        )
+        // console.log(res)
+        setjobs(res.data);
+      } catch (err) {
+        console.log(err)
+      }
+    };
+    Jobsapicall();
+  }, []);
   return (
     <Container>
     <JobCon>
         <Joblisting>Job Listing</Joblisting>
+        <Link to={'/browsemorejobs'}>
         <BrowseMore>Browse More Job</BrowseMore>
+        </Link>
     </JobCon>
         <Section>
-        {Jobitems.map((props) => (
-          <Item key={props.id}>
+        <>
+        {jobs.map((props) => (
+          <Item key={props.id} data-aos='fade-up'>
           <Left>
             <ImgCon>
-              <Img src={props.img}/>
+              <Img src={props.Img}/>
             </ImgCon>
             <Title>
                 <Info>{props.title}</Info>
@@ -263,14 +291,18 @@ function JobSection() {
                 <Save>
                     <FavoriteBorderOutlined/>
                 </Save>
+                <Link to={'/jobinfo'}>
                 <Apply>Apply now</Apply>
+                </Link>
               </Top>
               <Bottom>
-                Date line:{props.date}
+                Date line:{props.createdAt}
               </Bottom>
             </Right>
           </Item>
         ))}
+
+        </>
 
         </Section>
     </Container>

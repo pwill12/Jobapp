@@ -1,5 +1,5 @@
 import { Select } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import MultipleSelectChip, {
   MultipleSelectChip2,
@@ -12,6 +12,7 @@ import {
   LocationOnOutlined,
   TimelineOutlined,
 } from "@mui/icons-material";
+import axios from "axios";
 
 const Container = styled.div`
   padding: 20px;
@@ -27,7 +28,7 @@ const Section = styled.div`
   display: flex;
   ${Mobile({
     flexDirection: "column",
-    padding: "0px",
+    padding: "20px",
   })}
 `;
 
@@ -36,11 +37,13 @@ const Left = styled.div`
   flex: 0.7;
   ${"" /* width: 50%; */}
   background-color: white;
-  position: relative;
+  ${'' /* position: fixed; */}
+  ${'' /* top: 0; */}
   width: 1vw;
+  height: 50vh;
   ${Mobile({
     width: "100%",
-    flex: 1,padding: '20px'
+    flex: 0.7,padding: '20px',justifyContent: 'center'
   })}
 `;
 
@@ -48,9 +51,12 @@ const LeftCon = styled.div`
   padding: 35px;
   text-align: left;
   width: 10vw;
+  ${'' /* position: fixed; */}
   ${Mobile({
-    width: "100%",
-    textAlign: "center",
+    width: "",
+    textAlign: "center",display: 'flex',flexDirection: 'column',
+    justifyContent: 'center',alignItems: 'center'
+
   })}
 `;
 
@@ -110,6 +116,7 @@ const JobList = styled.div`
 const Job = styled.h2`
   font-size: 20px;
   font-family: "Roboto", sans-serif;
+  margin: 0px 20px 20px 0px;
 `;
 
 const SelectDetail = styled.div``;
@@ -144,13 +151,14 @@ const Item = styled.div`
 `;
 
 const Img = styled.img`
-  max-width: 95px;
-  max-height: 95px;
+  max-width: 60px;
+  max-height: 55px;
 `;
 
 const LeftSection = styled.div`
   display: flex;
   align-items: center;
+
 `;
 
 const ImgCon = styled.div`
@@ -159,8 +167,8 @@ const ImgCon = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  width: 95px;
-  height: 90px;
+  min-width: 80px;
+  height: 70px;
   background-color: rgb(240, 240, 240);
   object-fit: cover;
 `;
@@ -174,6 +182,9 @@ const Info = styled.h1`
 const Location = styled.h3`
   font-size: 20px;
   display: flex;
+  ${Mobile({
+      display: 'flex',flexDirection: 'column'
+  })}
 `;
 
 const Span = styled.div`
@@ -231,6 +242,9 @@ const Bottom = styled.h3`
   margin-top: 10px;
   text-align: right;
   ${"" /* font-family: cursive; */}
+  ${Mobile({
+    textAlign: 'start'
+  })}
 `;
 
 const LocateSpan = styled.div`
@@ -247,7 +261,26 @@ const Selectbtn1 = styled.div`
   })}
 `;
 
-function Filter() {
+function Filter({tags}) {
+
+  const [jobs, setjobs] = useState([])
+
+  useEffect(() => {
+    const getjobs = async () => {
+      try {
+        const res = await axios.get(
+          tags
+            ? `http://localhost:8000/api/findjobs?tags=${tags}`
+            : "http://localhost:8000/api/findjobs"
+        )
+        
+        setjobs(res.data);
+      } catch (err) {
+        console.log(err)
+      }
+    };
+    getjobs();
+  }, [tags]);
   return (
     <Container>
       <Section>
@@ -282,11 +315,12 @@ function Filter() {
               </SelectDetail>
             </JobList>
             <JobCon>
-              {Jobitems.map((props) => (
+            <>
+              {jobs.map((props) => (
                 <Item key={props.id}>
                   <LeftSection>
                     <ImgCon>
-                      <Img src={props.img} />
+                      <Img src={props.Img} />
                     </ImgCon>
                     <Title>
                       <Info>{props.title}</Info>
@@ -320,6 +354,7 @@ function Filter() {
                   </RightSection>
                 </Item>
               ))}
+              </>
             </JobCon>
           </RightCon>
         </Right>

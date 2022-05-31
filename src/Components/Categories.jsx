@@ -5,6 +5,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import ApiIcon from "@mui/icons-material/Api";
 import { Mobile } from "../Mobile";
+import { Link } from "react-router-dom";
 
 
 
@@ -40,6 +41,7 @@ const Item = styled.div`
   ${'' /* background-color: rgb(251, 251, 255); */}
   background-color: white;
   min-width: 200px;
+  text-decoration: none;
   height: 200px;
   ${'' /* margin-right:20px; */}
   margin: 0px 15px auto;
@@ -80,19 +82,23 @@ function Categories() {
   return (
     <Container>
       <TitleCat data-aos='fade-left'>Categories</TitleCat>
+      <>
 
       <Section>
         {category.map((props) => (
           <Item bg={props.bg} key={props.id} data-aos='fade-up'>
+          <Link to={'/browsemorejobs/'+props.tag} style={{ textDecoration: 'none' }}>
             <ImgCon>
               {/* <ApiIcon sx={{ fontSize: 70 }} /> */}
               {props.img}
             </ImgCon>
             <Title>{props.title}</Title>
             <Totals>({props.Total})</Totals>
+          </Link>  
           </Item>
         ))}
       </Section>
+      </>
     </Container>
   );
 }
