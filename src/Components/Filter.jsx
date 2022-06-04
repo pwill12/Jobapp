@@ -37,13 +37,14 @@ const Left = styled.div`
   flex: 0.7;
   ${"" /* width: 50%; */}
   background-color: white;
-  ${'' /* position: fixed; */}
-  ${'' /* top: 0; */}
   width: 1vw;
   height: 50vh;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
   ${Mobile({
     width: "100%",
-    flex: 0.7,padding: '20px',justifyContent: 'center'
+    flex: 0.7,padding: '20px',justifyContent: 'center',position: 'relative'
   })}
 `;
 
@@ -51,7 +52,6 @@ const LeftCon = styled.div`
   padding: 35px;
   text-align: left;
   width: 10vw;
-  ${'' /* position: fixed; */}
   ${Mobile({
     width: "",
     textAlign: "center",display: 'flex',flexDirection: 'column',

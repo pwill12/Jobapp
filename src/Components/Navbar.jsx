@@ -2,7 +2,6 @@ import React from "react";
 import { Mobile } from "../Mobile";
 // import './Nav.css'
 
-
 import styled from "styled-components";
 
 import {
@@ -15,6 +14,7 @@ import {
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { LocationOff, LocationOnRounded } from "@mui/icons-material";
+import { useSelector } from "react-redux";
 
 const Droptop = styled.div`
   margin-top: 20px;
@@ -23,30 +23,11 @@ const Center = styled.div`
   display: flex;
 `;
 
-const Signup = styled.div`
-  ${"" /* display:flex; */}
-  ${"" /* justify-content: flex-end; */}
+const Signup = styled.h4`
+  font-size: 18px;
+  font-weight: 600;
+  margin-right: 10px;
 `;
-// const Container = styled.div`
-//   display: flex;
-//   padding: 20px;
-//   justify-content: space-between;
-// `
-
-{
-  /* <style type="text/css">
-  {`
-    .btn-flat {
-      background-color: purple;
-      color: white;
-    }
-
-    .btn-xxl {
-      font-size: 1.5rem;
-    }
-    `}
-</style> */
-}
 
 const ImgCon = styled.div`
   display: flex;
@@ -78,100 +59,147 @@ const Name = styled.h3`
 
 const Muu = styled.div`
   padding: 10px;
-
-`
+`;
 const Loca = styled.h4`
   font-size: 15px;
   text-align: center;
   margin-top: 10px;
-
-`
+`;
 
 const View = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 20px;
-`
+`;
 const Profile = styled.button`
   width: 100%;
   padding: 7px;
   border: 1px solid #000;
-`
-const ItemCon = styled.div`
-`
+`;
+const ItemCon = styled.div``;
 const Item = styled.div`
- display: flex;align-items: center;
- ${'' /* justify-content: start; */}
- ${'' /* margin: 0px; */}
-`
+  display: flex;
+  align-items: center;
+  ${"" /* justify-content: start; */}
+  ${"" /* margin: 0px; */}
+`;
 const Find = styled.span`
- margin-left: 15px;
-`
+  margin-left: 15px;
+`;
+
+const Text = styled.button`
+  font-size: 15px;
+  color: white;
+  background-color: lightgreen;
+  width: 170px;
+  border-radius: 4px;
+  padding: 15px;
+  border: none;
+`;
+
+const Myimg = styled.div`
+  max-width: 30px;
+  max-height: 30px;
+`;
+const Imgg = styled.img`
+  width: 30px;
+`;
 
 function MyNavbar() {
+  const user = useSelector((state) => state.user.currentUser);
+  console.log(user);
   return (
-    <Navbar collapseOnSelect expand="lg" variant="light">
-      <Container className="mt-2">
-        <Navbar.Brand href="#home" className="text-primary">
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      variant="light"
+      // style={{
+      //   position: "-webkit-sticky",
+      //   position: "sticky",
+      //   top: 0,
+      // }}
+    >
+      <Container className="mt-2" style={{ fontSize: "20px"}}>
+        <Navbar.Brand
+          href="#home"
+          className="text-primary"
+          style={{ fontSize: "30px" }}
+        >
           Logo
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
-        {/* <span class="toggler-icon top-bar"></span>
-            <span className="toggler-icon middle-bar"></span>
-            <span className="toggler-icon bottom-bar"></span> */}
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="m-auto">
-            {/* <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link> */}
-            <NavDropdown title="Account" id="collasible-nav-dropdown">
-              <Muu>
-                <ImgCon>
-                  <Cont>
-                    <Img src="https://preview.colorlib.com/theme/jobboard2/img/svg_icon/4.svg" />
-                  </Cont>
-                </ImgCon>
-                <Name>princewill</Name>
-                <Loca>lagos,Nigeria</Loca>
-                <View>
-                  <Profile>view profile</Profile>
-                </View>
-              </Muu>
-              <NavDropdown.Divider />
-              <NavDropdown.Item
-                href="#action/3.1"
-                style={{ width: "23vw"}}
-              >
-                <ItemCon>
-                  <Item><LocationOff/><Find>Find a job</Find></Item>
-                </ItemCon>
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-              <ItemCon>
-                  <Item><LocationOnRounded/><Find>Search</Find></Item>
-                </ItemCon>
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
+          <Nav className="m-auto"></Nav>
           <Nav>
-            <Nav.Link
-              className="text-dark d-flex align-items-center"
-              href="#deets"
-            >
-              <Signup>Login</Signup>
-            </Nav.Link>
-            <Button
-              className="btn btn-primary btn-md"
-              style={{ width: "150px" }}
-            >
-              <Nav.Link className="text-white" href="#deets">
-                <Signup>Post JoB</Signup>
-              </Nav.Link>
-            </Button>
+            {user ? (
+              <Nav className="">
+                <Nav.Link href="#features">
+                  <Myimg>
+                    <Imgg src={user.img} />
+                  </Myimg>
+                </Nav.Link>
+                {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
+                <NavDropdown
+                  title={user.username}
+                  id="collasible-nav-dropdown"
+                  align={{ sm: "end" }}
+                  // style={{border: '1px solid green'}}
+                >
+                  <Muu>
+                    <ImgCon>
+                      <Cont>
+                        <Img src={user.img} />
+                      </Cont>
+                    </ImgCon>
+                    <Name>{user.username}</Name>
+                    <Loca>lagos,Nigeria</Loca>
+                    <View>
+                      <Profile>view profile</Profile>
+                    </View>
+                  </Muu>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item
+                    href="#action/3.1"
+                    style={{ width: "20vw" }}
+                  >
+                    <ItemCon>
+                      <Item>
+                        <LocationOff />
+                        <Find>Find a job</Find>
+                      </Item>
+                    </ItemCon>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2">
+                    <ItemCon href="#action/3.1">
+                      <Item>
+                        <LocationOnRounded />
+                        <Find>Search</Find>
+                      </Item>
+                    </ItemCon>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">
+                    Something
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action/3.4">
+                    Signout
+                  </NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
+            ) : (
+              <Nav>
+                <Nav.Link
+                  className="text-dark d-flex align-items-center"
+                  href="#deets"
+                >
+                  <Signup>For Employers</Signup>
+                </Nav.Link>
+                {/* <Button> */}
+                <Nav.Link className="text-white" href="/login">
+                  <Text>Login</Text>
+                </Nav.Link>
+              </Nav>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
