@@ -2,12 +2,17 @@ import { useState } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/apicalls";
+import MyNavbar from "../Components/Navbar";
 
 import { Mobile } from "../Mobile";
 
+const Con = styled.div`
+  height: 100%;
+`
+
 const Container = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 88vh;
   background-color: rgb(240, 241, 245);
   display: flex;
   align-items: center;
@@ -22,13 +27,13 @@ const Container = styled.div`
 const CenterLogo = styled.h2`
   text-align: center;
   margin-bottom: 20px;
-  ${'' /* position: absolute; */}
+  ${"" /* position: absolute; */}
 `;
 
 const Wrapper = styled.div`
-  width: 25%;
+  width: 28%;
   border-radius: 10px;
-  ${'' /* height: 70vh; */}
+  ${"" /* height: 70vh; */}
   padding: 20px;
   background-color: white;
   ${Mobile({ width: "75%", borderRadius: "5px" })}
@@ -79,8 +84,8 @@ const Error = styled.span`
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-    const dispatch = useDispatch();
-    const { isFetching, error } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const { isFetching, error } = useSelector((state) => state.user);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -90,28 +95,31 @@ export default function Login() {
   //   disabled={isFetching}
 
   return (
-    <Container>
-      <CenterLogo>WillJobs</CenterLogo>
-      <Wrapper>
-        {/* <CenterLogo>
+    <Con>
+      <MyNavbar />
+      <Container>
+        <CenterLogo>WillJobs</CenterLogo>
+        <Wrapper>
+          {/* <CenterLogo>
           WillJobs
       </CenterLogo> */}
-        <Title>SIGN IN</Title>
-        <Form>
-          <Input
-            placeholder="username"
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <Input
-            placeholder="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Button onClick={handleClick}>LOGIN</Button>
-          {error && <Error>Something went wrong...</Error>}
-          <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link>
-        </Form>
-      </Wrapper>
-    </Container>
+          <Title>SIGN IN</Title>
+          <Form>
+            <Input
+              placeholder="username"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <Input
+              placeholder="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Button onClick={handleClick}>LOGIN</Button>
+            {error && <Error>Password Incorrect...</Error>}
+            <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
+            <Link>CREATE A NEW ACCOUNT</Link>
+          </Form>
+        </Wrapper>
+      </Container>
+    </Con>
   );
 }

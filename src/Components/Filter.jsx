@@ -141,6 +141,7 @@ const Item = styled.div`
   height: 150px;
   margin-bottom: 30px;
   border-radius: 5px;
+  border: 1px solid lightgrey;
   &&:hover {
     box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
     transition: all 0.5s ease;
