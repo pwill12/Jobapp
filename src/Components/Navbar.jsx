@@ -171,7 +171,7 @@ function MyNavbar() {
           ) : (
             <h5 style={{ color: "red", fontSize: "21px", wordSpacing: "3px" }}>
               {" "}
-              Welcome to the no1 job platform{" "}
+              Welcome to the no1 Developer's job platform{" "}
             </h5>
           )}
           <ul className={click ? "nav-menu active" : "nav-menu"}>

@@ -242,7 +242,9 @@ function JobSection() {
   useEffect(() => {
     const Jobsapicall = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/api/findjobs");
+        const res = await axios.get(
+          "https://will-jobs.herokuapp.com/api/findjobs"
+        );
         // console.log(res)
         setjobs(res.data);
       } catch (err) {
@@ -306,8 +308,7 @@ function JobSection() {
   //     setFavorites([...getarray])
   //   }
   // }, [])
-  console.log(jobs)
-
+  console.log(jobs);
 
   return (
     <Container>
@@ -345,7 +346,7 @@ function JobSection() {
                 <Top>
                   <Save>
                     <Favorite
-                      // onClick={() => addfav({ props, i })}
+                    // onClick={() => addfav({ props, i })}
                     />
                     {/* {favorites.includes(i) ? (
                       <Favorite

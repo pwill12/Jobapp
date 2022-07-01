@@ -147,7 +147,7 @@ const LocateSpan = styled.div`
 
 const Position = styled.div`
   color: lightgrey;
-`
+`;
 
 function Jobitems({ tags, filters }) {
   const [jobs, setjobs] = useState([]);
@@ -158,8 +158,8 @@ function Jobitems({ tags, filters }) {
       try {
         const res = await axios.get(
           tags
-            ? `http://localhost:8000/api/findjobs?tags=${tags}`
-            : "http://localhost:8000/api/findjobs"
+            ? `http://https://will-jobs.herokuapp.com/api/findjobs?tags=${tags}`
+            : "https://will-jobs.herokuapp.com/api/findjobs"
         );
 
         setjobs(res.data);
@@ -176,16 +176,15 @@ function Jobitems({ tags, filters }) {
 
   useEffect(() => {
     // filters,tags &&
-      setFilteredjobs(
-        jobs.filter((item) =>
-
-          Object.entries(filters).every(([key, value]) =>
-            item[key].includes(value)
-          )
+    setFilteredjobs(
+      jobs.filter((item) =>
+        Object.entries(filters).every(([key, value]) =>
+          item[key].includes(value)
         )
-      );
+      )
+    );
   }, [jobs, tags, filters]);
-    // console.log(filtered)
+  // console.log(filtered)
   return (
     <div>
       <>
@@ -204,8 +203,8 @@ function Jobitems({ tags, filters }) {
                           <LocationOnOutlined />
                         </Span>
                         {props.location?.map((prop) => (
-                        <div>{prop},</div>
-                      ))}
+                          <div>{prop},</div>
+                        ))}
                       </LocateSpan>
                       <LocateSpan>
                         <Span>
@@ -246,7 +245,8 @@ function Jobitems({ tags, filters }) {
                         </Span>
                         {/* {props.location} */}
                         {props.location?.map((prop) => (
-                        <div>{prop},</div>))}
+                          <div>{prop},</div>
+                        ))}
                       </LocateSpan>
                       <LocateSpan>
                         <Span>

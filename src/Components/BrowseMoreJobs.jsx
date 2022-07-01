@@ -2,26 +2,17 @@ import {
   ArrowBack,
   Facebook,
   FavoriteBorderOutlined,
-  FavoriteOutlined,
   Google,
   Instagram,
-  LocationOn,
   LocationOnOutlined,
-  Pinterest,
   PunchClock,
-  SwipeLeftAltRounded,
-  Timelapse,
-  TimelapseOutlined,
   Twitter,
 } from "@mui/icons-material";
-import { TextareaAutosize } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { publicRequest, userRequest } from "../apirequests";
 import { Mobile } from "../Mobile";
 
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
-import axios from "axios";
 import { apply } from "../redux/applyapicalls";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -301,10 +292,8 @@ const Arrow = styled.a`
   justify-content: center;
   align-items: center;
   margin-right: 15px;
-
-`
+`;
 function BrowseMoreJobs({ ids }) {
-
   const [myjobs, setjobs] = useState({});
 
   useEffect(() => {
@@ -326,16 +315,16 @@ function BrowseMoreJobs({ ids }) {
 
   const [applied, setapplied] = useState([]);
 
-  const storedjobs = applied.jobitems;
+  // const storedjobs = applied.jobitems;
 
-  const { error } = useSelector((state) => state.apply);
+  // const { error } = useSelector((state) => state.apply);
 
   const response = myjobs.responsibilities;
 
-  const my = useSelector((state) => state.apply.jobs);
+  // const my = useSelector((state) => state.apply.jobs);
 
   const [email, setemail] = useState("");
-  const [click, myhandleClick] = useState(false);
+  // const [click, myhandleClick] = useState(false);
   const [username, setname] = useState("");
   const [projectlinks, setproject] = useState("");
   const dispatch = useDispatch();
@@ -344,7 +333,7 @@ function BrowseMoreJobs({ ids }) {
 
   const handleClick = (e) => {
     e.preventDefault();
-    myhandleClick(true);
+    // myhandleClick(true);
     apply(dispatch, {
       user,
       jobitems: {
@@ -389,10 +378,10 @@ function BrowseMoreJobs({ ids }) {
         false
       )}
       <Back>
-        <Arrow href='/home'>
+        <Arrow href="/home">
           <ArrowBack />
         </Arrow>
-        <div style={{display: 'flex',alignItems: 'flexStart'}}>Go back</div>
+        <div style={{ display: "flex", alignItems: "flexStart" }}>Go back</div>
       </Back>
       <Section>
         <Left>
