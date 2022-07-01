@@ -308,7 +308,7 @@ function JobSection() {
   //     setFavorites([...getarray])
   //   }
   // }, [])
-  console.log(jobs);
+  // console.log(jobs);
 
   return (
     <Container>
