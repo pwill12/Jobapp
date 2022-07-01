@@ -243,7 +243,7 @@ function JobSection() {
     const Jobsapicall = async () => {
       try {
         const res = await axios.get(
-          "https://will-jobs.herokuapp.com/api/findjobs"
+          "https://willdevjobs.herokuapp.com/api/findjobs"
         );
         // console.log(res)
         setjobs(res.data);
