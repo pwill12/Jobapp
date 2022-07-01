@@ -108,8 +108,7 @@ const Imgg = styled.img`
   width: 30px;
 `;
 
-const Overall = styled.div`
-`;
+const Overall = styled.div``;
 const MobCon = styled.div`
   display: none;
   ${Mobile({ display: "block" })}
@@ -125,7 +124,7 @@ const MySearch = styled.div`
   flex: 1;
   justify-content: center;
   align-items: center;
-  ${Mobile({display: 'none'})}
+  ${Mobile({ display: "none" })}
 `;
 const Searchcon = styled.input`
   display: flex;
@@ -133,12 +132,14 @@ const Searchcon = styled.input`
   font-size: 16px;
   padding: 10px;
   border: 1px solid lightgrey;
-  ${'' /* flex: 1; */}
+  ${"" /* flex: 1; */}
   justify-content: center;
   align-items: center;
   ${"" /* background-color: white; */}
 `;
 
+// const Navimg = styled.div``
+// const Mynavimg = styled.img``
 
 function MyNavbar() {
   const dispatch = useDispatch();
@@ -154,35 +155,36 @@ function MyNavbar() {
     dispatch(updatedout());
   };
 
-
   // console.log(user);
   return (
     <>
       <nav className="navbar">
         <div className="nav-container">
           <NavLink exact to="/" className="nav-logo">
-           <Navimg>
-            <Mynavimg></Mynavimg>
-           </Navimg>
-            <i className="fas fa-code"></i>
-          </NavLink>
-          {user?
+            Will <i className="fas fa-code"> </i>{" "}
+          </NavLink>{" "}
+          {user ? (
             <MySearch>
-              <Searchcon placeholder= 'Search Jobs'/><Search style={{marginLeft: '-40px'}}/>
-            </MySearch>:
-            <h5 style={{color: 'red', fontSize: '21px',wordSpacing: '3px'}}>Welcome to the no1 job platform</h5>
-          }
-
+              <Searchcon placeholder="Search Jobs" />{" "}
+              <Search style={{ marginLeft: "-40px" }} />{" "}
+            </MySearch>
+          ) : (
+            <h5 style={{ color: "red", fontSize: "21px", wordSpacing: "3px" }}>
+              {" "}
+              Welcome to the no1 job platform{" "}
+            </h5>
+          )}
           <ul className={click ? "nav-menu active" : "nav-menu"}>
+            {" "}
             {user ? (
               <Overall>
                 <Conts>
                   <Nav className="">
                     <Nav.Link href="#">
                       <Myimg>
-                        <Imgg src={user.img} />
-                      </Myimg>
-                    </Nav.Link>
+                        <Imgg src={user.img} />{" "}
+                      </Myimg>{" "}
+                    </Nav.Link>{" "}
                     <NavDropdown
                       title={user.username}
                       id="collasible-nav-dropdown"
@@ -194,24 +196,22 @@ function MyNavbar() {
                       <Muu>
                         <ImgCon>
                           <Cont>
-                            <Img src={user.img} />
-                          </Cont>
-                        </ImgCon>
-                        <Name>{user.username}</Name>
-                        <Loca>lagos,Nigeria</Loca>
+                            <Img src={user.img} />{" "}
+                          </Cont>{" "}
+                        </ImgCon>{" "}
+                        <Name> {user.username} </Name>{" "}
+                        <Loca> lagos, Nigeria </Loca>{" "}
                         <Link
                           to={"/Profile"}
                           style={{ textDecoration: "none" }}
                         >
                           <View>
-                            <Profile>view profile</Profile>
-                          </View>
-                        </Link>
-                      </Muu>
+                            <Profile> view profile </Profile>{" "}
+                          </View>{" "}
+                        </Link>{" "}
+                      </Muu>{" "}
                       <NavDropdown.Divider />
-                      <NavDropdown.Item
-                        style={{ width: "23vw" }}
-                      >
+                      <NavDropdown.Item style={{ width: "23vw" }}>
                         <ItemCon>
                           <Item>
                             <LocationOff />
@@ -219,29 +219,29 @@ function MyNavbar() {
                               to={"/home"}
                               style={{ textDecoration: "none" }}
                             >
-                              <Find>Find a job</Find>
-                            </Link>
-                          </Item>
-                        </ItemCon>
-                      </NavDropdown.Item>
+                              <Find> Find a job </Find>{" "}
+                            </Link>{" "}
+                          </Item>{" "}
+                        </ItemCon>{" "}
+                      </NavDropdown.Item>{" "}
                       <NavDropdown.Item href="home">
                         <ItemCon>
                           <Item>
                             <LocationOnRounded />
-                            <Find>Search</Find>
-                          </Item>
-                        </ItemCon>
-                      </NavDropdown.Item>
+                            <Find> Search </Find>{" "}
+                          </Item>{" "}
+                        </ItemCon>{" "}
+                      </NavDropdown.Item>{" "}
                       <NavDropdown.Item href="#action/3.3">
-                        Something
-                      </NavDropdown.Item>
+                        Something{" "}
+                      </NavDropdown.Item>{" "}
                       <NavDropdown.Divider />
                       <NavDropdown.Item href="/">
-                        <Signout onClick={MyClick}>Singout</Signout>
-                      </NavDropdown.Item>
-                    </NavDropdown>
-                  </Nav>
-                </Conts>
+                        <Signout onClick={MyClick}> Singout </Signout>{" "}
+                      </NavDropdown.Item>{" "}
+                    </NavDropdown>{" "}
+                  </Nav>{" "}
+                </Conts>{" "}
                 <MobCon>
                   <ul className={click ? "nav-menu active" : "nav-menu"}>
                     <li className="nav-item">
@@ -252,9 +252,9 @@ function MyNavbar() {
                         className="nav-links"
                         onClick={handleClick}
                       >
-                        Home
-                      </NavLink>
-                    </li>
+                        Home{" "}
+                      </NavLink>{" "}
+                    </li>{" "}
                     <li className="nav-item">
                       <NavLink
                         exact
@@ -263,9 +263,9 @@ function MyNavbar() {
                         className="nav-links"
                         onClick={handleClick}
                       >
-                        Myprofile
-                      </NavLink>
-                    </li>
+                        Myprofile{" "}
+                      </NavLink>{" "}
+                    </li>{" "}
                     <li className="nav-item">
                       <NavLink
                         exact
@@ -274,9 +274,9 @@ function MyNavbar() {
                         className="nav-links"
                         onClick={handleClick}
                       >
-                        Blog
-                      </NavLink>
-                    </li>
+                        Blog{" "}
+                      </NavLink>{" "}
+                    </li>{" "}
                     <li className="nav-item">
                       <NavLink
                         exact
@@ -285,11 +285,11 @@ function MyNavbar() {
                         className="nav-links"
                         onClick={handleClick}
                       >
-                        Contact Us
-                      </NavLink>
-                    </li>
-                  </ul>
-                </MobCon>
+                        Contact Us{" "}
+                      </NavLink>{" "}
+                    </li>{" "}
+                  </ul>{" "}
+                </MobCon>{" "}
               </Overall>
             ) : (
               <ul className={click ? "nav-menu active" : "nav-menu"}>
@@ -301,9 +301,9 @@ function MyNavbar() {
                     className="nav-links"
                     onClick={handleClick}
                   >
-                    Login
-                  </NavLink>
-                </li>
+                    Login{" "}
+                  </NavLink>{" "}
+                </li>{" "}
                 <li className="nav-item">
                   <NavLink
                     exact
@@ -312,39 +312,39 @@ function MyNavbar() {
                     className="nav-links"
                     onClick={handleClick}
                   >
-                    For Employers
-                  </NavLink>
-                </li>
+                    For Employers{" "}
+                  </NavLink>{" "}
+                </li>{" "}
                 {/* <li className="nav-item">
-              <NavLink
-                exact
-                to="/blog"
-                activeClassName="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
-                Blog
-              </NavLink>
-            </li> */}
+                                  <NavLink
+                                    exact
+                                    to="/blog"
+                                    activeClassName="active"
+                                    className="nav-links"
+                                    onClick={handleClick}
+                                  >
+                                    Blog
+                                  </NavLink>
+                                </li> */}{" "}
                 {/* <li className="nav-item">
-              <NavLink
-                exact
-                to="/contact"
-                activeClassName="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
-                Login
-              </NavLink>
-            </li> */}
+                                  <NavLink
+                                    exact
+                                    to="/contact"
+                                    activeClassName="active"
+                                    className="nav-links"
+                                    onClick={handleClick}
+                                  >
+                                    Login
+                                  </NavLink>
+                                </li> */}{" "}
               </ul>
-            )}
-          </ul>
+            )}{" "}
+          </ul>{" "}
           <div className="nav-icon" onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
-          </div>
-        </div>
-      </nav>
+            <i className={click ? "fas fa-times" : "fas fa-bars"}> </i>{" "}
+          </div>{" "}
+        </div>{" "}
+      </nav>{" "}
     </>
   );
 }

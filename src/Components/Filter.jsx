@@ -181,7 +181,6 @@ function Filter({ tags }) {
   const [age, setAge] = useState("");
   const [salary, setsalary] = useState("");
 
-
   function BasicSelect() {
     // const [age, setAge] = React.useState('');
 
@@ -194,12 +193,12 @@ function Filter({ tags }) {
       });
     };
     console.log(age);
-    const size = { minwidth: 200};
+    const size = { minwidth: 200 };
 
     return (
-      <Box sx={{width: 200}}>
+      <Box sx={{ width: 200 }}>
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Country</InputLabel>
+          <InputLabel id="demo-simple-select-label"> Country </InputLabel>{" "}
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
@@ -208,15 +207,14 @@ function Filter({ tags }) {
             label="Country"
             onChange={handleChange}
           >
-            <MenuItem value="Nigeria">Nigeria</MenuItem>
-            <MenuItem value="Usa">Usa</MenuItem>
-            <MenuItem value="Remote Worldwide">Remote Worldwide</MenuItem>
-          </Select>
-        </FormControl>
+            <MenuItem value="Nigeria"> Nigeria </MenuItem>{" "}
+            <MenuItem value="Usa"> Usa </MenuItem>{" "}
+            <MenuItem value="Remote Worldwide"> Remote Worldwide </MenuItem>{" "}
+          </Select>{" "}
+        </FormControl>{" "}
       </Box>
     );
   }
-
 
   function BasicSelect2() {
     // const [age, setAge] = React.useState('');
@@ -230,12 +228,12 @@ function Filter({ tags }) {
       });
     };
     console.log(salary);
-    const size = { minwidth: 200};
+    const size = { minwidth: 200 };
 
     return (
-      <Box sx={{width: 200}}>
+      <Box sx={{ width: 200 }}>
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Salary</InputLabel>
+          <InputLabel id="demo-simple-select-label"> Salary </InputLabel>{" "}
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
@@ -244,11 +242,11 @@ function Filter({ tags }) {
             label="Country"
             onChange={handleChange2}
           >
-            <MenuItem value="$5000-$15000">$5000-$15000</MenuItem>
-            <MenuItem value="$15000-$25000">$15000-$25000</MenuItem>
-            <MenuItem value="$25000-$50000">$25000-$50000</MenuItem>
-          </Select>
-        </FormControl>
+            <MenuItem value="$5000-$15000"> $5000 - $15000 </MenuItem>{" "}
+            <MenuItem value="$15000-$25000"> $15000 - $25000 </MenuItem>{" "}
+            <MenuItem value="$25000-$50000"> $25000 - $50000 </MenuItem>{" "}
+          </Select>{" "}
+        </FormControl>{" "}
       </Box>
     );
   }
@@ -258,33 +256,32 @@ function Filter({ tags }) {
       <Section>
         <Left>
           <LeftCon>
-            <Header>Filter</Header>
-            <Search placeholder="search" />
+            <Header> Filter </Header> <Search placeholder="search" />
             <Selectbtn1>
-              <BasicSelect/>
-            </Selectbtn1>
+              <BasicSelect />
+            </Selectbtn1>{" "}
             <Selectbtn1>
-              <BasicSelect2/>
-            </Selectbtn1>
+              <BasicSelect2 />
+            </Selectbtn1>{" "}
             <Selectbtn>
-              <BasicSelect/>
-            </Selectbtn>
-          </LeftCon>
-        </Left>
+              <BasicSelect />
+            </Selectbtn>{" "}
+          </LeftCon>{" "}
+        </Left>{" "}
         <Right>
           <RightCon>
             <JobList>
-              <Job>JobList</Job>
+              <Job> JobList </Job>{" "}
               <SelectDetail>
                 <MultipleSelectChip />
-              </SelectDetail>
-            </JobList>
+              </SelectDetail>{" "}
+            </JobList>{" "}
             <JobCon>
-              <Jobitems tags={tags} filters={myfilter} />
-            </JobCon>
-          </RightCon>
-        </Right>
-      </Section>
+              <Jobitems tags={tags} filters={myfilter} />{" "}
+            </JobCon>{" "}
+          </RightCon>{" "}
+        </Right>{" "}
+      </Section>{" "}
     </Container>
   );
 }
