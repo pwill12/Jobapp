@@ -7,8 +7,7 @@ import MyNavbar from '../Components/Navbar'
 function FilterCat() {
 
   const location = useLocation()
-  const tag = location.pathname.split('/')[2]
-  console.log(tag)
+  const tag = location.pathname.split("/")[2];
   return (
     <div>
         <MyNavbar/>

@@ -22,7 +22,7 @@ const Section = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  padding: 100px 200px 50px 200px;
+  padding: 100px 90px 50px 90px;
   ${Mobile({
     flexDirection: 'column',padding: '20px'
   })}
@@ -37,17 +37,20 @@ const Item = styled.div`
   flex-direction: column;
   text-align: center;
   ${'' /* background-color: ${props=>props.bg}; */}
-  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  ${'' /* -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75); */}
+  border: 1px solid lightgrey;
+  border-radius: 7px;
   ${'' /* background-color: rgb(251, 251, 255); */}
   background-color: white;
-  min-width: 200px;
+  min-width: 250px;
+  max-width: 270px;
   text-decoration: none;
-  height: 200px;
+  height: 230px;
   ${'' /* margin-right:20px; */}
   margin: 0px 15px auto;
   margin-bottom: 20px;
   &&:hover{
-    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.2);
     ${'' /* border: 1px solid green; */}
     transition: none;
 
@@ -57,7 +60,17 @@ const Item = styled.div`
   })}
 
 `;
-const ImgCon = styled.div``;
+const ImgCon = styled.div`
+  ${'' /* background-color: red; */}
+  width: 70px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  
+
+`;
 const Title = styled.h3`
   margin-top: 10px;
   font-size: 17px;
@@ -81,7 +94,7 @@ function Categories() {
   }, []);
   return (
     <Container>
-      <TitleCat data-aos='fade-left'>Categories</TitleCat>
+      <TitleCat data-aos='fade-left'>Explore Top Categories</TitleCat>
       <>
 
       <Section>

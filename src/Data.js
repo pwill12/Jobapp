@@ -1,14 +1,14 @@
-import { LocationOnRounded, Timelapse } from '@mui/icons-material';
+import { Html, Javascript, JavascriptOutlined, JavascriptRounded, LocationOnRounded, Timelapse } from '@mui/icons-material';
 import ApiIcon from '@mui/icons-material/Api';
 import IntegrationInstructionsOutlinedIcon from '@mui/icons-material/IntegrationInstructionsOutlined';
-const size = { fontSize: 70 }
+const size = { width: '60px' }
 
 export const category = [
     
     {
         id: 1,
-        bg: 'teal',
-        img: <ApiIcon sx={size}/>,
+        bg: 'purple',
+        img: <img src='images/icons8-javascript.gif' style={size}/>,
         title: 'Javascript Jobs',
         tag: 'javascript',
         Total: 200
@@ -16,7 +16,7 @@ export const category = [
     {
         id: 2,
         bg: 'blue',
-        img: <IntegrationInstructionsOutlinedIcon sx={size}/>,
+        img: <Html sx={size}/>,
         title: 'Ruby',
         tag: 'ruby on rails',
         Total: 300
@@ -24,9 +24,9 @@ export const category = [
     {
         id: 3,
         bg: 'gray',
-        img: <IntegrationInstructionsOutlinedIcon sx={size}/>,
-        title: 'C++ Developers',
-        tag: 'c++',
+        img: <img src='images/icons8-c-sharp-logo-50.png' style={size}/>,
+        title: 'C# Developers',
+        tag: 'c#',
         Total: 300
     },
     {
@@ -63,7 +63,7 @@ export const category = [
     {
         id: 8,
         bg: 'black',
-        img: <IntegrationInstructionsOutlinedIcon sx={size}/>,
+        img: <Javascript sx={size}/>,
         title: 'Graphic Designer',
         Total: 300
     },

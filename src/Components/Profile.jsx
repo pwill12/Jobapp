@@ -1,38 +1,56 @@
+import { Link } from "react-router-dom";
+
 import {
   Add as Add,
   CheckBox,
   CheckBoxOutlineBlank,
   CheckRounded,
+  Close,
+  Delete,
   EmailOutlined,
   EmailRounded,
   FacebookRounded,
   GitHub,
   HdrPlus,
   Instagram,
-  Link,
   LinkedIn,
+  LinkOutlined,
   MarkChatRead,
   PhoneAndroidOutlined,
   PhoneAndroidRounded,
   Twitter,
 } from "@mui/icons-material";
-import { Checkbox, Divider } from "@mui/material";
-import React from "react";
+import { Divider } from "@mui/material";
+import React, { useContext } from "react";
+import {
+  updateSuccess,
+  updateStart,
+  updateFailure,
+} from "../redux/updateContact";
 import { useSelector } from "react-redux";
 import { Form, ProgressBar } from "react-bootstrap";
-import Mymodals from "./Modals";
+import toast, { ToastBar, Toaster } from "react-hot-toast";
+import { Mobile } from "../Mobile";
+import { Mymodals, MymodalsSocials } from "./Modals";
 import styled from "styled-components";
+import { GlobalContext } from "../redux/Globalstate";
+// import { Link } from "react-router-dom";
 
 const Container = styled.div`
-  background-color: rgb(251, 251, 255);
+  ${'' /* background-color: rgb(251, 251, 255); */}
+  background-color: #f2f2f2;
+  ${'' /* background-color: white; */}
   padding: 40px 90px;
+  ${Mobile({ padding: "20px" })}
 `;
 const Section = styled.div`
   display: flex;
   justify-content: center;
+  ${Mobile({ flexDirection: "column" })}
 `;
 const Left = styled.div`
   flex: 1;
+  ${Mobile({ flex: 0.7, order: 1 })}
 `;
 const About = styled.div`
   display: flex;
@@ -41,6 +59,7 @@ const About = styled.div`
   justify-content: space-between;
   color: lightgreen;
   cursor: pointer;
+  ${Mobile({ width: '100%' })}
 `;
 const Me = styled.h5``;
 const Edit = styled.h5``;
@@ -54,6 +73,9 @@ const Right = styled.div`
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  box-shadow: 14px 14px 20px #cbced1,-14px -14px 20px white;
+  ${Mobile({ position: 'relative' ,marginTop: '30px'})}
+
 `;
 const Card = styled.div`
   background-color: white;
@@ -64,6 +86,11 @@ const Card = styled.div`
   flex-direction: column;
   border-radius: 10px;
   border: 1px solid lightgrey;
+  ${Mobile({ marginTop: "30px" })}
+
+  ${'' /* box-shadow: 14px 14px 20px #cbced1,-14px -14px 20px white; */}
+
+
 `;
 const ImgCon = styled.div``;
 const Img = styled.img``;
@@ -74,6 +101,7 @@ const Location = styled.div``;
 const Center = styled.div`
   flex: 2;
   margin: 0px 30px;
+  ${Mobile({ margin: "0px" })}
 `;
 const Contact = styled.div`
   display: flex;
@@ -116,19 +144,25 @@ const Website = styled.div`
   margin-top: 30px;
   border: 1px solid lightgrey;
   border-radius: 10px;
+
 `;
 const Dash = styled.div`
   padding: 12px;
   background-color: white;
   border: 1px solid lightgrey;
   border-radius: 10px;
+  ${'' /* ${Mobile({ padding: '1px' })} */}
+
 `;
 const Dashboard = styled.h5`
   font-weight: 600;
+  ${Mobile({ marginBottom: '10px' })}
+
 `;
 const Board = styled.div`
   display: flex;
   align-items: flex-end;
+  ${Mobile({ fontSize: "15px", flexDirection: "column", alignItems: "start" })}
   ${"" /* text-align: right; */}
   ${"" /* justify-content: flex-end; */}
 `;
@@ -137,6 +171,7 @@ const LineDivide = styled.div`
   width: 2px;
   height: 80px;
   background-color: lightgrey;
+  ${Mobile({ display: "none" })}
 `;
 const Saved = styled.div`
   display: flex;
@@ -154,12 +189,14 @@ const Applied = styled.div`
   flex-direction: column;
   margin-left: 10px;
   flex: 1;
+  ${Mobile({ margin: '10px 0px 0px' })}
 `;
 const Viewed = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 10px;
   flex: 1;
+  ${Mobile({ margin: "10px 0px 0px", alignItems: "" })}
 `;
 
 const Status = styled.div`
@@ -172,6 +209,7 @@ const Status = styled.div`
   background-color: lightgrey;
   border-radius: 10px;
   padding: 12px;
+
 `;
 const LetEmployers = styled.div``;
 const Let = styled.h4`
@@ -188,6 +226,9 @@ const Summary = styled.div`
   border: 1px solid lightgrey;
   padding: 12px;
   border-radius: 10px;
+  background-color: white;
+  ${'' /* box-shadow: 14px 14px 20px #cbced1,-14px -14px 20px white; */}
+
   ${"" /* height: 100%; */}
 `;
 const Executive = styled.div`
@@ -202,7 +243,7 @@ const ExecSum = styled.h5`
 const EditSum = styled.h5`
   font-size: 17px;
   cursor: pointer;
-  &&:hover{
+  &&:hover {
     color: red;
   }
 `;
@@ -268,6 +309,7 @@ const Assistance = styled.div`
   display: flex;
   align-items: center;
   ${"" /* margin-top: 50px; */}
+
 `;
 const Aimg = styled.div`
   max-width: 70px;
@@ -317,14 +359,63 @@ const Checkpro = styled.h5`
   text-decoration: line-through;
 `;
 
+const MobiD = styled.div`
+  height: 1px;
+  width: 100%;
+  background-color: lightgrey;
+  display: none;
+  ${Mobile({ display: "block" })}
+`;
+
 function Myprofile() {
-  const now = 60;
-  const user = useSelector((state) => state.user.currentUser);
+  // const now = 60;
+  let user = useSelector((state) => state.user.currentUser);
+
+  let updated = useSelector((state) => state.contact.contacts);
+  //   const index = Favoritelist.indexOf(0);
+  // if (index > -1) {
+  //   Favoritelist.splice(index, 1);
+  //   // console.log(index) // 2nd parameter means remove one item only
+  // }
+
+  const { favorite } = useContext(GlobalContext);
+  let count = favorite.length;
 
   const resumedata = user.skills;
-  console.log(resumedata);
+
+  let signupper = 20;
+  let websiteper = updated.website;
+  let emailper = updated.email;
+  // console.log(emailper);
+  let githubper = updated.github;
+  let numper = 20;
+
+  if (emailper === undefined) {
+    emailper = 0;
+  } else {
+    emailper = 20;
+  }
+
+  if (websiteper === undefined) {
+    websiteper = 0;
+  } else {
+    websiteper = 20;
+  }
+
+  if (githubper === undefined) {
+    githubper = 0;
+  } else {
+    githubper = 20;
+  }
+
+  let total = signupper + websiteper + emailper + numper + githubper;
+
+  const now = total;
+
+  // console.log(resumedata);
   return (
     <Container>
+      {/* <ReactNotification/> */}
       <About>
         <Me>About me</Me>
         <Edit>Edit</Edit>
@@ -333,16 +424,41 @@ function Myprofile() {
         <Left>
           <Card>
             <ImgCon>
-              <Img src={user.img} />
+              <Img src={updated.img} />
             </ImgCon>
-            <Name>{user.username}</Name>
+            <Name>{updated.lastname}</Name>
             <Headline>Headline+</Headline>
             <Location>Lagos,Nigeria</Location>
           </Card>
           <Executive>
             <ExecSum>Contact Info</ExecSum>
             <EditSum>
-              <Mymodals/>
+              <Mymodals />
+              <Toaster
+                position="top-center"
+                reverseOrder={false}
+                gutter={8}
+                containerClassName=""
+                containerStyle={{}}
+                toastOptions={{
+                  // Define default options
+                  className: "",
+                  duration: 3000,
+                  style: {
+                    background: "white",
+                    padding: "20px",
+                    color: "lightgreen",
+                  },
+                  // Default options for specific types
+                  success: {
+                    duration: 3000,
+                    theme: {
+                      primary: "green",
+                      secondary: "white",
+                    },
+                  },
+                }}
+              />
             </EditSum>
           </Executive>
           <Contact>
@@ -350,22 +466,22 @@ function Myprofile() {
               <Icon>
                 <EmailRounded />
               </Icon>
-              princesolo919@gmail.com
+              {updated.email}
             </Email>
             <Divide></Divide>
             <Number>
               <Icon>
                 <PhoneAndroidRounded />
               </Icon>
-              08081573422
+              {updated.number ? updated.number : "add number"}
             </Number>
           </Contact>
           <Website>
             <Email>
               <Icon>
-                <Link />
+                <LinkOutlined />
               </Icon>
-              Add website
+              {updated.website ? updated.website : "add a wweebsite"}
             </Email>
             <Divide></Divide>
             <Number>
@@ -407,24 +523,32 @@ function Myprofile() {
               <Icon>
                 <LinkedIn />
               </Icon>
-              Add LinkedIn
+              {updated.linked}
             </Number>
           </Website>
+          <div>
+            <MymodalsSocials />
+          </div>
         </Left>
         <Center>
           <Dash>
             <Dashboard>Dashboard</Dashboard>
             <Board>
               <Saved>
-                <Save>0</Save>
-                <SaveJ>Saved Jobs</SaveJ>
+                <Link to={"/saved"} style={{ textDecoration: "none" }}>
+                  <Save>{count}</Save>
+                  {/* </Link> */}
+                  <SaveJ>Saved Jobs</SaveJ>
+                </Link>
               </Saved>
+              <MobiD></MobiD>
               <LineDivide></LineDivide>
               <Applied>
                 <Save>0</Save>
                 <SaveJ>Applied Jobs</SaveJ>
               </Applied>
               <LineDivide></LineDivide>
+              <MobiD></MobiD>
               <Viewed>
                 <Save>0</Save>
                 <SaveJ>Companies that Viewed</SaveJ>
@@ -456,10 +580,9 @@ function Myprofile() {
           <Summary>
             <>
               {resumedata.map((data) => (
-                <AddedSkills>{data}</AddedSkills>
+                <AddedSkills key={data._id}>{data}</AddedSkills>
               ))}
             </>
-            
           </Summary>
           <MyExper>Experience</MyExper>
           <Experience>
@@ -538,29 +661,49 @@ function Myprofile() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore quo
             provident voluptatum nihil, unde mollitia?
           </Your>
-          <ProgressBar now={now} label={`${now}%`} />
+          <ProgressBar now={now} label={`${now}%`} variant="success" />
           <MyChecks>
             <Check>
               <CheckBox />
               <Checkpro>Completed Signup</Checkpro>
             </Check>
             <Check>
-              <CheckBox />
-              <Checkpro>Added num</Checkpro>
+              {user.number ? <CheckBox /> : <CheckBoxOutlineBlank />}
+              {user.number ? (
+                <Checkpro>Added number</Checkpro>
+              ) : (
+                <Checkpro style={{ textDecoration: "none" }}>
+                  Add a number
+                </Checkpro>
+              )}
             </Check>
             <Check>
               <CheckBox />
               <Checkpro>added email</Checkpro>
             </Check>
-            <Check>
+            {/* <Check>
               <CheckBoxOutlineBlank />
               <Checkpro style={{ textDecoration: "none" }}>Add Cv</Checkpro>
+            </Check> */}
+            <Check>
+              {updated.website ? <CheckBox /> : <CheckBoxOutlineBlank />}
+              {updated.website ? (
+                <Checkpro>Added website</Checkpro>
+              ) : (
+                <Checkpro style={{ textDecoration: "none" }}>
+                  Add a website
+                </Checkpro>
+              )}
             </Check>
             <Check>
-              <CheckBoxOutlineBlank />
-              <Checkpro style={{ textDecoration: "none" }}>
-                Add Website
-              </Checkpro>
+              {user.github ? <CheckBox /> : <CheckBoxOutlineBlank />}
+              {user.github ? (
+                <Checkpro>Added github</Checkpro>
+              ) : (
+                <Checkpro style={{ textDecoration: "none" }}>
+                  Add github profile
+                </Checkpro>
+              )}
             </Check>
           </MyChecks>
         </Right>

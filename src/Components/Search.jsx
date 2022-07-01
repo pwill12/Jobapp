@@ -10,6 +10,8 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   ${Mobile({height: '40vh'})}
+  background-color: rgb(251, 251, 255);
+
 
 
 
@@ -26,6 +28,7 @@ const Input = styled.input`
   padding: 10px;
   font-size: 20px;
   margin-right: 25px;
+  border: 1px solid lightgrey;
   ${Mobile({
     marginRight: '0px',width: 300
   })}
@@ -61,8 +64,10 @@ const Button = styled.button`
   padding: 10px;
   border: none;
   margin-top: 15px;
-  width: 300;
+  width: 200px;
   display: flex;
+  text-align:center;
+  padding: 10px;
   align-items: center;
 
 
@@ -87,11 +92,10 @@ function Search() {
             <Multple>
             <MultipleSelected/>
             </Multple>
-            <Select>
+            {/* <Select>
                 <Option disabled>school</Option>
-                <Option>job</Option>
-            </Select>
-            <Button>Find a Job</Button>
+            </Select> */}
+            <Button>Find Jobs</Button>
         </Section>
     </Container>
   )

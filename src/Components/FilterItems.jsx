@@ -8,6 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
+import { useState,useEffect } from 'react';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -24,6 +25,9 @@ const names = [
   'Nigeria',
   'Usa',
   'France',
+  'Africa',
+  'United Kingdom',
+  'Remote Worldwide'
 ];
 
 function getStyles(name, personName, theme) {
@@ -116,7 +120,7 @@ export const MultipleSelected = () => {
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="demo-multiple-name-label">Name</InputLabel>
+        <InputLabel id="demo-multiple-name-label">Country</InputLabel>
         <Select
           labelId="demo-multiple-name-label"
           id="demo-multiple-name"
@@ -143,8 +147,9 @@ export const MultipleSelected = () => {
 
 
 export const MultipleSelectChip2 = () => {
+
   const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
+  const [personName, setPersonName] = useState([]);
 
   const handleChange = (event) => {
     const {
@@ -155,6 +160,8 @@ export const MultipleSelectChip2 = () => {
       typeof value === 'string' ? value.split(',') : value,
     );
   };
+
+  
 
   return (
     <div>

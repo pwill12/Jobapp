@@ -1,25 +1,33 @@
-import { Select } from "@mui/material";
-import React, { useEffect, useState } from "react";
+// import { Select } from "@mui/material";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import MultipleSelectChip, {
   MultipleSelectChip2,
   MultipleSelected,
 } from "./FilterItems";
-import { Jobitems } from "../Data";
 import { Mobile } from "../Mobile";
-import {
-  FavoriteBorderOutlined,
-  LocationOnOutlined,
-  TimelineOutlined,
-} from "@mui/icons-material";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { Favourited } from "./favourited";
+// import * as React from 'react';
+import { useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+// import Select from '@mui/material/Select';
+import Chip from "@mui/material/Chip";
+import Jobitems from "./Jobitems";
+import { Select } from "@mui/material";
 
 const Container = styled.div`
   padding: 20px;
   background-color: rgb(251, 251, 255);
   height: 100%;
   ${Mobile({
-    overFlow: "hidden",padding: '0px'
+    overFlow: "hidden",
+    padding: "0px",
   })}
 `;
 
@@ -29,6 +37,7 @@ const Section = styled.div`
   ${Mobile({
     flexDirection: "column",
     padding: "20px",
+    overFlow: "hidden",
   })}
 `;
 
@@ -44,7 +53,11 @@ const Left = styled.div`
   top: 0;
   ${Mobile({
     width: "100%",
-    flex: 0.7,padding: '20px',justifyContent: 'center',position: 'relative'
+    flex: 0.7,
+    padding: "10px",
+    justifyContent: "center",
+    position: "relative",
+    overFlow: "hidden",
   })}
 `;
 
@@ -54,9 +67,13 @@ const LeftCon = styled.div`
   width: 10vw;
   ${Mobile({
     width: "",
-    textAlign: "center",display: 'flex',flexDirection: 'column',
-    justifyContent: 'center',alignItems: 'center'
-
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "15px 0px",
+    overFlow: "hidden",
   })}
 `;
 
@@ -68,8 +85,9 @@ const Header = styled.h2`
 
 const Selectbtn = styled.div`
   margin-top: 15px;
+  display: none;
   ${Mobile({
-    display: "none",
+    display: "block",
   })}
 `;
 
@@ -79,7 +97,9 @@ const Right = styled.div`
   ${"" /* align-items: center; */}
   margin-left: 20px;
   ${Mobile({
-    margin: '0px',flex: 1
+    margin: "0px",
+    flex: 1,
+    overFlow: "hidden",
   })}
 `;
 
@@ -87,7 +107,7 @@ const Search = styled.input`
   padding: 10px;
   width: 200px;
   ${Mobile({
-    width: 300,
+    display: "none",
   })}
 `;
 
@@ -96,9 +116,10 @@ const RightCon = styled.div`
   ${"" /* background-color: white; */}
   ${"" /* width: 100%; */}
   ${Mobile({
-    margin: '0px',width: '100vw'
+    margin: "0px",
+    width: "100vw",
+    overFlow: "hidden",
   })}
-
 `;
 
 const JobList = styled.div`
@@ -109,12 +130,16 @@ const JobList = styled.div`
   align-items: center;
   border-radius: 5px;
   ${Mobile({
-    flexDirection: 'column',padding: '20px',alignItems: 'start',marginTop: '20px'
+    flexDirection: "column",
+    padding: "20px",
+    alignItems: "start",
+    marginTop: "20px",
   })}
 `;
 
 const Job = styled.h2`
   font-size: 20px;
+  font-weight: 600;
   font-family: "Roboto", sans-serif;
   margin: 0px 20px 20px 0px;
 `;
@@ -130,158 +155,104 @@ const JobCon = styled.div`
   ${"" /* overflow: hidden; */}
 `;
 
-const Item = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 30px;
-  align-items: center;
-  ${"" /* -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75); */}
-  background-color: white;
-  width: 100%;
-  height: 150px;
-  margin-bottom: 30px;
-  border-radius: 5px;
-  border: 1px solid lightgrey;
-  &&:hover {
-    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
-    transition: all 0.5s ease;
-  }
-  ${Mobile({
-    flexDirection: 'column', padding: '20px',height: '250px',alignItems: 'start',justifyContent: 'space-around'
-  })}
-`;
-
-const Img = styled.img`
-  max-width: 60px;
-  max-height: 55px;
-`;
-
-const LeftSection = styled.div`
-  display: flex;
-  align-items: center;
-
-`;
-
-const ImgCon = styled.div`
-  margin-right: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  min-width: 80px;
-  height: 70px;
-  background-color: rgb(240, 240, 240);
-  object-fit: cover;
-`;
-
-const Title = styled.div``;
-
-const Info = styled.h1`
-  font-size: 20px;
-  font-weight: 600;
-`;
-const Location = styled.h3`
-  font-size: 20px;
-  display: flex;
-  ${Mobile({
-      display: 'flex',flexDirection: 'column'
-  })}
-`;
-
-const Span = styled.div`
-  margin-right: 10px;
-`;
-
-const Tag = styled.div`
-  background-color: hsl(205, 100%, 96%);
-  ${"" /* padding: 5px; */}
-  font-size: 13px;
-  font-weight: 560;
-  border-radius: 10px;
-  margin-left: 20px;
-  color: black;
-`;
-
-const RightSection = styled.div``;
-
-const Top = styled.div`
-  display: flex;
-`;
-const Save = styled.div`
-  background-color: hsl(205, 100%, 96%);
-  color: lightgreen;
-  width: 50px;
-  display: flex;
-  border-radius: 10px;
-  align-items: center;
-  justify-content: center;
-  &&:hover {
-    color: white;
-    background-color: lightgreen;
-    transition: all 0.3s ease;
-  }
-`;
-
-const Apply = styled.button`
-  margin-left: 20px;
-  width: 130px;
-  height: 40px;
-  border-radius: 10px;
-  border: none;
-  background-color: lightgreen;
-  &&:hover {
-    color: green;
-    background-color: transparent;
-    transition: all 0.3s ease;
-    border: 1px solid lightgreen;
-  }
-`;
-
-const Bottom = styled.h3`
-  color: lightgrey;
-  font-size: 16px;
-  margin-top: 10px;
-  text-align: right;
-  ${"" /* font-family: cursive; */}
-  ${Mobile({
-    textAlign: 'start'
-  })}
-`;
-
-const LocateSpan = styled.div`
-  display: flex;
-  ${"" /* justify-content: space-evenly; */}
-  margin-right: 15px;
-`;
-
 const Selectbtn1 = styled.div`
   margin-top: 15px;
-  display: none;
+  ${"" /* display: none; */}
   ${Mobile({
     display: "block",
   })}
 `;
 
-function Filter({tags}) {
+const Selects = styled.select`
+  padding: 10px;
+  margin-right: 100px;
+  border: 1px solid lightgrey;
+  ${Mobile({ margin: "10px 0px" })}
+`;
+const Option = styled.option`
+  padding: 50px;
+`;
+const mywidth = styled.option`
+  min-width: 200;
+`;
 
-  const [jobs, setjobs] = useState([])
+function Filter({ tags }) {
+  const [myfilter, setmyFilters] = useState("");
+  const [age, setAge] = useState("");
+  const [salary, setsalary] = useState("");
 
-  useEffect(() => {
-    const getjobs = async () => {
-      try {
-        const res = await axios.get(
-          tags
-            ? `http://localhost:8000/api/findjobs?tags=${tags}`
-            : "http://localhost:8000/api/findjobs"
-        )
-        
-        setjobs(res.data);
-      } catch (err) {
-        console.log(err)
-      }
+
+  function BasicSelect() {
+    // const [age, setAge] = React.useState('');
+
+    const handleChange = (event) => {
+      setAge(event.target.value);
+      const value = event.target.value;
+      setmyFilters({
+        // ...age,
+        [event.target.name]: value,
+      });
     };
-    getjobs();
-  }, [tags]);
+    console.log(age);
+    const size = { minwidth: 200};
+
+    return (
+      <Box sx={{width: 200}}>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Country</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={age}
+            name="location"
+            label="Country"
+            onChange={handleChange}
+          >
+            <MenuItem value="Nigeria">Nigeria</MenuItem>
+            <MenuItem value="Usa">Usa</MenuItem>
+            <MenuItem value="Remote Worldwide">Remote Worldwide</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+    );
+  }
+
+
+  function BasicSelect2() {
+    // const [age, setAge] = React.useState('');
+
+    const handleChange2 = (event) => {
+      setsalary(event.target.value);
+      const value = event.target.value;
+      setmyFilters({
+        // ...age,
+        [event.target.name]: value,
+      });
+    };
+    console.log(salary);
+    const size = { minwidth: 200};
+
+    return (
+      <Box sx={{width: 200}}>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Salary</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={salary}
+            name="salary"
+            label="Country"
+            onChange={handleChange2}
+          >
+            <MenuItem value="$5000-$15000">$5000-$15000</MenuItem>
+            <MenuItem value="$15000-$25000">$15000-$25000</MenuItem>
+            <MenuItem value="$25000-$50000">$25000-$50000</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+    );
+  }
+
   return (
     <Container>
       <Section>
@@ -289,21 +260,14 @@ function Filter({tags}) {
           <LeftCon>
             <Header>Filter</Header>
             <Search placeholder="search" />
+            <Selectbtn1>
+              <BasicSelect/>
+            </Selectbtn1>
+            <Selectbtn1>
+              <BasicSelect2/>
+            </Selectbtn1>
             <Selectbtn>
-              <MultipleSelectChip />
-            </Selectbtn>
-            <Selectbtn1>
-              <MultipleSelectChip2 />
-            </Selectbtn1>
-            <Selectbtn1>
-              <MultipleSelectChip2 />
-            </Selectbtn1>
-            <Selectbtn1>
-              <MultipleSelectChip2 />
-            </Selectbtn1>
-            <Selectbtn></Selectbtn>
-            <Selectbtn>
-              <MultipleSelectChip />
+              <BasicSelect/>
             </Selectbtn>
           </LeftCon>
         </Left>
@@ -316,46 +280,7 @@ function Filter({tags}) {
               </SelectDetail>
             </JobList>
             <JobCon>
-            <>
-              {jobs.map((props) => (
-                <Item key={props.id}>
-                  <LeftSection>
-                    <ImgCon>
-                      <Img src={props.Img} />
-                    </ImgCon>
-                    <Title>
-                      <Info>{props.title}</Info>
-                      <Location>
-                        <LocateSpan>
-                          <Span>
-                            <LocationOnOutlined />
-                          </Span>
-                          {props.Location}
-                          {/* <Tag>{props.tag}</Tag> */}
-                        </LocateSpan>
-                        <LocateSpan>
-                          <Span>
-                            <TimelineOutlined />
-                          </Span>
-                          {props.time}
-                          {/* <Tag>{props.tag}</Tag> */}
-                        </LocateSpan>
-                      </Location>
-                    </Title>
-                  </LeftSection>
-
-                  <RightSection>
-                    <Top>
-                      <Save>
-                        <FavoriteBorderOutlined />
-                      </Save>
-                      <Apply>Apply now</Apply>
-                    </Top>
-                    <Bottom>Date line:{props.date}</Bottom>
-                  </RightSection>
-                </Item>
-              ))}
-              </>
+              <Jobitems tags={tags} filters={myfilter} />
             </JobCon>
           </RightCon>
         </Right>

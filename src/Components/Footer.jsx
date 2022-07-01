@@ -28,6 +28,7 @@ const Left = styled.div`
   flex: 1;
   flex-direction: column;
   margin-right: 20px;
+  margin-top: -4px;
   ${Mobile({
     marginRight: '0px'
   })}
@@ -44,7 +45,7 @@ const Job = styled.h2`
 
 `
 
-const Text = styled.p`
+const Text = styled.div`
   color: grey;
 
 `
@@ -60,6 +61,7 @@ const Center = styled.div`
   flex: 1;
   justify-content: space-between;
   margin-right: 40px;
+  ${Mobile({marginTop: '20px'})}
 
 
 `

@@ -15,9 +15,11 @@ import {
   Dropdown,
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { LocationOff, LocationOnRounded } from "@mui/icons-material";
+import { LocationOff, LocationOnRounded, Search } from "@mui/icons-material";
 import { useSelector } from "react-redux";
 import { logout } from "../redux/users";
+import { updatedout } from "../redux/updateContact";
+import { blue } from "@mui/material/colors";
 
 const Conts = styled.div`
   ${"" /* margin-top: 20px; */}
@@ -106,7 +108,8 @@ const Imgg = styled.img`
   width: 30px;
 `;
 
-const Overall = styled.div``;
+const Overall = styled.div`
+`;
 const MobCon = styled.div`
   display: none;
   ${Mobile({ display: "block" })}
@@ -114,8 +117,28 @@ const MobCon = styled.div`
 
 const Signout = styled.div`
   border: none;
-  ${'' /* background-color: white; */}
+  ${"" /* background-color: white; */}
 `;
+const MySearch = styled.div`
+  ${"" /* background-color: white; */}
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  ${Mobile({display: 'none'})}
+`;
+const Searchcon = styled.input`
+  display: flex;
+  width: 500px;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid lightgrey;
+  ${'' /* flex: 1; */}
+  justify-content: center;
+  align-items: center;
+  ${"" /* background-color: white; */}
+`;
+
 
 function MyNavbar() {
   const dispatch = useDispatch();
@@ -128,34 +151,45 @@ function MyNavbar() {
     e.preventDefault();
     // console.log('first')
     dispatch(logout());
+    dispatch(updatedout());
   };
-  console.log(user);
+
+
+  // console.log(user);
   return (
     <>
       <nav className="navbar">
         <div className="nav-container">
           <NavLink exact to="/" className="nav-logo">
-            WillJobs
+           <Navimg>
+            <Mynavimg></Mynavimg>
+           </Navimg>
             <i className="fas fa-code"></i>
           </NavLink>
+          {user?
+            <MySearch>
+              <Searchcon placeholder= 'Search Jobs'/><Search style={{marginLeft: '-40px'}}/>
+            </MySearch>:
+            <h5 style={{color: 'red', fontSize: '21px',wordSpacing: '3px'}}>Welcome to the no1 job platform</h5>
+          }
 
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             {user ? (
               <Overall>
                 <Conts>
                   <Nav className="">
-                    <Nav.Link href="#features">
+                    <Nav.Link href="#">
                       <Myimg>
                         <Imgg src={user.img} />
                       </Myimg>
                     </Nav.Link>
-                    {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
                     <NavDropdown
-                      title={user.firstname}
+                      title={user.username}
                       id="collasible-nav-dropdown"
                       align={{ lg: "end" }}
-
-                      // style={{border: '1px solid green'}}
+                      color="secondary"
+                      variant="secondary"
+                      style={{}}
                     >
                       <Muu>
                         <ImgCon>
@@ -165,26 +199,33 @@ function MyNavbar() {
                         </ImgCon>
                         <Name>{user.username}</Name>
                         <Loca>lagos,Nigeria</Loca>
-                        <Link to={'/Profile'}>
-                        <View>
-                          <Profile>view profile</Profile>
-                        </View>
+                        <Link
+                          to={"/Profile"}
+                          style={{ textDecoration: "none" }}
+                        >
+                          <View>
+                            <Profile>view profile</Profile>
+                          </View>
                         </Link>
                       </Muu>
                       <NavDropdown.Divider />
                       <NavDropdown.Item
-                        href="#action/3.1"
                         style={{ width: "23vw" }}
                       >
                         <ItemCon>
                           <Item>
                             <LocationOff />
-                            <Find>Find a job</Find>
+                            <Link
+                              to={"/home"}
+                              style={{ textDecoration: "none" }}
+                            >
+                              <Find>Find a job</Find>
+                            </Link>
                           </Item>
                         </ItemCon>
                       </NavDropdown.Item>
-                      <NavDropdown.Item href="#action/3.2">
-                        <ItemCon href="#action/3.1">
+                      <NavDropdown.Item href="home">
+                        <ItemCon>
                           <Item>
                             <LocationOnRounded />
                             <Find>Search</Find>

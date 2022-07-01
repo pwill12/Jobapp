@@ -6,6 +6,10 @@ import Categories from '../Components/Categories'
 import JobSection from '../Components/JobSection'
 import PostJob from '../Components/PostJob'
 import Footer from '../Components/Footer'
+import Carousels from '../Components/Carousel'
+import PauseOnHover from '../Components/Carousel'
+import Faq from '../Components/Faq'
+import Tabs from '../Components/Tabs'
 
 
 function Home() {
@@ -17,6 +21,8 @@ function Home() {
     <Categories />
     <JobSection />
     <PostJob />
+    <PauseOnHover/>
+    {/* <Tabs/> */}
     <Footer />
       </div>
   )

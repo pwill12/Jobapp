@@ -12,34 +12,34 @@ const Container = styled.div`
   height: 90vh;
   display: flex;
   align-items: center;
+  background-color: #f1f0fe;
   ${"" /* justify-content: center; */}
-  ${
-    "" /* background: -webkit-linear-gradient(-45deg, #83c3e3 50%, #ec94ec 50%); */
-  }
   ${Mobile({
     padding: "10px",
     height: "100%",
-    marginTop: "20px",
+    marginTop: "0px",
     overflow: "hidden",
   })}
 `;
 const Left = styled.div`
-  margin-left: 40px;
+  margin-left: 30px;
   ${'' /* margin-bottom: 50px; */}
   ${"" /* flex: 1; */}
   width: 50%;
   ${"" /* margin-top: -20px; */}
-  ${Mobile({ margin: "0px", width: "100%" })}
+  ${Mobile({ margin: "0px", width: "100%", marginTop: '40px'})}
 `;
 const Title = styled.h2`
-  font-size: 40px;
-  ${Mobile({ fontSize: "35px" })}
+  font-size: 30px;
+  font-family: "Roboto", sans-serif;
+  ${Mobile({ fontSize: "25px" })}
 `;
 const Find = styled.h1`
   font-size: 50px;
   font-weight: 700;
+  font-family: "Roboto", sans-serif;
   margin: 20px 0px;
-  ${Mobile({ fontSize: "45px", margin: "10px 0px" })}
+  ${Mobile({ fontSize: "35px", margin: "10px 0px" })}
 `;
 const Desc = styled.p`
   ${"" /* word-wrap: break-word; */}
@@ -53,19 +53,20 @@ const Right = styled.div`
   ${Mobile({ display: "none" })}
 `;
 const ImgCon = styled.img`
-  width: 90%;
+  width: 85%;
   height: 70vh;
-  margin-left: 20px;
+  margin-left: 90px;
+  image-fit: cover
   ${"" /* ${Mobile({display: 'none'})} */}
 `;
 
 const Wrapper = styled.div`
   display: flex;
-  padding: 50px 150px;
+  padding: 50px 120px;
   justify-content: center;
   margin: auto;
   align-items: center;
-  ${Mobile({ justifyContent: "start", padding: "40px" })}
+  ${Mobile({ justifyContent: "start", padding: "20px", })}
 `;
 
 const Button = styled.div`
@@ -83,10 +84,12 @@ const Btn1 = styled.button`
   ${Mobile({ width: "100%", marginBottom: "15px" })}
 `;
 const Btn2 = styled.button`
-  border: 1px solid #000;
+  border: none;
+  color: grey;
+  background-color: white;
   width: 200px;
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 7px;
   ${Mobile({ width: "100%" })}
 `;
 const Trusted = styled.div`
@@ -97,14 +100,19 @@ const Trust = styled.p`
 `;
 const Companies = styled.div`
   width: 100%;
+  margin-top: 20px;
 `;
 const Company = styled.img`
   ${'' /* margin-right: 10px; */}
+  margin-right: 13px;
+  margin-bottom: 12px;
+  width: 130px;
+  ${Mobile({ width: "100px", marginBottom: "15px" })}
 `;
 
 function BodyContent() {
   useEffect(() => {
-    Aos.init({ duration: 2000 });
+    Aos.init({ duration: 2200 });
   }, []);
   return (
     <Container>
@@ -126,7 +134,11 @@ function BodyContent() {
             <Trust>Trusted by 1500+ companies and business</Trust>
           </Trusted>
           <Companies>
-            <Company src=''/>
+            <Company src='images/logo-03.png'/>
+            <Company src='images/logo-06.png'/>
+            <Company src='images/logo-05.png'/>
+            <Company src='images/logo-01.png'/>
+            <Company src='images/logo-04.png'/>
           </Companies>
         </Left>
         <Right data-aos="fade-left">
