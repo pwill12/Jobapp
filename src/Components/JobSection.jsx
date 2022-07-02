@@ -122,22 +122,25 @@ const ImgCon = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  width: 95px;
-  height: 90px;
+  max-width: 80px;
+  max-height: 80px;
   background-color: rgb(240, 240, 240);
+  // background-color: white;
   object-fit: cover;
   ${Mobile({
     marginRight: "0px",
-    minWidth: "95px",
+    maxWidth: "80px",
   })}
 `;
 const Img = styled.img`
-  max-width: 95px;
-  max-height: 95px;
+  max-width: 65px;
+  min-width: 65px;
+  max-height: 62px;
+
   ${Mobile({
-    maxHeight: "70px",
-    maxWidth: "90px",
-    minWidth: "75px",
+    maxHeight: "55px",
+    maxWidth: "59px",
+    minWidth: "59px",
   })}
 `;
 
@@ -148,6 +151,7 @@ const Title = styled.div`
 `;
 const Info = styled.h1`
   font-size: 20px;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   ${Mobile({
     fontSize: "17px",

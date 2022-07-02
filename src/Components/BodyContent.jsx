@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import Aos from "aos";
-import { Facebook, FacebookSharp, FacebookTwoTone, Google, Twitter } from "@mui/icons-material";
+import {
+  Facebook,
+  FacebookSharp,
+  FacebookTwoTone,
+  Google,
+  Twitter,
+} from "@mui/icons-material";
 import "aos/dist/aos.css";
 // import { Button } from "react-bootstrap";
 import styled from "styled-components";
@@ -23,11 +29,11 @@ const Container = styled.div`
 `;
 const Left = styled.div`
   margin-left: 30px;
-  ${'' /* margin-bottom: 50px; */}
+  ${"" /* margin-bottom: 50px; */}
   ${"" /* flex: 1; */}
   width: 50%;
   ${"" /* margin-top: -20px; */}
-  ${Mobile({ margin: "0px", width: "100%", marginTop: '40px'})}
+  ${Mobile({ margin: "0px", width: "100%", marginTop: "40px" })}
 `;
 const Title = styled.h2`
   font-size: 30px;
@@ -39,13 +45,13 @@ const Find = styled.h1`
   font-weight: 700;
   font-family: "Roboto", sans-serif;
   margin: 20px 0px;
-  ${Mobile({ fontSize: "35px", margin: "10px 0px" })}
+  ${Mobile({ fontSize: "31px", margin: "10px 0px" })}
 `;
 const Desc = styled.p`
   ${"" /* word-wrap: break-word; */}
   font-size: 20px;
   margin-bottom: 20px;
-  ${"" /* ${Mobile({fontSize: '22px'})} */}
+  ${Mobile({ fontSize: "17px" })}
 `;
 const Right = styled.div`
   width: 50%;
@@ -56,8 +62,7 @@ const ImgCon = styled.img`
   width: 85%;
   height: 70vh;
   margin-left: 90px;
-  image-fit: cover
-  ${"" /* ${Mobile({display: 'none'})} */}
+  image-fit: cover ${"" /* ${Mobile({display: 'none'})} */};
 `;
 
 const Wrapper = styled.div`
@@ -66,7 +71,7 @@ const Wrapper = styled.div`
   justify-content: center;
   margin: auto;
   align-items: center;
-  ${Mobile({ justifyContent: "start", padding: "20px", })}
+  ${Mobile({ justifyContent: "start", padding: "20px" })}
 `;
 
 const Button = styled.div`
@@ -103,7 +108,7 @@ const Companies = styled.div`
   margin-top: 20px;
 `;
 const Company = styled.img`
-  ${'' /* margin-right: 10px; */}
+  ${"" /* margin-right: 10px; */}
   margin-right: 13px;
   margin-bottom: 12px;
   width: 130px;
@@ -134,11 +139,11 @@ function BodyContent() {
             <Trust>Trusted by 1500+ companies and business</Trust>
           </Trusted>
           <Companies>
-            <Company src='images/logo-03.png'/>
-            <Company src='images/logo-06.png'/>
-            <Company src='images/logo-05.png'/>
-            <Company src='images/logo-01.png'/>
-            <Company src='images/logo-04.png'/>
+            <Company src="images/logo-03.png" />
+            <Company src="images/logo-06.png" />
+            <Company src="images/logo-05.png" />
+            <Company src="images/logo-01.png" />
+            <Company src="images/logo-04.png" />
           </Companies>
         </Left>
         <Right data-aos="fade-left">
