@@ -158,8 +158,8 @@ function Jobitems({ tags, filters }) {
       try {
         const res = await axios.get(
           tags
-            ? `http://https://will-jobs.herokuapp.com/api/findjobs?tags=${tags}`
-            : "https://will-jobs.herokuapp.com/api/findjobs"
+            ? `https://willdevjobs.herokuapp.com/api/findjobs?tags=${tags}`
+            : "https://willdevjobs.herokuapp.com/api/findjobs"
         );
 
         setjobs(res.data);
