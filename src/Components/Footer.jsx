@@ -98,7 +98,9 @@ const Subscribe = styled.h4`
 const Input = styled.input`
   padding: 10px;
   width: 300px;
-  ${Mobile({})}
+  ${Mobile({
+    width: "270px",
+  })}
 `;
 
 const Button = styled.button`
@@ -110,6 +112,9 @@ const Button = styled.button`
   color: white;
   border: none;
   background-color: lightgreen;
+  ${Mobile({
+    marginLeft: "-80px",
+  })}
 `;
 
 const Copyright = styled.h3`

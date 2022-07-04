@@ -41,7 +41,7 @@ const ImgCon = styled.div`
 const Cont = styled.div`
   display: flex;
   justify-content: center;
-  background-color: black;
+  background-color: grey;
   border-radius: 50%;
   ${"" /* max-width: 200px; */}
   width: 100px;
@@ -103,9 +103,11 @@ const Text = styled.button`
 const Myimg = styled.div`
   max-width: 30px;
   max-height: 30px;
+  border-radius: 50%;
 `;
 const Imgg = styled.img`
   width: 30px;
+  border-radius: 50%;
 `;
 
 const Overall = styled.div``;
@@ -138,8 +140,14 @@ const Searchcon = styled.input`
   ${"" /* background-color: white; */}
 `;
 
-// const Navimg = styled.div``
-// const Mynavimg = styled.img``
+const Navimg = styled.div`
+  max-width: 100px;
+  max-height: 75px;
+  object-fit: cover;
+`;
+const Mynavimg = styled.img`
+  max-height: 75px;
+`;
 
 function MyNavbar() {
   const dispatch = useDispatch();
@@ -161,7 +169,10 @@ function MyNavbar() {
       <nav className="navbar">
         <div className="nav-container">
           <NavLink exact to="/" className="nav-logo">
-            Will <i className="fas fa-code"> </i>{" "}
+            Will <i className="fas fa-code"> </i>
+            {/* <Navimg>
+              <Mynavimg src="images/WillJobs.png" />
+            </Navimg> */}
           </NavLink>{" "}
           {user ? (
             <MySearch>
@@ -258,7 +269,7 @@ function MyNavbar() {
                     <li className="nav-item">
                       <NavLink
                         exact
-                        to="/about"
+                        to="/Profile"
                         activeClassName="active"
                         className="nav-links"
                         onClick={handleClick}

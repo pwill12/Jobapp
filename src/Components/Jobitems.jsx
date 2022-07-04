@@ -1,4 +1,15 @@
-import { LocationOnOutlined, TimelineOutlined } from "@mui/icons-material";
+import {
+  AttachMoney,
+  CurrencyExchangeOutlined,
+  CurrencyExchangeTwoTone,
+  CurrencyPoundOutlined,
+  LocationOnOutlined,
+  Money,
+  MoneyOff,
+  MoneyOffCsred,
+  TimelineOutlined,
+  WorkOutlined,
+} from "@mui/icons-material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -8,45 +19,86 @@ import styled from "styled-components";
 import { Mobile } from "../Mobile";
 import { Favourited } from "./favourited";
 
-const Item = styled.div`
+const Container = styled.div`
   display: flex;
-  justify-content: space-between;
-  padding: 30px;
-  align-items: center;
-  ${"" /* -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75); */}
-  background-color: white;
+  padding: 20px;
+  flex-direction: column;
   min-width: 50vw;
-  height: 150px;
+  height: 200px;
   margin-bottom: 30px;
-  border-radius: 5px;
+  ${"" /* height: 270px; */}
+  justify-content: center;
+  ${"" /* align-items: flex-start; */}
+  background-color: white;
   border: 1px solid lightgrey;
+  border-radius: 10px;
+  margin-bottom: 30px;
   &&:hover {
     box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
     transition: all 0.5s ease;
   }
   ${Mobile({
+    padding: " 0px 30px 6px 20px",
     flexDirection: "column",
-    padding: "15px",
-    height: "250px",
+    minHeight: "270px",
+    justifyContent: "center",
     minWidth: "90vw",
-    alignItems: "start",
-    justifyContent: "space-around",
+    //alignItems: "center",
     overFlow: "hidden",
+    backgroundColor: "white",
+  })}
+`;
+
+const Section = styled.div``;
+
+const Item = styled.div`
+  display: flex;
+  justify-content: space-between;
+  ${"" /* padding: 30px; */}
+  ${"" /* align-items: center; */}
+  ${"" /* -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75); */}
+  ${"" /* background-color: white; */}
+  ${"" /* min-width: 50vw; */}
+  ${"" /* height: 150px; */}
+  ${"" /* margin-bottom: 30px; */}
+  ${"" /* border-radius: 5px; */}
+  ${"" /* border: 1px solid lightgrey; */}
+    "" /* &&:hover {
+    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s ease;
+  } */
+  
+  ${Mobile({
+    backgroundColor: "blue",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+    //overFlow: "hidden",
   })}
 `;
 
 const Img = styled.img`
-  max-width: 60px;
-  max-height: 50px;
+  ${
+    "" /* max-width: 60px;
+  max-height: 50px; */
+  }
+  max-width: 65px;
+  min-width: 65px;
+  max-height: 62px;
   ${Mobile({
-    maxWidth: "60px",
     maxHeight: "55px",
+    maxWidth: "59px",
+    minWidth: "59px",
   })}
 `;
 
 const LeftSection = styled.div`
   display: flex;
-  align-items: center;
+  ${"" /* align-items: center; */}
+  ${Mobile({
+    flexDirection: "row",
+    position: "absolute",
+  })}
 `;
 
 const ImgCon = styled.div`
@@ -55,12 +107,14 @@ const ImgCon = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  min-width: 80px;
+  max-width: 80px;
+  max-height: 80px;
   height: 70px;
-  background-color: rgb(240, 240, 240);
+  background-color: white;
+  ${"" /* background-color: rgb(240, 240, 240); */}
   object-fit: cover;
   ${Mobile({
-    minWidth: "90px",
+    maxWidth: "80px",
     height: "90px",
     marginRight: "15px",
     overFlow: "hidden",
@@ -68,12 +122,17 @@ const ImgCon = styled.div`
 `;
 
 const Title = styled.div`
+  font-family: "Roboto", sans-serif;
   ${Mobile({ marginTop: "10px" })}
 `;
 
 const Info = styled.h1`
   font-size: 19px;
   font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  ${Mobile({
+    fontSize: "17px",
+  })}
 `;
 const Location = styled.div`
   font-size: 20px;
@@ -81,21 +140,38 @@ const Location = styled.div`
   ${Mobile({
     display: "flex",
     flexDirection: "column",
+    marginTop: "0px",
+    fontSize: "17px",
   })}
 `;
 
 const Span = styled.div`
-  margin-right: 10px;
+  ${"" /* margin-right: 10px; */}
+  font-size: 15px;
+  color: grey;
+  ${Mobile({
+    marginTop: "3px",
+  })}
 `;
 
 const RightSection = styled.div`
   ${Mobile({
     overFlow: "hidden",
+    position: "relative",
+    marginTop: "90px",
+    display: "flex",
+    flexDirection: "column",
+    order: 2,
   })}
 `;
 
 const Top = styled.div`
   display: flex;
+  ${Mobile({
+    overFlow: "hidden",
+    flexDirection: "row",
+    order: 1,
+  })}
 `;
 const Save = styled.div`
   background-color: hsl(205, 100%, 96%);
@@ -134,7 +210,7 @@ const Bottom = styled.h3`
   text-align: right;
   ${"" /* font-family: cursive; */}
   ${Mobile({
-    textAlign: "start",
+    textAlign: "",
   })}
 `;
 
@@ -143,10 +219,41 @@ const LocateSpan = styled.div`
   ${"" /* justify-content: space-evenly; */}
   margin-right: 15px;
   font-size: 17px;
+  ${Mobile({
+    flexDirection: "row",
+    marginTop: "0px",
+    fontSize: "15px",
+  })}
 `;
 
 const Position = styled.div`
   color: lightgrey;
+`;
+
+const Tag = styled.span`
+  background-color: hsl(205, 100%, 96%);
+  padding: 10px;
+  min-width: 170px;
+  font-size: 13px;
+  font-weight: 560;
+  border-radius: 5px;
+  margin-right: 10px;
+  color: black;
+  ${Mobile({
+    marginRight: "5px",
+    minWidth: "60px",
+    fontSize: "10px",
+    padding: "5px",
+  })}
+`;
+
+const TagsCon = styled.div`
+  margin-top: 5px;
+  minwidth: 170px;
+  ${Mobile({
+    minWidth: "60px",
+    marginTop: "10px",
+  })}
 `;
 
 function Jobitems({ tags, filters }) {
@@ -172,7 +279,7 @@ function Jobitems({ tags, filters }) {
 
   //   const mmm = Object.fromEntries(filters)
 
-  console.log(filtered);
+  // console.log(filtered);
 
   useEffect(() => {
     // filters,tags &&
@@ -190,87 +297,108 @@ function Jobitems({ tags, filters }) {
       <>
         {filters
           ? filtered.map((props, i) => (
-              <Item key={props._id}>
-                <LeftSection>
-                  <ImgCon>
-                    <Img src={props.img} />
-                  </ImgCon>
-                  <Title>
-                    <Info>{props.title}</Info>
-                    <Location>
-                      <LocateSpan>
-                        <Span>
-                          <LocationOnOutlined />
-                        </Span>
-                        {props.location?.map((prop) => (
-                          <div>{prop},</div>
-                        ))}
-                      </LocateSpan>
-                      <LocateSpan>
-                        <Span>
-                          <TimelineOutlined />
-                        </Span>
-                        {}
-                        <Position>{props.vacancy} applied</Position>
-                      </LocateSpan>
-                    </Location>
-                  </Title>
-                </LeftSection>
+              <Container>
+                <Item key={i}>
+                  <LeftSection>
+                    <ImgCon>
+                      <Img src={props.img} />
+                    </ImgCon>
+                    <Title>
+                      <Info>{props.title}</Info>
+                      <Location>
+                        <LocateSpan>
+                          <Span>
+                            <LocationOnOutlined />
+                          </Span>
+                          {/* {props.location} */}
+                          {props.location?.map((prop) => (
+                            <div>{prop},</div>
+                          ))}
+                        </LocateSpan>
+                        <LocateSpan>
+                          <Span>
+                            <WorkOutlined
+                              style={{ fontSize: "", marginRight: "5px" }}
+                            />
+                            {props.salary}
+                          </Span>
+                          {}
+                          {/* <Tag>{props.tag}</Tag> */}
+                        </LocateSpan>
+                      </Location>
+                    </Title>
+                  </LeftSection>
 
-                <RightSection>
-                  <Top>
-                    <Save>
-                      <Favourited jobs={props} />
-                    </Save>
-                    <Link to={"/jobinfo/" + props._id}>
-                      <Apply>Apply now</Apply>
-                    </Link>
-                  </Top>
-                  <Bottom>Date line:{props.createdAt}</Bottom>
-                </RightSection>
-              </Item>
+                  <RightSection>
+                    <Top>
+                      <Save>
+                        <Favourited jobs={props} />
+                      </Save>
+                      <Link to={"/jobinfo/" + props._id}>
+                        <Apply>Apply now</Apply>
+                      </Link>
+                    </Top>
+                    <Bottom>Date line:{props.createdAt}</Bottom>
+                  </RightSection>
+                </Item>
+                <TagsCon>
+                  {props.tag?.map((prop) => (
+                    <Tag>{prop}</Tag>
+                  ))}
+                </TagsCon>
+              </Container>
             ))
           : jobs.map((props, i) => (
-              <Item key={i}>
-                <LeftSection>
-                  <ImgCon>
-                    <Img src={props.img} />
-                  </ImgCon>
-                  <Title>
-                    <Info>{props.title}</Info>
-                    <Location>
-                      <LocateSpan>
-                        <Span>
-                          <LocationOnOutlined />
-                        </Span>
-                        {/* {props.location} */}
-                        {props.location?.map((prop) => (
-                          <div>{prop},</div>
-                        ))}
-                      </LocateSpan>
-                      <LocateSpan>
-                        <Span>
-                          <TimelineOutlined />
-                        </Span>
-                        {}
-                        {/* <Tag>{props.tag}</Tag> */}
-                      </LocateSpan>
-                    </Location>
-                  </Title>
-                </LeftSection>
+              <Container>
+                <Item key={i}>
+                  <LeftSection>
+                    <ImgCon>
+                      <Img src={props.img} />
+                    </ImgCon>
+                    <Title>
+                      <Info>{props.title}</Info>
+                      <Location>
+                        <LocateSpan>
+                          <Span>
+                            <LocationOnOutlined />
+                          </Span>
+                          {/* {props.location} */}
+                          {props.location?.map((prop) => (
+                            <div>{prop},</div>
+                          ))}
+                        </LocateSpan>
+                        <LocateSpan>
+                          <Span>
+                            <WorkOutlined
+                              style={{ fontSize: "", marginRight: "5px" }}
+                            />
+                            {props.salary}
+                          </Span>
+                          {}
+                          {/* <Tag>{props.tag}</Tag> */}
+                        </LocateSpan>
+                      </Location>
+                    </Title>
+                  </LeftSection>
 
-                <RightSection>
-                  <Top>
-                    <Save>
-                      <Favourited jobs={props} />
-                    </Save>
-                    <Link to={"/jobinfo/" + props._id}>
-                      <Apply>Apply now</Apply>
-                    </Link>
-                  </Top>
-                  <Bottom>Date line:{props.createdAt}</Bottom>
-                </RightSection>
-              </Item>
+                  <RightSection>
+                    <Top>
+                      <Save>
+                        <Favourited jobs={props} />
+                      </Save>
+                      <Link to={"/jobinfo/" + props._id}>
+                        <Apply>Apply now</Apply>
+                      </Link>
+                    </Top>
+                    <Bottom>Date line:{props.createdAt}</Bottom>
+                  </RightSection>
+                </Item>
+                <TagsCon>
+                  {props.tag?.map((prop) => (
+                    <Tag>{prop}</Tag>
+                  ))}
+                </TagsCon>
+              </Container>
             ))}
       </>
     </div>

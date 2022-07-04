@@ -22,8 +22,9 @@ import Jobitems from "./Jobitems";
 import { Select } from "@mui/material";
 
 const Container = styled.div`
-  padding: 20px;
-  background-color: rgb(251, 251, 255);
+  padding: 15px;
+  ${"" /* background-color: rgb(251, 251, 255); */}
+  background-color: #f2f2f2;
   height: 100%;
   ${Mobile({
     overFlow: "hidden",
@@ -32,7 +33,7 @@ const Container = styled.div`
 `;
 
 const Section = styled.div`
-  padding: 50px 200px;
+  padding: 50px 150px;
   display: flex;
   ${Mobile({
     flexDirection: "column",

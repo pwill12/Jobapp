@@ -37,9 +37,9 @@ import { GlobalContext } from "../redux/Globalstate";
 // import { Link } from "react-router-dom";
 
 const Container = styled.div`
-  ${'' /* background-color: rgb(251, 251, 255); */}
+  ${"" /* background-color: rgb(251, 251, 255); */}
   background-color: #f2f2f2;
-  ${'' /* background-color: white; */}
+  ${"" /* background-color: white; */}
   padding: 40px 90px;
   ${Mobile({ padding: "20px" })}
 `;
@@ -50,7 +50,7 @@ const Section = styled.div`
 `;
 const Left = styled.div`
   flex: 1;
-  ${Mobile({ flex: 0.7, order: 1 })}
+  ${Mobile({ flex: 0.7 })}
 `;
 const About = styled.div`
   display: flex;
@@ -59,7 +59,7 @@ const About = styled.div`
   justify-content: space-between;
   color: lightgreen;
   cursor: pointer;
-  ${Mobile({ width: '100%' })}
+  ${Mobile({ width: "100%" })}
 `;
 const Me = styled.h5``;
 const Edit = styled.h5``;
@@ -73,9 +73,8 @@ const Right = styled.div`
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  box-shadow: 14px 14px 20px #cbced1,-14px -14px 20px white;
-  ${Mobile({ position: 'relative' ,marginTop: '30px'})}
-
+  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+  ${Mobile({ position: "relative", marginTop: "30px" })}
 `;
 const Card = styled.div`
   background-color: white;
@@ -88,9 +87,7 @@ const Card = styled.div`
   border: 1px solid lightgrey;
   ${Mobile({ marginTop: "30px" })}
 
-  ${'' /* box-shadow: 14px 14px 20px #cbced1,-14px -14px 20px white; */}
-
-
+  ${"" /* box-shadow: 14px 14px 20px #cbced1,-14px -14px 20px white; */}
 `;
 const ImgCon = styled.div``;
 const Img = styled.img``;
@@ -101,7 +98,7 @@ const Location = styled.div``;
 const Center = styled.div`
   flex: 2;
   margin: 0px 30px;
-  ${Mobile({ margin: "0px" })}
+  ${Mobile({ margin: "30px 0px", order: 1 })}
 `;
 const Contact = styled.div`
   display: flex;
@@ -144,20 +141,17 @@ const Website = styled.div`
   margin-top: 30px;
   border: 1px solid lightgrey;
   border-radius: 10px;
-
 `;
 const Dash = styled.div`
   padding: 12px;
   background-color: white;
   border: 1px solid lightgrey;
   border-radius: 10px;
-  ${'' /* ${Mobile({ padding: '1px' })} */}
-
+  ${"" /* ${Mobile({ padding: '1px' })} */}
 `;
 const Dashboard = styled.h5`
   font-weight: 600;
-  ${Mobile({ marginBottom: '10px' })}
-
+  ${Mobile({ marginBottom: "10px" })}
 `;
 const Board = styled.div`
   display: flex;
@@ -189,7 +183,7 @@ const Applied = styled.div`
   flex-direction: column;
   margin-left: 10px;
   flex: 1;
-  ${Mobile({ margin: '10px 0px 0px' })}
+  ${Mobile({ margin: "10px 0px 0px" })}
 `;
 const Viewed = styled.div`
   display: flex;
@@ -209,7 +203,10 @@ const Status = styled.div`
   background-color: lightgrey;
   border-radius: 10px;
   padding: 12px;
-
+  ${Mobile({
+    minHeight: "110px",
+    alignItems: "",
+  })}
 `;
 const LetEmployers = styled.div``;
 const Let = styled.h4`
@@ -218,6 +215,9 @@ const Let = styled.h4`
 `;
 const Para = styled.p`
   font-size: 13px;
+  ${Mobile({
+    fontSize: "12px",
+  })}
 `;
 
 const ActiveBtn = styled.div``;
@@ -227,7 +227,7 @@ const Summary = styled.div`
   padding: 12px;
   border-radius: 10px;
   background-color: white;
-  ${'' /* box-shadow: 14px 14px 20px #cbced1,-14px -14px 20px white; */}
+  ${"" /* box-shadow: 14px 14px 20px #cbced1,-14px -14px 20px white; */}
 
   ${"" /* height: 100%; */}
 `;
@@ -309,7 +309,6 @@ const Assistance = styled.div`
   display: flex;
   align-items: center;
   ${"" /* margin-top: 50px; */}
-
 `;
 const Aimg = styled.div`
   max-width: 70px;
