@@ -291,7 +291,9 @@ function MyNavbar() {
                         className="nav-links"
                         onClick={handleClick}
                       >
-                        Blog{" "}
+                        <NavLink to='/' style={{textDecoration: 'none'}}>
+                          <Signout onClick={MyClick}> Singout </Signout>
+                        </NavLink>
                       </NavLink>{" "}
                     </li>{" "}
                     <li className="nav-item">
@@ -363,15 +365,15 @@ function MyNavbar() {
             </div>
             {user && (
               <>
-                <div style={{display: 'flex'}}>
-                  <div style={{width: '40px',marginRight: '10px'}}>
-                  <Badge color="secondary" badgeContent={0} showZero>
-                    <EmailOutlinedIcon />
-                  </Badge>
+                <div style={{ display: "flex" }}>
+                  <div style={{ width: "40px", marginRight: "10px" }}>
+                    <Badge color="secondary" badgeContent={0} showZero>
+                      <EmailOutlinedIcon />
+                    </Badge>
                   </div>
                   <Myimg2>
-                    <NavLink to='/Profile'>
-                    <Imgg2 src={user.img} />
+                    <NavLink to="/Profile">
+                      <Imgg2 src={user.img} />
                     </NavLink>
                   </Myimg2>
                 </div>
