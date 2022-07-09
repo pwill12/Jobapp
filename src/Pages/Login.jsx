@@ -6,6 +6,7 @@ import { login } from "../redux/apicalls";
 import MyNavbar from "../Components/Navbar";
 
 import { Mobile } from "../Mobile";
+import { Link } from "react-router-dom";
 
 const Con = styled.div`
   height: 100%;
@@ -71,7 +72,7 @@ const Input = styled.input`
 //   }
 // `;
 
-const Link = styled.a`
+const Links = styled.div`
   margin: 5px 0px;
   font-size: 12px;
   text-decoration: underline;
@@ -100,7 +101,8 @@ export default function Login() {
       <MyNavbar />
       <Container>
         <CenterLogo>
-          Hello,welcome back<i class="fas fa-laptop-code" style={{ color: "black" }}></i>
+          Hello,welcome back
+          <i class="fas fa-laptop-code" style={{ color: "black" }}></i>
         </CenterLogo>
         <Wrapper>
           {/* <CenterLogo>
@@ -126,8 +128,11 @@ export default function Login() {
               Sign Up
             </Button>
             {error ? <Error>Password Incorrect...</Error> : null}
-            <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-            <Link href="/register">CREATE A NEW ACCOUNT</Link>
+            <Links>DO NOT YOU REMEMBER THE PASSWORD?</Links>
+            <Link to='/register'>
+              <Links>CREATE A NEW ACCOUNT</Links>
+            </Link>
+            {/* <Links>CREATE A NEW ACCOUNT</Links> */}
           </Form>
         </Wrapper>
       </Container>
