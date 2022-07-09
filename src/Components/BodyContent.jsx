@@ -1,12 +1,5 @@
 import React, { useEffect } from "react";
 import Aos from "aos";
-import {
-  Facebook,
-  FacebookSharp,
-  FacebookTwoTone,
-  Google,
-  Twitter,
-} from "@mui/icons-material";
 import "aos/dist/aos.css";
 // import { Button } from "react-bootstrap";
 import styled from "styled-components";
@@ -33,7 +26,7 @@ const Left = styled.div`
   ${"" /* flex: 1; */}
   width: 50%;
   ${"" /* margin-top: -20px; */}
-  ${Mobile({ margin: "0px", width: "100%", marginTop: "40px" })}
+  ${Mobile({ margin: "0px", width: "100%", marginTop: "20px" })}
 `;
 const Title = styled.h2`
   font-size: 30px;

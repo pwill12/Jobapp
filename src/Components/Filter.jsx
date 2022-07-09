@@ -24,7 +24,8 @@ import { Select } from "@mui/material";
 const Container = styled.div`
   padding: 15px;
   ${"" /* background-color: rgb(251, 251, 255); */}
-  background-color: #f2f2f2;
+  ${"" /* background-color: #f2f2f2; */}
+  background-color: rgb(251, 251, 255);
   height: 100%;
   ${Mobile({
     overFlow: "hidden",

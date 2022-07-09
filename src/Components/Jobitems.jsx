@@ -7,6 +7,7 @@ import {
   Money,
   MoneyOff,
   MoneyOffCsred,
+  Public,
   TimelineOutlined,
   WorkOutlined,
 } from "@mui/icons-material";
@@ -24,13 +25,14 @@ const Container = styled.div`
   padding: 20px;
   flex-direction: column;
   min-width: 50vw;
-  height: 200px;
+  height: 170px;
   margin-bottom: 30px;
   ${"" /* height: 270px; */}
   justify-content: center;
   ${"" /* align-items: flex-start; */}
   background-color: white;
-  border: 1px solid lightgrey;
+  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.3);
+  ${"" /* border: 1px solid lightgrey; */}
   border-radius: 10px;
   margin-bottom: 30px;
   &&:hover {
@@ -82,9 +84,9 @@ const Img = styled.img`
     "" /* max-width: 60px;
   max-height: 50px; */
   }
-  max-width: 65px;
-  min-width: 65px;
-  max-height: 62px;
+  max-width: 80px;
+  min-width: 80px;
+  max-height: 70px;
   ${Mobile({
     maxHeight: "55px",
     maxWidth: "59px",
@@ -123,6 +125,9 @@ const ImgCon = styled.div`
 
 const Title = styled.div`
   font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   ${Mobile({ marginTop: "10px" })}
 `;
 
@@ -150,7 +155,7 @@ const Span = styled.div`
   font-size: 15px;
   color: grey;
   ${Mobile({
-    marginTop: "3px",
+    marginTop: "0px",
   })}
 `;
 
@@ -226,8 +231,13 @@ const LocateSpan = styled.div`
   })}
 `;
 
-const Position = styled.div`
+const Salary = styled.div`
   color: lightgrey;
+  font-size: 15px;
+  margin-top: 3px;
+  ${Mobile({
+    marginTop: "2px",
+  })}
 `;
 
 const Tag = styled.span`
@@ -253,6 +263,15 @@ const TagsCon = styled.div`
   ${Mobile({
     minWidth: "60px",
     marginTop: "10px",
+  })}
+`;
+
+const MyLoc = styled.div`
+  margin-left: 5px;
+  color: grey;
+  font-size: 16px;
+  ${Mobile({
+    marginTop: "0px",
   })}
 `;
 
@@ -308,11 +327,11 @@ function Jobitems({ tags, filters }) {
                       <Location>
                         <LocateSpan>
                           <Span>
-                            <LocationOnOutlined />
+                            <Public />
                           </Span>
                           {/* {props.location} */}
                           {props.location?.map((prop) => (
-                            <div>{prop},</div>
+                            <MyLoc>{prop},</MyLoc>
                           ))}
                         </LocateSpan>
                         <LocateSpan>
@@ -320,8 +339,9 @@ function Jobitems({ tags, filters }) {
                             <WorkOutlined
                               style={{ fontSize: "", marginRight: "5px" }}
                             />
-                            {props.salary}
                           </Span>
+                          <Salary style={{}}>{props.salary}</Salary>
+
                           {}
                           {/* <Tag>{props.tag}</Tag> */}
                         </LocateSpan>
@@ -360,11 +380,11 @@ function Jobitems({ tags, filters }) {
                       <Location>
                         <LocateSpan>
                           <Span>
-                            <LocationOnOutlined />
+                            <Public />
                           </Span>
                           {/* {props.location} */}
                           {props.location?.map((prop) => (
-                            <div>{prop},</div>
+                            <MyLoc>{prop},</MyLoc>
                           ))}
                         </LocateSpan>
                         <LocateSpan>
@@ -372,10 +392,8 @@ function Jobitems({ tags, filters }) {
                             <WorkOutlined
                               style={{ fontSize: "", marginRight: "5px" }}
                             />
-                            {props.salary}
                           </Span>
-                          {}
-                          {/* <Tag>{props.tag}</Tag> */}
+                          <Salary>{props.salary}</Salary>
                         </LocateSpan>
                       </Location>
                     </Title>

@@ -16,10 +16,12 @@ import {
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { LocationOff, LocationOnRounded, Search } from "@mui/icons-material";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import { useSelector } from "react-redux";
 import { logout } from "../redux/users";
 import { updatedout } from "../redux/updateContact";
 import { blue } from "@mui/material/colors";
+import { Badge } from "@mui/material";
 
 const Conts = styled.div`
   ${"" /* margin-top: 20px; */}
@@ -101,12 +103,24 @@ const Text = styled.button`
 `;
 
 const Myimg = styled.div`
-  max-width: 30px;
-  max-height: 30px;
+  max-width: 40px;
+  max-height: 40px;
   border-radius: 50%;
+`;
+
+const Myimg2 = styled.a`
+  max-height: 40px;
+  ${"" /* border-radius: 50%; */}
+  display: none;
+  ${Mobile({ display: "block", maxWidth: "40px" })}
 `;
 const Imgg = styled.img`
   width: 30px;
+  border-radius: 50%;
+`;
+
+const Imgg2 = styled.img`
+  width: 40px;
   border-radius: 50%;
 `;
 
@@ -140,15 +154,6 @@ const Searchcon = styled.input`
   ${"" /* background-color: white; */}
 `;
 
-const Navimg = styled.div`
-  max-width: 100px;
-  max-height: 75px;
-  object-fit: cover;
-`;
-const Mynavimg = styled.img`
-  max-height: 75px;
-`;
-
 function MyNavbar() {
   const dispatch = useDispatch();
   const [click, setClick] = useState(false);
@@ -164,15 +169,16 @@ function MyNavbar() {
   };
 
   // console.log(user);
+
   return (
     <>
       <nav className="navbar">
         <div className="nav-container">
           <NavLink exact to="/" className="nav-logo">
-            Will <i className="fas fa-code"> </i>
+            Will <i class="fas fa-laptop-code"> </i>
             {/* <Navimg>
-              <Mynavimg src="images/WillJobs.png" />
-            </Navimg> */}
+                <Mynavimg src="images/WillJobs.png" />
+              </Navimg> */}
           </NavLink>{" "}
           {user ? (
             <MySearch>
@@ -327,32 +333,50 @@ function MyNavbar() {
                   </NavLink>{" "}
                 </li>{" "}
                 {/* <li className="nav-item">
-                                  <NavLink
-                                    exact
-                                    to="/blog"
-                                    activeClassName="active"
-                                    className="nav-links"
-                                    onClick={handleClick}
-                                  >
-                                    Blog
-                                  </NavLink>
-                                </li> */}{" "}
+                                    <NavLink
+                                      exact
+                                      to="/blog"
+                                      activeClassName="active"
+                                      className="nav-links"
+                                      onClick={handleClick}
+                                    >
+                                      Blog
+                                    </NavLink>
+                                  </li> */}{" "}
                 {/* <li className="nav-item">
-                                  <NavLink
-                                    exact
-                                    to="/contact"
-                                    activeClassName="active"
-                                    className="nav-links"
-                                    onClick={handleClick}
-                                  >
-                                    Login
-                                  </NavLink>
-                                </li> */}{" "}
+                                    <NavLink
+                                      exact
+                                      to="/contact"
+                                      activeClassName="active"
+                                      className="nav-links"
+                                      onClick={handleClick}
+                                    >
+                                      Login
+                                    </NavLink>
+                                  </li> */}{" "}
               </ul>
             )}{" "}
           </ul>{" "}
           <div className="nav-icon" onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"}> </i>{" "}
+            <div style={{ marginRight: "10px", width: "40px" }}>
+              <i className={click ? "fas fa-times" : "fas fa-bars"}> </i>
+            </div>
+            {user && (
+              <>
+                <div style={{display: 'flex'}}>
+                  <div style={{width: '40px',marginRight: '10px'}}>
+                  <Badge color="secondary" badgeContent={0} showZero>
+                    <EmailOutlinedIcon />
+                  </Badge>
+                  </div>
+                  <Myimg2>
+                    <NavLink to='/Profile'>
+                    <Imgg2 src={user.img} />
+                    </NavLink>
+                  </Myimg2>
+                </div>
+              </>
+            )}
           </div>{" "}
         </div>{" "}
       </nav>{" "}
