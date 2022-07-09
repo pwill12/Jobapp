@@ -2,14 +2,14 @@ import React from "react";
 import MyNavbar from "../Components/Navbar";
 import Register from "../Components/Register";
 
-
 function MyRegister() {
   return (
+    // background-color: rgb(240, 241, 245);
     <div>
-        <MyNavbar/>
-        <Register/>
+      <MyNavbar />
+      <Register />
     </div>
-  )
+  );
 }
 
-export default MyRegister
+export default MyRegister;

@@ -53,7 +53,7 @@
 }
 
 .nav-links {
-    color: black;
+    color: red;
     text-decoration: none;
     padding: 0.5rem 1rem;
     height: 100%;
@@ -84,8 +84,8 @@
 }
 
 .nav-item .active {
-    color: #ffdd40;
-    border: 1px solid #ffdd40;
+    color: blue;
+    border: 1px solid lightgrey;
 }
 
 .nav-icon {

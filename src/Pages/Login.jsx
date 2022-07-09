@@ -7,6 +7,7 @@ import MyNavbar from "../Components/Navbar";
 
 import { Mobile } from "../Mobile";
 import { Link } from "react-router-dom";
+import { Grid, TextField } from "@mui/material";
 
 const Con = styled.div`
   height: 100%;
@@ -110,14 +111,37 @@ export default function Login() {
       </CenterLogo> */}
           <Title>SIGN IN</Title>
           <Form>
-            <Input
+            {/* <Input
               placeholder="username"
               onChange={(e) => setUsername(e.target.value)}
-            />
-            <Input
+            /> */}
+            <Grid item xs={12} sm={6}>
+              <TextField
+                autoComplete="given-name"
+                name="username"
+                fullWidth
+                id="username"
+                label="Username"
+                autoFocus
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </Grid>
+            {/* <Input
               placeholder="password"
               onChange={(e) => setPassword(e.target.value)}
-            />
+            /> */}
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                name="password"
+                sx={{ mt: 3}}
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="new-password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Grid>
             {/* <Button onClick={handleClick}>LOGIN</Button> */}
             <Button
               fullWidth
@@ -125,11 +149,11 @@ export default function Login() {
               sx={{ mt: 3, mb: 2 }}
               onClick={handleClick}
             >
-              Sign Up
+              Sign in
             </Button>
-            {error ? <Error>Password Incorrect...</Error> : null}
+            {error ? <Error>username or Password Incorrect...</Error> : null}
             <Links>DO NOT YOU REMEMBER THE PASSWORD?</Links>
-            <Link to='/register'>
+            <Link to="/register">
               <Links>CREATE A NEW ACCOUNT</Links>
             </Link>
             {/* <Links>CREATE A NEW ACCOUNT</Links> */}

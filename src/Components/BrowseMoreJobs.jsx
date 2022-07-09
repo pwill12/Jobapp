@@ -35,6 +35,9 @@ const Section = styled.div`
 const Left = styled.div`
   display: flex;
   flex: 2;
+  ${Mobile({
+    order: 1,
+  })}
 `;
 
 const Jobsection = styled.div`
@@ -62,9 +65,18 @@ const ImgContain = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  ${Mobile({
+    maxWidth: "60px",
+    maxHeight: "55px",
+  })}
 `;
 
-const ImgCon = styled.img``;
+const ImgCon = styled.img`
+  ${Mobile({
+    maxWidth: "60px",
+    maxHeight: "55px",
+  })}
+`;
 
 const Title = styled.div`
   margin-left: 20px;
@@ -72,11 +84,11 @@ const Title = styled.div`
 `;
 
 const Header = styled.h2`
-  font-size: 26px;
+  font-size: 23px;
   font-weight: 400;
   font-family: "Roboto", sans-serif;
   ${Mobile({
-    fontSize: "20px",
+    fontSize: "19px",
   })}
 `;
 
@@ -118,6 +130,10 @@ const Right = styled.div`
   display: flex;
   flex: 1;
   width: 100%;
+  ${Mobile({
+    order: 1,
+    marginBottom: "10px",
+  })}
 `;
 const RightCon = styled.div`
   width: 100%;
@@ -205,6 +221,7 @@ const Apply = styled.div`
   padding: 30px;
   background-color: white;
   margin-top: 5px;
+  ${Mobile({})}
 `;
 
 const Applynow = styled.h2`
@@ -220,18 +237,21 @@ const Name = styled.input`
   padding: 10px;
   width: 50%;
   margin-right: 30px;
+  border: "1px solid lightgrey";
 `;
 
 const Email = styled.input`
   width: 50%;
   ${"" /* margin-left: 10px; */}
   padding: 10px;
+  border: "1px solid lightgrey";
 `;
 
 const Website = styled.input`
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
+  border: "1px solid lightgrey";
 `;
 
 const Cv = styled.div`
@@ -244,7 +264,9 @@ const Resume = styled.span`
   margin-right: 10px;
 `;
 
-const Upload = styled.input``;
+const Upload = styled.input`
+  border: "1px solid lightgrey";
+`;
 
 const TextArea = styled.textarea`
   width: 100%;
@@ -278,9 +300,20 @@ const Back = styled.div`
   align-items: center;
   justify-content: flex-start;
   ${Mobile({
-    flexDirection: "column",
+    flexDirection: "row",
     padding: "0px",
+    width: "100%",
+    justifyContent: "center",
+    marginBottom: "10px",
   })}
+`;
+
+const Goback = styled.div`
+  display: "flex";
+  align-items: "flex-start"
+    ${Mobile({
+      marginBottom: "10px",
+    })};
 `;
 
 const Arrow = styled.a`
@@ -326,6 +359,7 @@ function BrowseMoreJobs({ ids }) {
   const [email, setemail] = useState("");
   // const [click, myhandleClick] = useState(false);
   const [username, setname] = useState("");
+  const [cover, setcover] = useState("");
   const [projectlinks, setproject] = useState("");
   const dispatch = useDispatch();
 
@@ -340,6 +374,7 @@ function BrowseMoreJobs({ ids }) {
         email: email,
         jobs: jobs,
         projectlinks: projectlinks,
+        cover: cover,
         username: username,
       },
     });
@@ -355,7 +390,6 @@ function BrowseMoreJobs({ ids }) {
           setapplied("");
         } else if (res.data !== null) {
           setapplied(res.data.jobitems);
-          console.log("yes");
         }
         // setapplied(res.data.jobitems);
         // console.log(res.data);
@@ -368,7 +402,7 @@ function BrowseMoreJobs({ ids }) {
     userapplied();
   }, []);
   let storedJobs = applied.find((o) => o.jobs === ids);
-  // console.log(storedFav)
+  let qualify = myjobs.qualifications;
 
   return (
     <Container>
@@ -378,10 +412,10 @@ function BrowseMoreJobs({ ids }) {
         false
       )}
       <Back>
-        <Arrow href="/home">
+        <Arrow href="/">
           <ArrowBack />
         </Arrow>
-        <div style={{ display: "flex", alignItems: "flexStart" }}>Go back</div>
+        <Goback>Go back</Goback>
       </Back>
       <Section>
         <Left>
@@ -419,7 +453,9 @@ function BrowseMoreJobs({ ids }) {
               </Responsibilities>
               <Responsibilities>
                 <Desc>Qualifications</Desc>
-                {/* <List>{jobs.qualifications}</List> */}
+                {qualify?.map((props) => (
+                  <List>{props}</List>
+                ))}
               </Responsibilities>
             </MoreInfo>
 
@@ -444,7 +480,7 @@ function BrowseMoreJobs({ ids }) {
                 <Upload type="file" />
               </Cv>
               <Resume>Cover Letter:</Resume>
-              <TextArea />
+              <TextArea onChange={(e) => setcover(e.target.value)} />
               <SubmitBtn onClick={handleClick}>Submit</SubmitBtn>
             </Apply>
           </Jobsection>

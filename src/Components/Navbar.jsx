@@ -190,7 +190,7 @@ function MyNavbar() {
               <Search style={{ marginLeft: "-40px" }} />{" "}
             </MySearch>
           ) : (
-            <h5 style={{ color: "red", fontSize: "21px", wordSpacing: "3px" }}>
+            <h5 style={{ color: "grey", fontSize: "20px", wordSpacing: "3px" }}>
               {" "}
               Welcome Guest{" "}
             </h5>
@@ -334,7 +334,7 @@ function MyNavbar() {
                     className="nav-links"
                     onClick={handleClick}
                   >
-                    Login{" "}
+                    Logins
                   </NavLink>{" "}
                 </li>{" "}
                 <li className="nav-item">
