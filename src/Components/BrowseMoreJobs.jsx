@@ -15,6 +15,7 @@ import { Mobile } from "../Mobile";
 import styled from "styled-components";
 import { apply } from "../redux/applyapicalls";
 import { useDispatch, useSelector } from "react-redux";
+import toast, { Toaster } from "react-hot-toast";
 
 const Container = styled.div`
   padding: 20px;
@@ -366,7 +367,7 @@ function BrowseMoreJobs({ ids }) {
   let jobs = ids;
 
   const handleClick = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     // myhandleClick(true);
     apply(dispatch, {
       user,
@@ -403,6 +404,9 @@ function BrowseMoreJobs({ ids }) {
   }, []);
   let storedJobs = applied.find((o) => o.jobs === ids);
   let qualify = myjobs.qualifications;
+
+const notify = () => toast.success("Successfully applied");
+
 
   return (
     <Container>
@@ -481,7 +485,36 @@ function BrowseMoreJobs({ ids }) {
               </Cv>
               <Resume>Cover Letter:</Resume>
               <TextArea onChange={(e) => setcover(e.target.value)} />
-              <SubmitBtn onClick={handleClick}>Submit</SubmitBtn>
+              <SubmitBtn
+               onClick={() => {
+                handleClick();notify()
+              }}
+              >Submit</SubmitBtn>
+              <Toaster
+                position="top-center"
+                reverseOrder={false}
+                gutter={8}
+                containerClassName=""
+                containerStyle={{}}
+                toastOptions={{
+                  // Define default options
+                  className: "",
+                  duration: 3000,
+                  style: {
+                    background: "white",
+                    padding: "20px",
+                    color: "lightgreen",
+                  },
+                  // Default options for specific types
+                  success: {
+                    duration: 3000,
+                    theme: {
+                      primary: "green",
+                      secondary: "white",
+                    },
+                  },
+                }}
+              />
             </Apply>
           </Jobsection>
         </Left>
