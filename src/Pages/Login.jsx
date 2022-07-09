@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
+import Button from "@mui/material/Button";
 import { login } from "../redux/apicalls";
 import MyNavbar from "../Components/Navbar";
 
@@ -8,12 +9,12 @@ import { Mobile } from "../Mobile";
 
 const Con = styled.div`
   height: 100%;
-`
+`;
 
 const Container = styled.div`
   width: 100vw;
   height: 88vh;
-  background-color: rgb(240, 241, 245);
+  // background-color: rgb(240, 241, 245);
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -36,7 +37,7 @@ const Wrapper = styled.div`
   ${"" /* height: 70vh; */}
   padding: 20px;
   background-color: white;
-  ${Mobile({ width: "75%", borderRadius: "5px" })}
+  ${Mobile({ width: "100%", borderRadius: "5px" })}
 `;
 
 const Title = styled.h1`
@@ -56,19 +57,19 @@ const Input = styled.input`
   padding: 10px;
 `;
 
-const Button = styled.button`
-  width: 40%;
-  border: none;
-  padding: 15px 20px;
-  background-color: teal;
-  color: white;
-  cursor: pointer;
-  margin-bottom: 10px;
-  &:disabled {
-    color: green;
-    cursor: not-allowed;
-  }
-`;
+// const Button = styled.button`
+//   width: 40%;
+//   border: none;
+//   padding: 15px 20px;
+//   background-color: teal;
+//   color: white;
+//   cursor: pointer;
+//   margin-bottom: 10px;
+//   &:disabled {
+//     color: green;
+//     cursor: not-allowed;
+//   }
+// `;
 
 const Link = styled.a`
   margin: 5px 0px;
@@ -98,7 +99,9 @@ export default function Login() {
     <Con>
       <MyNavbar />
       <Container>
-        <CenterLogo>WillJobs</CenterLogo>
+        <CenterLogo>
+          Hello,welcome back<i class="fas fa-laptop-code" style={{ color: "black" }}></i>
+        </CenterLogo>
         <Wrapper>
           {/* <CenterLogo>
           WillJobs
@@ -113,10 +116,18 @@ export default function Login() {
               placeholder="password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Button onClick={handleClick}>LOGIN</Button>
-            {error && <Error>Password Incorrect...</Error>}
+            {/* <Button onClick={handleClick}>LOGIN</Button> */}
+            <Button
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              onClick={handleClick}
+            >
+              Sign Up
+            </Button>
+            {error ? <Error>Password Incorrect...</Error> : null}
             <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-            <Link>CREATE A NEW ACCOUNT</Link>
+            <Link href="/register">CREATE A NEW ACCOUNT</Link>
           </Form>
         </Wrapper>
       </Container>

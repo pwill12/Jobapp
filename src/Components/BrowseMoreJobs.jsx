@@ -56,7 +56,7 @@ const Leftsection = styled.div`
 `;
 
 const ImgContain = styled.div`
-  background-color: lightgrey;
+  // background-color: lightgrey;
   height: 70px;
   padding: 10px;
   display: flex;
@@ -389,7 +389,7 @@ function BrowseMoreJobs({ ids }) {
             <Leftsection>
               <LeftSectionTitle>
                 <ImgContain>
-                  <ImgCon src="https://preview.colorlib.com/theme/jobboard2/img/svg_icon/4.svg" />
+                  <ImgCon src={myjobs.img} />
                 </ImgContain>
                 <Title>
                   <Header>{myjobs.title}</Header>

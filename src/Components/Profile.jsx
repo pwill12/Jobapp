@@ -385,7 +385,7 @@ function Myprofile() {
   let signupper = 20;
   let websiteper = updated.website;
   let emailper = updated.email;
-  // console.log(emailper);
+  console.log(websiteper);
   let githubper = updated.github;
   let numper = 20;
 
@@ -423,7 +423,12 @@ function Myprofile() {
         <Left>
           <Card>
             <ImgCon>
-              <Img src={updated.img} />
+              {/* <Img src={updated.img} /> */}
+              {updated.img === undefined ? (
+                <Img src="images/user.png" />
+              ) : (
+                <Img src={updated.img} />
+              )}
             </ImgCon>
             <Name>{updated.lastname}</Name>
             <Headline>Headline+</Headline>

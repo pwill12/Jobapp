@@ -20,6 +20,7 @@ import { useSelector } from "react-redux";
 import Profilepage from "./Pages/Profilepage";
 import SavedJobs from "./Pages/SavedJobs";
 import { GlobalProvider } from "./redux/Globalstate";
+import MyRegister from "./Pages/Register";
 
 // import Bodysection from './Components/Body';
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -31,44 +32,43 @@ function App() {
       <Router>
         <ScrollToTop>
           <Routes>
-            {/* <Route path="/jobinfo/:ids" element={<Jobinfo />} /> */}
-            <Route exact path="/" element={<Home />} />
-            <Route path="/saved" element={<SavedJobs />} />
+            {" "}
+            {/* <Route path="/jobinfo/:ids" element={<Jobinfo />} /> */}{" "}
+            <Route
+              exact
+              path="/"
+              element={user ? <FilterCat replace /> : <Home />}
+            />{" "}
+            <Route path="/saved" element={<SavedJobs />} />{" "}
             <Route
               path="/Filter"
               element={user ? <FilterCat replace /> : <Login />}
-            />
-            <Route element={user ? <Navigate to="/" replace /> : <Home />} />
+            />{" "}
+            <Route element={user ? <Navigate to="/" replace /> : <Home />} />{" "}
             <Route
               path="/home"
               element={user ? <FilterCat replace /> : <Home />}
-            />
-            {/* <Route
-            exact
-            path="/"
-            // element={user ? <Navigate to="/" replace /> : <Home/>}
-          /> */}
-            <Route path="/browsemorejobs/:findjobs" element={<FilterCat />} />
-            {/* <Route
-            path="/home"
-            // element={user ? <Navigate to="/" replace /> : <Login />}
-          /> */}
-            {/* <Route path="/jobinfo" element={<Jobinfo />} /> */}
+            />{" "}
+            <Route path="/browsemorejobs/:findjobs" element={<FilterCat />} />{" "}
             <Route
               path="/Profile"
               element={user ? <Profilepage replace /> : <Login />}
-            />
+            />{" "}
             <Route
               path="/Login"
               element={user ? <Navigate to="/home" replace /> : <Login />}
-            />
+            />{" "}
+            <Route
+              path="/register"
+              element={user ? <Navigate to="/home" replace /> : <MyRegister />}
+            />{" "}
             <Route
               path="/jobinfo/:ids"
               element={user ? <Jobinfo replace /> : <Login />}
-            />
-          </Routes>
-        </ScrollToTop>
-      </Router>
+            />{" "}
+          </Routes>{" "}
+        </ScrollToTop>{" "}
+      </Router>{" "}
     </GlobalProvider>
   );
 }

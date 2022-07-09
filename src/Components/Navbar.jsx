@@ -15,7 +15,13 @@ import {
   Dropdown,
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { LocationOff, LocationOnRounded, Search } from "@mui/icons-material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  LocationOff,
+  LocationOnRounded,
+  Search,
+  VerifiedUserOutlined,
+} from "@mui/icons-material";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import { useSelector } from "react-redux";
 import { logout } from "../redux/users";
@@ -43,7 +49,7 @@ const ImgCon = styled.div`
 const Cont = styled.div`
   display: flex;
   justify-content: center;
-  background-color: grey;
+  // background-color: grey;
   border-radius: 50%;
   ${"" /* max-width: 200px; */}
   width: 100px;
@@ -168,17 +174,15 @@ function MyNavbar() {
     dispatch(updatedout());
   };
 
-  // console.log(user);
-
   return (
     <>
       <nav className="navbar">
         <div className="nav-container">
           <NavLink exact to="/" className="nav-logo">
-            Will <i class="fas fa-laptop-code"> </i>
-            {/* <Navimg>
-                <Mynavimg src="images/WillJobs.png" />
-              </Navimg> */}
+            Will{" "}
+            <i class="fas fa-laptop-code" style={{ color: "grey" }}>
+              {" "}
+            </i>
           </NavLink>{" "}
           {user ? (
             <MySearch>
@@ -199,7 +203,12 @@ function MyNavbar() {
                   <Nav className="">
                     <Nav.Link href="#">
                       <Myimg>
-                        <Imgg src={user.img} />{" "}
+                        {/* <Imgg src={user.img} /> */}
+                        {user.img === undefined ? (
+                          <Imgg src="images/user.png" />
+                        ) : (
+                          <Imgg src={user.img} />
+                        )}
                       </Myimg>{" "}
                     </Nav.Link>{" "}
                     <NavDropdown
@@ -213,7 +222,12 @@ function MyNavbar() {
                       <Muu>
                         <ImgCon>
                           <Cont>
-                            <Img src={user.img} />{" "}
+                            {/* <Img src={user.img} /> */}
+                            {user.img === undefined ? (
+                              <Img src="images/user.png" />
+                            ) : (
+                              <Img src={user.img} />
+                            )}
                           </Cont>{" "}
                         </ImgCon>{" "}
                         <Name> {user.username} </Name>{" "}
@@ -291,7 +305,7 @@ function MyNavbar() {
                         className="nav-links"
                         onClick={handleClick}
                       >
-                        <NavLink to='/' style={{textDecoration: 'none'}}>
+                        <NavLink to="/" style={{ textDecoration: "none" }}>
                           <Signout onClick={MyClick}> Singout </Signout>
                         </NavLink>
                       </NavLink>{" "}
@@ -373,7 +387,12 @@ function MyNavbar() {
                   </div>
                   <Myimg2>
                     <NavLink to="/Profile">
-                      <Imgg2 src={user.img} />
+                      {user.img === undefined ? (
+                        <Imgg2 src="images/user.png" />
+                      ) : (
+                        <Imgg2 src={user.img} />
+                      )}
+                      {/* <Imgg2 src={user.img === null ?  : user.img} /> */}
                     </NavLink>
                   </Myimg2>
                 </div>

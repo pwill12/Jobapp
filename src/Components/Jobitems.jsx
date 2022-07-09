@@ -13,6 +13,8 @@ import {
 } from "@mui/icons-material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
@@ -276,6 +278,11 @@ const MyLoc = styled.div`
 `;
 
 function Jobitems({ tags, filters }) {
+
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
+
   const [jobs, setjobs] = useState([]);
   const [filtered, setFilteredjobs] = useState([]);
 
@@ -316,7 +323,7 @@ function Jobitems({ tags, filters }) {
       <>
         {filters
           ? filtered.map((props, i) => (
-              <Container>
+              <Container data-aos="fade-up">
                 <Item key={i}>
                   <LeftSection>
                     <ImgCon>
@@ -369,7 +376,7 @@ function Jobitems({ tags, filters }) {
               </Container>
             ))
           : jobs.map((props, i) => (
-              <Container>
+              <Container data-aos="fade-up">
                 <Item key={i}>
                   <LeftSection>
                     <ImgCon>
