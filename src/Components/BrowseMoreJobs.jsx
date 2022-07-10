@@ -420,19 +420,17 @@ function BrowseMoreJobs({ ids }) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
+            Application sent
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Centered Modal</h4>
+          {/* <h4>Successfully Applied</h4> */}
           <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-            ac consectetur ac, vestibulum at eros.
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem deserunt veniam asperiores ea saepe pariatur!
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Link to='/'><Button onClick={props.onHide}>Close</Button></Link>
+          <Link to='/'><Button onClick={props.onHide}>Go back</Button></Link>
         </Modal.Footer>
       </Modal>
     );
@@ -538,7 +536,7 @@ function BrowseMoreJobs({ ids }) {
                 onHide={() => setModalShow(false)}
               />
               <Toaster
-                position="top-center"
+                position="bottom-left"
                 reverseOrder={false}
                 gutter={8}
                 containerClassName=""
@@ -556,7 +554,7 @@ function BrowseMoreJobs({ ids }) {
                   success: {
                     duration: 3000,
                     theme: {
-                      primary: "green",
+                      primary: "lightgreen",
                       secondary: "white",
                     },
                   },
@@ -573,16 +571,16 @@ function BrowseMoreJobs({ ids }) {
             <JobDetailsCon>
               <JobDetailsSec>
                 <JobDetails>
-                  published on:<Bold>12 Nov 2022</Bold>
+                  published on:<Bold>{myjobs.createdAt}</Bold>
                 </JobDetails>
                 <JobDetails>
                   Job Vacancies:<Bold>" position</Bold>
                 </JobDetails>
                 <JobDetails>
-                  Salary:<Bold>80k to 100k</Bold>
+                  Salary:<Bold>{myjobs.salary}</Bold>
                 </JobDetails>
                 <JobDetails>
-                  Location:<Bold>Nigeria,Lagos</Bold>
+                  Location:<Bold>{myjobs.location}</Bold>
                 </JobDetails>
                 <JobDetails>
                   Job Nature:<Bold>On site(fulltime)</Bold>

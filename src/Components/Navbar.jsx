@@ -208,7 +208,8 @@ function MyNavbar() {
                       <Myimg>
                         {/* <Imgg src={user.img} /> */}
                         {user.img === undefined ? (
-                          <Imgg src="images/myuser.png" />
+                          // <Imgg src="images/myuser.png" />
+                          <AccountCircle sx={{fontSize: '37px',color: 'lightgray'}}/>
                         ) : (
                           <Imgg src={user.img} />
                         )}
@@ -227,7 +228,8 @@ function MyNavbar() {
                           <Cont>
                             {/* <Img src={user.img} /> */}
                             {user.img === undefined ? (
-                              <Img src="images/myuser.png" />
+                              // <Img src="images/myuser.png" />
+                              <AccountCircle sx={{fontSize: '60px',color: 'lightgrey'}}/>
                             ) : (
                               <Img src={user.img} />
                             )}
@@ -377,13 +379,13 @@ function MyNavbar() {
             )}{" "}
           </ul>{" "}
           <div className="nav-icon" onClick={handleClick}>
-            <div style={{ marginRight: "10px", width: "40px" }}>
+            <div style={{ marginRight: "10px", width: "40px" , fontSize: '',color: 'grey'}}>
               <i className={click ? "fas fa-times" : "fas fa-bars"}> </i>
             </div>
             {user && (
               <>
                 <div style={{ display: "flex" }}>
-                  <div style={{ width: "40px", marginRight: "10px" }}>
+                  <div style={{ width: "40px", marginRight: "10px", }}>
                     <Badge color="secondary" badgeContent={0} showZero>
                       <EmailOutlinedIcon />
                     </Badge>
@@ -392,7 +394,7 @@ function MyNavbar() {
                     <NavLink to="/Profile">
                       {user.img === undefined ? (
                         // <Imgg2 src="images/Willjobs.png" />
-                        <AccountCircle sx={{fontSize: '37px'}}/>
+                        <AccountCircle sx={{fontSize: '37px',color: 'lightgrey'}}/>
                       ) : (
                         <Imgg2 src={user.img} />
                       )}

@@ -131,7 +131,7 @@
         z-index: 1;
     }
     .nav-item .active {
-        color: #ffdd40;
+        color: black;
         border: none;
     }
     .nav-links {
