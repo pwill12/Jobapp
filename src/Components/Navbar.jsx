@@ -17,6 +17,7 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  AccountCircle,
   LocationOff,
   LocationOnRounded,
   Search,
@@ -174,6 +175,8 @@ function MyNavbar() {
     dispatch(updatedout());
   };
 
+  // console.log(user.img)
+
   return (
     <>
       <nav className="navbar">
@@ -205,7 +208,7 @@ function MyNavbar() {
                       <Myimg>
                         {/* <Imgg src={user.img} /> */}
                         {user.img === undefined ? (
-                          <Imgg src="images/user.png" />
+                          <Imgg src="images/myuser.png" />
                         ) : (
                           <Imgg src={user.img} />
                         )}
@@ -224,7 +227,7 @@ function MyNavbar() {
                           <Cont>
                             {/* <Img src={user.img} /> */}
                             {user.img === undefined ? (
-                              <Img src="images/user.png" />
+                              <Img src="images/myuser.png" />
                             ) : (
                               <Img src={user.img} />
                             )}
@@ -334,7 +337,7 @@ function MyNavbar() {
                     className="nav-links"
                     onClick={handleClick}
                   >
-                    Logins
+                    Login
                   </NavLink>{" "}
                 </li>{" "}
                 <li className="nav-item">
@@ -388,7 +391,8 @@ function MyNavbar() {
                   <Myimg2>
                     <NavLink to="/Profile">
                       {user.img === undefined ? (
-                        <Imgg2 src="images/user.png" />
+                        // <Imgg2 src="images/Willjobs.png" />
+                        <AccountCircle sx={{fontSize: '37px'}}/>
                       ) : (
                         <Imgg2 src={user.img} />
                       )}

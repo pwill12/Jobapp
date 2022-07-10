@@ -16,6 +16,8 @@ import styled from "styled-components";
 import { apply } from "../redux/applyapicalls";
 import { useDispatch, useSelector } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
+import { Button, Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   padding: 20px;
@@ -347,6 +349,8 @@ function BrowseMoreJobs({ ids }) {
   const currentUser = user1 && JSON.parse(user1).currentUser;
   let user = currentUser._id;
 
+  // console.log(currentUser)
+
   const [applied, setapplied] = useState([]);
 
   // const storedjobs = applied.jobitems;
@@ -385,7 +389,7 @@ function BrowseMoreJobs({ ids }) {
     // if (click) {
     const userapplied = async () => {
       try {
-        const res = await userRequest.get("/findapplied/" + user);
+        const res = await publicRequest.get("/findapplied/" + user);
         if (null) {
           console.log("null yes");
           setapplied("");
@@ -401,12 +405,42 @@ function BrowseMoreJobs({ ids }) {
       // userapplied()
     };
     userapplied();
-  }, []);
+  },[]);
   let storedJobs = applied.find((o) => o.jobs === ids);
   let qualify = myjobs.qualifications;
 
-const notify = () => toast.success("Successfully applied");
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        fullscreen
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Modal heading
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h4>Centered Modal</h4>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros.
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Link to='/'><Button onClick={props.onHide}>Close</Button></Link>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
 
+  const notify = () => toast.success("Successfully applied");
+
+  const [modalShow, setModalShow] = React.useState(false);
 
   return (
     <Container>
@@ -486,10 +520,23 @@ const notify = () => toast.success("Successfully applied");
               <Resume>Cover Letter:</Resume>
               <TextArea onChange={(e) => setcover(e.target.value)} />
               <SubmitBtn
-               onClick={() => {
-                handleClick();notify()
-              }}
-              >Submit</SubmitBtn>
+                onClick={(e)=>{
+                  e.preventDefault();
+                  handleClick();
+                  notify();
+                  setModalShow(true);
+                }}
+              >
+                Submit
+              </SubmitBtn>
+              {/* <Button variant="primary" onClick={() => setModalShow(true)}>
+                Launch vertically centered modal
+              </Button> */}
+
+              <MyVerticallyCenteredModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+              />
               <Toaster
                 position="top-center"
                 reverseOrder={false}

@@ -425,7 +425,7 @@ function Myprofile() {
             <ImgCon>
               {/* <Img src={updated.img} /> */}
               {updated.img === undefined ? (
-                <Img src="images/user.png" />
+                <Img src="images/myuser.png" />
               ) : (
                 <Img src={updated.img} />
               )}
