@@ -21,6 +21,7 @@ import Profilepage from "./Pages/Profilepage";
 import SavedJobs from "./Pages/SavedJobs";
 import { GlobalProvider } from "./redux/Globalstate";
 import MyRegister from "./Pages/Register";
+import Employer from "./Pages/Employer";
 
 // import Bodysection from './Components/Body';
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -65,6 +66,10 @@ function App() {
             <Route
               path="/jobinfo/:ids"
               element={user ? <Jobinfo replace /> : <Login />}
+            />{" "}
+            <Route
+              path="/company"
+              element={<Employer/>}
             />{" "}
           </Routes>{" "}
         </ScrollToTop>{" "}

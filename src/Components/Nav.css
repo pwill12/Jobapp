@@ -33,14 +33,14 @@
 /* } */
 
 .nav-logo {
-    color: rgb(9, 7, 7);
+    color: lightgreen;
     display: flex;
     align-items: center;
     cursor: pointer;
     text-decoration: none;
     font-family: "Roboto", "sans-serif";
     font-weight: 600;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     /* flex-grow: 1; */
 }
 
@@ -53,11 +53,11 @@
 }
 
 .nav-links {
-    color: red;
+    color: lightslategray;
     text-decoration: none;
     padding: 0.5rem 1rem;
     height: 100%;
-    border-bottom: 3px solid transparent;
+    border-bottom: 2px solid transparent;
 }
 
 .fa-code {
@@ -80,7 +80,8 @@
 
 .nav-item:hover:after {
     width: 100%;
-    background: #ffdd40;
+    height: 1px;
+    background: black;
 }
 
 .nav-item .active {
@@ -93,10 +94,15 @@
 }
 
 @media screen and (max-width: 960px) {
+    .navbar {
+        height: 50px;
+    }
     .nav-menu {
         display: flex;
         flex-direction: column;
-        width: 100%;
+        justify-content: center;
+        margin: auto;
+        width: 90%;
         border-top: 1pxsolid #fff;
         position: absolute;
         top: 40px;
@@ -106,29 +112,45 @@
     }
     .nav-container {
         padding: 20px;
+        /* margin-top: auto; */
+        /* margin-bottom: 10px; */
+        height: 50px;
         justify-content: space-between;
     }
     .nav-logo {
-        margin-top: auto;
-        /* margin: auto; */
+        margin-top: 0px auto;
+        display: flex;
+        height: 15px;
+        font-size: 25px;
+        align-items: center;
+        /* margin-bottom: 20px; */
+        margin: auto 0px;
     }
     .nav-item {
-        margin-right: 1rem;
+        margin-right: 0rem;
     }
     .Mystyle {
         text-decoration: none;
-        background: #1f5156;
+        background: lightgray;
         left: 0px;
         opacity: 1;
         transition: all 0.5s ease;
         z-index: 1;
     }
     .nav-menu.active {
-        background: #1f5156;
+        background: lightblue;
+        /* width: 100%; */
+        border-radius: 10px;
+        margin: auto;
         left: 0px;
+        /* right: 0px; */
         opacity: 1;
         transition: all 0.5s ease;
         z-index: 1;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
     }
     .nav-item .active {
         color: black;
@@ -143,11 +165,11 @@
         display: flex;
         /* position: absolute; */
         align-items: center;
-        justify-content: flex-end;
+        /* justify-content: flex-end; */
         /* top: 0; */
         /* right: 1; */
         /* transform: translate(-80%, 100%); */
-        font-size: 1.7rem;
+        font-size: 1.5rem;
         /* margin-left: 310px; */
         overflow: hidden;
         /* background-color: #ffdd40; */

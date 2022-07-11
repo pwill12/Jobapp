@@ -97,6 +97,7 @@ const Item = styled.div`
 `;
 const Find = styled.span`
   margin-left: 15px;
+  // color: black;
 `;
 
 const Text = styled.button`
@@ -182,10 +183,11 @@ function MyNavbar() {
       <nav className="navbar">
         <div className="nav-container">
           <NavLink exact to="/" className="nav-logo">
-            Will{" "}
+            <div style={{display: 'flex',alignItems: 'center',fontFamily: 'Roboto, sans-serif'}}>Will
             <i class="fas fa-laptop-code" style={{ color: "grey" }}>
               {" "}
             </i>
+            </div>
           </NavLink>{" "}
           {user ? (
             <MySearch>
@@ -193,7 +195,7 @@ function MyNavbar() {
               <Search style={{ marginLeft: "-40px" }} />{" "}
             </MySearch>
           ) : (
-            <h5 style={{ color: "grey", fontSize: "20px", wordSpacing: "3px" }}>
+            <h5 style={{ color: "grey", fontSize: "20px", wordSpacing: "3px",marginTop: '10px' }}>
               {" "}
               Welcome Guest{" "}
             </h5>
@@ -247,16 +249,16 @@ function MyNavbar() {
                         </Link>{" "}
                       </Muu>{" "}
                       <NavDropdown.Divider />
-                      <NavDropdown.Item style={{ width: "23vw" }}>
+                      <NavDropdown.Item style={{ width: "23vw" }} href='/'>
                         <ItemCon>
                           <Item>
                             <LocationOff />
-                            <Link
+                            {/* <Link
                               to={"/home"}
                               style={{ textDecoration: "none" }}
-                            >
+                            > */}
                               <Find> Find a job </Find>{" "}
-                            </Link>{" "}
+                            {/* </Link> */}
                           </Item>{" "}
                         </ItemCon>{" "}
                       </NavDropdown.Item>{" "}
@@ -345,7 +347,7 @@ function MyNavbar() {
                 <li className="nav-item">
                   <NavLink
                     exact
-                    to="/about"
+                    to="/company"
                     activeClassName="active"
                     className="nav-links"
                     onClick={handleClick}
@@ -379,7 +381,7 @@ function MyNavbar() {
             )}{" "}
           </ul>{" "}
           <div className="nav-icon" onClick={handleClick}>
-            <div style={{ marginRight: "10px", width: "40px" , fontSize: '',color: 'grey'}}>
+            <div style={{ marginRight: "0px", width: "40px" , fontSize: '20px',color: 'grey'}}>
               <i className={click ? "fas fa-times" : "fas fa-bars"}> </i>
             </div>
             {user && (
