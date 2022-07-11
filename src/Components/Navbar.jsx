@@ -20,6 +20,7 @@ import {
   AccountCircle,
   LocationOff,
   LocationOnRounded,
+  Notifications,
   Search,
   VerifiedUserOutlined,
 } from "@mui/icons-material";
@@ -195,7 +196,7 @@ function MyNavbar() {
               <Search style={{ marginLeft: "-40px" }} />{" "}
             </MySearch>
           ) : (
-            <h5 style={{ color: "grey", fontSize: "20px", wordSpacing: "3px",marginTop: '10px' }}>
+            <h5 style={{ color: "grey", fontSize: "20px", wordSpacing: "3px",marginTop: '0px' }}>
               {" "}
               Welcome Guest{" "}
             </h5>
@@ -381,15 +382,15 @@ function MyNavbar() {
             )}{" "}
           </ul>{" "}
           <div className="nav-icon" onClick={handleClick}>
-            <div style={{ marginRight: "0px", width: "40px" , fontSize: '20px',color: 'grey'}}>
+            <div style={{ marginTop: "5px", width: "40px" , fontSize: '20px',color: 'grey'}}>
               <i className={click ? "fas fa-times" : "fas fa-bars"}> </i>
             </div>
             {user && (
               <>
                 <div style={{ display: "flex" }}>
-                  <div style={{ width: "40px", marginRight: "10px", }}>
+                  <div style={{ width: "40px", marginRight: "10px", marginTop: '4px'}}>
                     <Badge color="secondary" badgeContent={0} showZero>
-                      <EmailOutlinedIcon />
+                      <Notifications color="primary"/>
                     </Badge>
                   </div>
                   <Myimg2>

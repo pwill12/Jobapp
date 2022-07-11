@@ -95,7 +95,7 @@
 
 @media screen and (max-width: 960px) {
     .navbar {
-        height: 50px;
+        height: 60px;
     }
     .nav-menu {
         display: flex;
@@ -106,15 +106,21 @@
         border-top: 1pxsolid #fff;
         position: absolute;
         top: 40px;
-        left: -110%;
+        /*margin-top: 40px;
+        */
+        right: -110%;
         opacity: 1;
-        transition: all 0.5s ease;
+        transition: all 0.7s ease;
+        -webkit-transition: all 0.7s ease;
+        -moz-transition: all 0.7s ease;
+        -ms-transition: all 0.7s ease;
+        -o-transition: all 0.7s ease;
     }
     .nav-container {
         padding: 20px;
         /* margin-top: auto; */
         /* margin-bottom: 10px; */
-        height: 50px;
+        height: 60px;
         justify-content: space-between;
     }
     .nav-logo {
@@ -138,12 +144,14 @@
         z-index: 1;
     }
     .nav-menu.active {
-        background: lightblue;
+        background: lightskyblue;
         /* width: 100%; */
         border-radius: 10px;
         margin: auto;
-        left: 0px;
-        /* right: 0px; */
+        top: 40px;
+        margin-right: 10px;
+        margin-left: 10px;
+        right: 0px;
         opacity: 1;
         transition: all 0.5s ease;
         z-index: 1;
