@@ -122,7 +122,7 @@ function RecruitForm() {
   }
 
   const employer = useSelector((state) => state.employer.details);
-  console.log(employer)
+  // console.log(employer)
   const { isFetching } = useSelector((state) => state.employer);
 
   const dispatch = useDispatch();
@@ -133,6 +133,8 @@ function RecruitForm() {
     dispatch(Removedetails());
     console.log("remove");
   };
+
+  console.log(employer)
 
   return (
     <div>
@@ -145,7 +147,7 @@ function RecruitForm() {
         </div>
       ) : (
         <>
-          {employer === null ? (
+          {employer?.length === 0 ? (
             <div style={{ padding: "40px 120px" }}>
               <h2 style={{ marginBottom: "20px" }}>
                 Tell Us About Your Company
