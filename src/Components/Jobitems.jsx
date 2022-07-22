@@ -21,6 +21,8 @@ import styled from "styled-components";
 
 import { Mobile } from "../Mobile";
 import { Favourited } from "./favourited";
+import { useDispatch } from "react-redux";
+import { postsaved } from "../redux/Postdata";
 
 const Container = styled.div`
   display: flex;
@@ -86,9 +88,9 @@ const Img = styled.img`
     "" /* max-width: 60px;
   max-height: 50px; */
   }
-  max-width: 80px;
-  min-width: 80px;
-  max-height: 70px;
+  max-width: 60px;
+  min-width: 60px;
+  max-height: 55px;
   ${Mobile({
     maxHeight: "55px",
     maxWidth: "59px",
@@ -141,6 +143,7 @@ const Info = styled.h1`
     fontSize: "17px",
   })}
 `;
+
 const Location = styled.div`
   font-size: 20px;
   display: flex;
@@ -307,6 +310,8 @@ function Jobitems({ tags, filters }) {
 
   // console.log(filtered);
 
+  const dispatch = useDispatch()
+
   useEffect(() => {
     // filters,tags &&
     setFilteredjobs(
@@ -412,7 +417,7 @@ function Jobitems({ tags, filters }) {
                         <Favourited jobs={props} />
                       </Save>
                       <Link to={"/jobinfo/" + props._id}>
-                        <Apply>Apply now</Apply>
+                        <Apply onClick={()=> dispatch(postsaved(props))}>Apply now</Apply>
                       </Link>
                     </Top>
                     <Bottom>Date line:{props.createdAt}</Bottom>

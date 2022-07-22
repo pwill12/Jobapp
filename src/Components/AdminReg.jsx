@@ -13,23 +13,26 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../redux/registerapi";
+import { adminregister } from "../redux/regAdminapi";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
-export default function Register() {
-  const [username, setUsername] = useState("");
-  const [number, setnumber] = useState("");
-  const [firstname, setfirstname] = useState("");
+export default function PaidAdminRegister() {
   const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const { isFetching, error } = useSelector((state) => state.user);
+  const { fetching, failure,regsuccess } = useSelector((state) => state.regcall);
+  console.log(regsuccess)
+
+  const history = useNavigate()
 
   const handleClick = (e) => {
     e.preventDefault();
-    register(dispatch, { username, firstname, email, number, password });
+    adminregister(dispatch, { email, password });
   };
   return (
+    <div>
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -45,44 +48,10 @@ export default function Register() {
             <i class="fas fa-laptop-code" style={{ color: "white" }}></i>
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            Complete Sign up
           </Typography>
           <Box component="form" sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="username"
-                  required
-                  fullWidth
-                  id="username"
-                  label="Username"
-                  autoFocus
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="firstname"
-                  label="Firstname"
-                  name="firstname"
-                  autoComplete="family-name"
-                  onChange={(e) => setfirstname(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="number"
-                  label="number"
-                  name="number"
-                  autoComplete="number"
-                  onChange={(e) => setnumber(e.target.value)}
-                />
-              </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
@@ -135,5 +104,7 @@ export default function Register() {
         {/* <Copyright sx={{ mt: 5 }} /> */}
       </Container>
     </ThemeProvider>
+    {regsuccess!== null && history('/successfullyregistered')}
+    </div>
   );
 }

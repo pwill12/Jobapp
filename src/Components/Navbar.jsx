@@ -184,7 +184,7 @@ function MyNavbar() {
       <nav className="navbar">
         <div className="nav-container">
           <NavLink exact to="/" className="nav-logo">
-            <div style={{display: 'flex',alignItems: 'center',fontFamily: 'Roboto, sans-serif'}}>Will
+            <div style={{display: 'flex',alignItems: 'center',fontFamily: 'Roboto, sans-serif', letterSpacing: '2px', fontWeight: 'bold'}}>Will
             <i class="fas fa-laptop-code" style={{ color: "grey" }}>
               {" "}
             </i>
@@ -196,9 +196,9 @@ function MyNavbar() {
               <Search style={{ marginLeft: "-40px" }} />{" "}
             </MySearch>
           ) : (
-            <h5 style={{ color: "grey", fontSize: "20px", wordSpacing: "3px",marginTop: '0px' }}>
+            <h5 style={{ color: "grey", fontSize: "20px", wordSpacing: "3px",marginTop: '0px' ,textAlign: 'center'}}>
               {" "}
-              Welcome Guest{" "}
+              Hi, Welcome Guest..{" "}
             </h5>
           )}
           <ul className={click ? "nav-menu active" : "nav-menu"}>

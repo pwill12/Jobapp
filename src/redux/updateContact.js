@@ -13,9 +13,6 @@ const contactSlice = createSlice({
         },
         updateSuccess: (state, action) => {
             state.isFetching = false;
-            // state.contacts[
-            //     state.contacts.findIndex((item) => item._id === action.payload.id)
-            //   ] = action.payload.contact;
             state.contacts = action.payload
             state.error = false;
 

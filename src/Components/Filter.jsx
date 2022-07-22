@@ -194,9 +194,6 @@ function Filter({ tags }) {
         [event.target.name]: value,
       });
     };
-    console.log(age);
-    const size = { minwidth: 200 };
-
     return (
       <Box sx={{ width: 200 }}>
         <FormControl fullWidth>
@@ -229,8 +226,7 @@ function Filter({ tags }) {
         [event.target.name]: value,
       });
     };
-    console.log(salary);
-    const size = { minwidth: 200 };
+    // console.log(salary);
 
     return (
       <Box sx={{ width: 200 }}>

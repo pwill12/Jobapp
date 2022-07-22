@@ -15,6 +15,7 @@ import {
   Route,
   Navigate,
   useParams,
+  useNavigate,
 } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Profilepage from "./Pages/Profilepage";
@@ -22,6 +23,13 @@ import SavedJobs from "./Pages/SavedJobs";
 import { GlobalProvider } from "./redux/Globalstate";
 import MyRegister from "./Pages/Register";
 import Employer from "./Pages/Employer";
+import RecruiterCheckout from "./Pages/RecruiterCheckout";
+import RecruitForm from "./Components/RecruitForm";
+import StripeContainer from "./Components/StripePayment";
+import Failed from "./Pages/Failed";
+import Admindashboard from "./Pages/Admindashboard";
+import Success from "./Components/Success";
+import Successfull from "./Pages/Success";
 
 // import Bodysection from './Components/Body';
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -67,10 +75,13 @@ function App() {
               path="/jobinfo/:ids"
               element={user ? <Jobinfo replace /> : <Login />}
             />{" "}
-            <Route
-              path="/company"
-              element={<Employer/>}
-            />{" "}
+            <Route path="/company" element={<Employer />} />{" "}
+            <Route path="/checkout" element={<StripeContainer />} />{" "}
+            <Route path="/info" element={<RecruitForm />} />{" "}
+            <Route path="/success" element={<RecruiterCheckout />} />{" "}
+            <Route path="/failed" element={<Failed />} />{" "}
+            <Route path="/successfullyregistered" element={<Successfull />} />{" "}
+            <Route path="/admin" element={<Admindashboard />} />{" "}
           </Routes>{" "}
         </ScrollToTop>{" "}
       </Router>{" "}

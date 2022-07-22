@@ -88,7 +88,7 @@ const Left = styled.div`
   display: flex;
   ${"" /* flex: 1; */}
   margin-right: 10px;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   ${Mobile({
     marginRight: "0px",
@@ -234,6 +234,28 @@ const TagsCon = styled.div`
   margin-top: 5px;
 `;
 
+const MyLoc = styled.div`
+  margin-left: 5px;
+  display: flex;
+  color: grey;
+  font-size: 16px;
+  ${Mobile({
+    marginTop: "0px",
+  })}
+`;
+
+const LocateSpan = styled.div`
+  display: flex;
+  ${"" /* justify-content: space-evenly; */}
+  margin-right: 15px;
+  font-size: 17px;
+  ${Mobile({
+    flexDirection: "row",
+    marginTop: "0px",
+    fontSize: "15px",
+  })}
+`;
+
 function JobSection() {
   useEffect(() => {
     Aos.init({ duration: 2000 });
@@ -333,10 +355,21 @@ function JobSection() {
                 <Title>
                   <Info>{props.title}</Info>
                   <Location>
-                    <Span>
+                    {/* <Span>
                       <LocationOnOutlined style={{ marginRight: "7px" }} />
-                      {props.location}
-                    </Span>
+                      {props.location?.map((prop) => (
+                        <MyLoc>{prop}</MyLoc>
+                      ))}
+                    </Span> */}
+                    <LocateSpan>
+                          <Span>
+                            <Location />
+                          </Span>
+                          {/* {props.location} */}
+                          {props.location?.map((prop) => (
+                            <MyLoc>{prop},</MyLoc>
+                          ))}
+                        </LocateSpan>
                     <TagsCon>
                       {props.tag?.map((prop) => (
                         <Tag>{prop}</Tag>

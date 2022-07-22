@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
 import { Button, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Alert, AlertTitle } from "@mui/material";
 
 const Container = styled.div`
   padding: 20px;
@@ -26,7 +27,7 @@ const Container = styled.div`
 `;
 
 const Section = styled.div`
-  padding: 30px 200px;
+  padding: 20px 200px;
   display: flex;
   justify-content: center;
   ${Mobile({
@@ -159,7 +160,7 @@ const JobDetails = styled.li`
   ${"" /* background-color: white; */}
   margin-top: 10px;
   color: grey;
-  font-size: 18px;
+  font-size: 15px;
 `;
 
 const ShareAt = styled.div`
@@ -315,7 +316,7 @@ const Goback = styled.div`
   display: "flex";
   align-items: "flex-start"
     ${Mobile({
-      marginBottom: "10px",
+      marginBottom: "5px",
     })};
 `;
 
@@ -329,6 +330,14 @@ const Arrow = styled.a`
   align-items: center;
   margin-right: 15px;
 `;
+
+const Alertbar = styled.div`
+  padding: 0px 200px 14px;
+  ${Mobile({
+    padding: '0px'
+  })}
+
+`
 function BrowseMoreJobs({ ids }) {
   const [myjobs, setjobs] = useState({});
 
@@ -337,7 +346,6 @@ function BrowseMoreJobs({ ids }) {
       try {
         const res = await publicRequest.get("/findjobs/" + ids);
         setjobs(res.data);
-        // console.log(res.data);
       } catch (err) {
         console.log(err);
       }
@@ -347,15 +355,11 @@ function BrowseMoreJobs({ ids }) {
 
   const user1 = JSON.parse(localStorage.getItem("persist:root"))?.user;
   const currentUser = user1 && JSON.parse(user1).currentUser;
-  let user = currentUser._id;
+  let user = currentUser?._id;
 
-  // console.log(currentUser)
+  // console.log(employerId)
 
   const [applied, setapplied] = useState([]);
-
-  // const storedjobs = applied.jobitems;
-
-  // const { error } = useSelector((state) => state.apply);
 
   const response = myjobs.responsibilities;
 
@@ -370,12 +374,17 @@ function BrowseMoreJobs({ ids }) {
 
   let jobs = ids;
 
+  const employerId2 = useSelector((state) => state.post.jobs);
+
+  let employerId = employerId2.employerId;
+
+  console.log(user);
+
   const handleClick = (e) => {
-    // e.preventDefault();
-    // myhandleClick(true);
     apply(dispatch, {
       user,
       jobitems: {
+        employerId: employerId,
         email: email,
         jobs: jobs,
         projectlinks: projectlinks,
@@ -383,6 +392,33 @@ function BrowseMoreJobs({ ids }) {
         username: username,
       },
     });
+  };
+
+  const handleClick2 = (e) => {
+    mypost(dispatch, {
+      employerId: employerId,
+      jobitems: {
+        user: user,
+        email: email,
+        jobs: jobs,
+        projectlinks: projectlinks,
+        cover: cover,
+        username: username,
+      },
+    });
+  };
+
+  const mypost = async (dispatch, post) => {
+    // dispatch(postStart());
+    try {
+      const res = await publicRequest.post("/candapply", post);
+      // dispatch(postSuccess(res.data));
+      // dispatch(updateSuccess(res.data));
+      console.log(res.data);
+    } catch (err) {
+      // dispatch(postFailure());
+      console.log(err);
+    }
   };
 
   useEffect(() => {
@@ -405,9 +441,12 @@ function BrowseMoreJobs({ ids }) {
       // userapplied()
     };
     userapplied();
-  },[]);
+  }, []);
+
   let storedJobs = applied.find((o) => o.jobs === ids);
   let qualify = myjobs.qualifications;
+
+  // console.log(myjobs)
 
   function MyVerticallyCenteredModal(props) {
     return (
@@ -418,7 +457,7 @@ function BrowseMoreJobs({ ids }) {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title id="contained-modal-title-vcenter">
             Application sent
           </Modal.Title>
@@ -426,11 +465,14 @@ function BrowseMoreJobs({ ids }) {
         <Modal.Body>
           {/* <h4>Successfully Applied</h4> */}
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem deserunt veniam asperiores ea saepe pariatur!
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem
+            deserunt veniam asperiores ea saepe pariatur!
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Link to='/'><Button onClick={props.onHide}>Go back</Button></Link>
+          <Link to="/">
+            <Button onClick={props.onHide}>Go back</Button>
+          </Link>
         </Modal.Footer>
       </Modal>
     );
@@ -439,11 +481,17 @@ function BrowseMoreJobs({ ids }) {
   const notify = () => toast.success("Successfully applied");
 
   const [modalShow, setModalShow] = React.useState(false);
-
+  const mydisabled = storedJobs;
   return (
     <Container>
       {storedJobs ? (
-        <h5 style={{ textAlign: "center" }}>Already applied</h5>
+        // <h5 style={{ textAlign: "center" }}>Already applied</h5>
+        <Alertbar>
+        <Alert severity="success">
+          <AlertTitle>Already Applied</AlertTitle>
+          Application Submitted Successfully — <strong>wait for recruiters reply!</strong>
+        </Alert>
+        </Alertbar>
       ) : (
         false
       )}
@@ -518,9 +566,12 @@ function BrowseMoreJobs({ ids }) {
               <Resume>Cover Letter:</Resume>
               <TextArea onChange={(e) => setcover(e.target.value)} />
               <SubmitBtn
-                onClick={(e)=>{
-                  e.preventDefault();
+                disabled={mydisabled}
+                style={mydisabled?{background: 'lightblue'}: {color: 'none'}}
+                onClick={() => {
+                  // e.preventDefault();
                   handleClick();
+                  handleClick2();
                   notify();
                   setModalShow(true);
                 }}
@@ -574,13 +625,18 @@ function BrowseMoreJobs({ ids }) {
                   published on:<Bold>{myjobs.createdAt}</Bold>
                 </JobDetails>
                 <JobDetails>
-                  Job Vacancies:<Bold>" position</Bold>
+                  Job Vacancies:<Bold>{myjobs.vacancy}</Bold>
                 </JobDetails>
                 <JobDetails>
                   Salary:<Bold>{myjobs.salary}</Bold>
                 </JobDetails>
                 <JobDetails>
-                  Location:<Bold>{myjobs.location}</Bold>
+                  Location
+                  <Bold style={{display: 'flex'}}>
+                  {myjobs.location?.map((prop) => (
+                          <span style={{color: 'red'}}>{prop},</span>
+                          ))}
+                  </Bold>
                 </JobDetails>
                 <JobDetails>
                   Job Nature:<Bold>On site(fulltime)</Bold>
