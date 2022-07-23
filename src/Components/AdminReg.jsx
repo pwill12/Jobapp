@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { register } from "../redux/registerapi";
 import { adminregister } from "../redux/regAdminapi";
 import { useNavigate } from "react-router-dom";
+import MySpinner from "./Spinner";
 
 const theme = createTheme();
 
@@ -44,7 +45,7 @@ export default function PaidAdminRegister() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
+          <Avatar sx={{ m: 1, bgcolor: "main" }}>
             <i class="fas fa-laptop-code" style={{ color: "white" }}></i>
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -90,15 +91,15 @@ export default function PaidAdminRegister() {
               sx={{ mt: 3, mb: 1 }}
               onClick={handleClick}
             >
-              Sign Up
+              {fetching?<MySpinner/> : 'Signup'}
             </Button>
-            <Grid container justifyContent="flex-end" mb={6}>
+            {/* <Grid container justifyContent="flex-end" mb={6}>
               <Grid item>
                 <Link href="/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>
-            </Grid>
+            </Grid> */}
           </Box>
         </Box>
         {/* <Copyright sx={{ mt: 5 }} /> */}

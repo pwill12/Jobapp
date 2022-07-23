@@ -17,10 +17,10 @@ function Successfull() {
     <div>
         <MyNavbar/>
         <Container style={{display: 'flex',alignItems: 'center',justifyContent: 'center'}}>
-            <Img src='Images/404error.png'/>
+            <Img src='Images/Done-rafiki.png'/>
             <div>
-            <h5>we encountered an error</h5>
-            <p>pls chheck your card details</p>
+            <h5>Account Successfully Created</h5>
+            <p>Congratulation...Your Account has been Successfully Created..Go to the Admin Dashboard to login</p>
             <Link to={'/admin'}>
               <Button>Go to Dashboard login</Button>
             </Link>

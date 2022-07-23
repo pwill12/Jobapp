@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Alert, AlertTitle, Button } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
 import PaidAdminRegister from "./AdminReg";
@@ -24,6 +24,10 @@ const Img = styled.img`
 `;
 const Account = styled.h5``;
 
+const Alertbar = styled.div`
+  padding: 0px 100px;
+`
+
 function Success() {
   return (
     <Container>
@@ -32,6 +36,12 @@ function Success() {
           <Img src="images/Completed-pana.png" />
         </ImgCon>
         <div style={{ width: "50%" }}>
+        <Alertbar>
+        <Alert severity="success">
+          <AlertTitle>Payment Succeessfully Comfired</AlertTitle>
+          Dear Client...You just completed a payment of 50dollars<strong>!</strong>
+        </Alert>
+        </Alertbar>
           <PaidAdminRegister />
         </div>
         {/* <Account>Account Created Successfully</Account> */}
