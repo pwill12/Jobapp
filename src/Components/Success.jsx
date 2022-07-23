@@ -1,4 +1,5 @@
-import { Alert, AlertTitle, Button } from "@mui/material";
+import { Close, Money } from "@mui/icons-material";
+import { Alert, AlertTitle, Button, Collapse, IconButton } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
 import PaidAdminRegister from "./AdminReg";
@@ -29,6 +30,7 @@ const Alertbar = styled.div`
 `
 
 function Success() {
+  const [open, setOpen] = React.useState(true)
   return (
     <Container>
       <Section>
@@ -37,10 +39,26 @@ function Success() {
         </ImgCon>
         <div style={{ width: "50%" }}>
         <Alertbar>
-        <Alert severity="success">
+          <Collapse in={open}>
+        <Alert severity="success"
+        action={
+          <IconButton
+            aria-label="close"
+            color="inherit"
+            size="small"
+            onClick={() => {
+              setOpen(false);
+            }}
+          >
+            <Close fontSize="inherit" />
+          </IconButton>
+        }
+        // sx={{ mb: 2 }}
+        >
           <AlertTitle>Payment Succeessfully Comfired</AlertTitle>
-          Dear Client...You just completed a payment of 50dollars<strong>!</strong>
+          Dear Client...You just completed a payment of 15<strong>$!</strong>
         </Alert>
+        </Collapse>
         </Alertbar>
           <PaidAdminRegister />
         </div>

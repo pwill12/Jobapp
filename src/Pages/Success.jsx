@@ -19,7 +19,7 @@ function Successfull() {
         <Container style={{display: 'flex',alignItems: 'center',justifyContent: 'center'}}>
             <Img src='Images/Done-rafiki.png'/>
             <div>
-            <h5>Account Successfully Created</h5>
+            <h3>Account Successfully Created</h3>
             <p>Congratulation...Your Account has been Successfully Created..Go to the Admin Dashboard to login</p>
             <Link to={'/admin'}>
               <Button>Go to Dashboard login</Button>

@@ -308,7 +308,7 @@ const Back = styled.div`
     padding: "0px",
     width: "100%",
     justifyContent: "center",
-    marginBottom: "10px",
+    margin: "10px 0px",
   })}
 `;
 
