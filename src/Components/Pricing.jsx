@@ -11,17 +11,18 @@ import Grid from '@mui/material/Grid';
 import StarIcon from '@mui/icons-material/StarBorder';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
+import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
+      {/* <Link color="inherit" href="https://mui.com/"> */}
         Willjobs
-      </Link>{' '}
+      {/* </Link>{' '} */}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -172,11 +173,13 @@ function PricingContent() {
                     ))}
                   </ul>
                 </CardContent>
+                <Link to={'/info'} style={{textDecoration: 'none'}}>
                 <CardActions>
-                  <Button fullWidth variant={tier.buttonVariant} href='info'>
+                  <Button fullWidth variant={tier.buttonVariant}>
                     {tier.buttonText}
                   </Button>
                 </CardActions>
+                </Link>
               </Card>
             </Grid>
           ))}
@@ -201,8 +204,11 @@ function PricingContent() {
               <ul>
                 {footer.description.map((item) => (
                   <li key={item}>
-                    <Link href="#" variant="subtitle1" color="text.primary">
+                    {/* <Link href="#" variant="subtitle1" color="text.primary">
                       {item}
+                    </Link> */}
+                    <Link to={'/'}>
+                    {item}
                     </Link>
                   </li>
                 ))}

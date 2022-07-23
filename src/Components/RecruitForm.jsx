@@ -140,7 +140,6 @@ function RecruitForm() {
     <div>
     <Contain>
       <MyNavbar />
-      {/* <h2>Tell Us About Your Company</h2> */}
       {isFetching === true ? (
         <div style={{display: 'flex', justifyContent: 'center', marginTop: '120px'}}>
           <MySpinner/>
