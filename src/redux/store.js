@@ -5,6 +5,8 @@ import applyReducer from './Applied'
 import EmployerReducer from './EmployerRedux'
 import postReducer from './Postdata'
 import regcallReducer from './regsta'
+import registerusersReducer from './registerusers'
+
 
 
 
@@ -24,11 +26,11 @@ const persistConfig = {
     key: "root",
     version: 1,
     storage,
-    blacklist: ['regcall']
+    blacklist: ['regcall', 'registerusers']
 
 };
 
-const rootReducer = combineReducers({ user: userReducer, contact: contactReducer, apply: applyReducer, employer: EmployerReducer, post: postReducer, regcall: regcallReducer });
+const rootReducer = combineReducers({ user: userReducer, contact: contactReducer, apply: applyReducer, employer: EmployerReducer, post: postReducer, regcall: regcallReducer, registerusers: registerusersReducer });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

@@ -334,10 +334,9 @@ const Arrow = styled.a`
 const Alertbar = styled.div`
   padding: 0px 200px 14px;
   ${Mobile({
-    padding: '0px'
+    padding: "0px",
   })}
-
-`
+`;
 function BrowseMoreJobs({ ids }) {
   const [myjobs, setjobs] = useState({});
 
@@ -378,7 +377,7 @@ function BrowseMoreJobs({ ids }) {
 
   let employerId = employerId2.employerId;
 
-  console.log(user);
+  console.log(currentUser.email);
 
   const handleClick = (e) => {
     apply(dispatch, {
@@ -396,14 +395,15 @@ function BrowseMoreJobs({ ids }) {
 
   const handleClick2 = (e) => {
     mypost(dispatch, {
+      jobId: jobs,
       employerId: employerId,
+      jobdetails: myjobs.title,
       jobitems: {
         user: user,
         email: email,
-        jobs: jobs,
+        username: username,
         projectlinks: projectlinks,
         cover: cover,
-        username: username,
       },
     });
   };
@@ -487,10 +487,11 @@ function BrowseMoreJobs({ ids }) {
       {storedJobs ? (
         // <h5 style={{ textAlign: "center" }}>Already applied</h5>
         <Alertbar>
-        <Alert severity="success">
-          <AlertTitle>Already Applied</AlertTitle>
-          Application Submitted Successfully — <strong>wait for recruiters reply!</strong>
-        </Alert>
+          <Alert severity="success">
+            <AlertTitle>Already Applied</AlertTitle>
+            Application Submitted Successfully —{" "}
+            <strong>wait for recruiters reply!</strong>
+          </Alert>
         </Alertbar>
       ) : (
         false
@@ -567,7 +568,9 @@ function BrowseMoreJobs({ ids }) {
               <TextArea onChange={(e) => setcover(e.target.value)} />
               <SubmitBtn
                 disabled={mydisabled}
-                style={mydisabled?{background: 'lightblue'}: {color: 'none'}}
+                style={
+                  mydisabled ? { background: "lightblue" } : { color: "none" }
+                }
                 onClick={() => {
                   // e.preventDefault();
                   handleClick();
@@ -632,10 +635,10 @@ function BrowseMoreJobs({ ids }) {
                 </JobDetails>
                 <JobDetails>
                   Location
-                  <Bold style={{display: 'flex'}}>
-                  {myjobs.location?.map((prop) => (
-                          <span style={{color: 'red'}}>{prop},</span>
-                          ))}
+                  <Bold style={{ display: "flex" }}>
+                    {myjobs.location?.map((prop) => (
+                      <span style={{ color: "red" }}>{prop},</span>
+                    ))}
                   </Bold>
                 </JobDetails>
                 <JobDetails>

@@ -13,6 +13,14 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../redux/registerapi";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import {
+  regfailures,
+  regfetchings,
+  regsuccessfulls,
+} from "../redux/registerusers";
+import MySpinner from "./Spinner";
 
 const theme = createTheme();
 
@@ -23,11 +31,34 @@ export default function Register() {
   const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const { isFetching, error } = useSelector((state) => state.user);
+  const history = useNavigate();
+
+  const { fetchingapi, successapi, failureapi } = useSelector(
+    (state) => state.registerusers
+  );
 
   const handleClick = (e) => {
     e.preventDefault();
-    register(dispatch, { username, firstname, email, number, password });
+    mypost(dispatch, { username, firstname, email, number, password });
+  };
+
+  const BASE_URL = "https://willdevjobs.herokuapp.com/api/";
+
+  const postuserRequest = axios.create({
+    baseURL: BASE_URL,
+  });
+  const mypost = async (dispatch, post) => {
+    dispatch(regfetchings());
+    try {
+      await postuserRequest.post("register", post);
+      // if (res.status === 200) {
+      dispatch(regsuccessfulls());
+      // history('/login')
+      // }
+    } catch (err) {
+      dispatch(regfailures());
+      console.log(err);
+    }
   };
   return (
     <ThemeProvider theme={theme}>
@@ -47,6 +78,8 @@ export default function Register() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
+          {failureapi ? <p>Email or Username Already Exists</p> : false}
+
           <Box component="form" sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
@@ -121,7 +154,7 @@ export default function Register() {
               sx={{ mt: 3, mb: 1 }}
               onClick={handleClick}
             >
-              Sign Up
+              {fetchingapi ? <MySpinner /> : "Sign up"}
             </Button>
             <Grid container justifyContent="flex-end" mb={6}>
               <Grid item>
@@ -132,6 +165,8 @@ export default function Register() {
             </Grid>
           </Box>
         </Box>
+        {successapi ? history("/login") : false}
+
         {/* <Copyright sx={{ mt: 5 }} /> */}
       </Container>
     </ThemeProvider>
