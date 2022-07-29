@@ -146,7 +146,7 @@ function RecruitForm() {
         </div>
       ) : (
         <>
-          {employer?.length === 0 ? (
+          {employer === null ? (
             <div style={{ padding: "40px 120px" }}>
               <h2 style={{ marginBottom: "20px" }}>
                 Tell Us About Your Company
