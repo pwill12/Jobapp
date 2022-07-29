@@ -1,6 +1,6 @@
 
 function Admindashboard() {
-    window.location.href = 'https://google.com'
+    window.location.href = 'https://admin-willjobs.netlify.app/'
     return null
 }
 
