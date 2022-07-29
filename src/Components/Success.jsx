@@ -27,10 +27,10 @@ const Account = styled.h5``;
 
 const Alertbar = styled.div`
   padding: 0px 100px;
-`
+`;
 
 function Success() {
-  const [open, setOpen] = React.useState(true)
+  const [open, setOpen] = React.useState(true);
   return (
     <Container>
       <Section>
@@ -38,28 +38,30 @@ function Success() {
           <Img src="images/Completed-pana.png" />
         </ImgCon>
         <div style={{ width: "50%" }}>
-        <Alertbar>
-          <Collapse in={open}>
-        <Alert severity="success"
-        action={
-          <IconButton
-            aria-label="close"
-            color="inherit"
-            size="small"
-            onClick={() => {
-              setOpen(false);
-            }}
-          >
-            <Close fontSize="inherit" />
-          </IconButton>
-        }
-        // sx={{ mb: 2 }}
-        >
-          <AlertTitle>Payment Succeessfully Comfired</AlertTitle>
-          Dear Client...You just completed a payment of 15<strong>$!</strong>
-        </Alert>
-        </Collapse>
-        </Alertbar>
+          <Alertbar>
+            <Collapse in={open}>
+              <Alert
+                severity="success"
+                action={
+                  <IconButton
+                    aria-label="close"
+                    color="inherit"
+                    size="small"
+                    onClick={() => {
+                      setOpen(false);
+                    }}
+                  >
+                    <Close fontSize="inherit" />
+                  </IconButton>
+                }
+                // sx={{ mb: 2 }}
+              >
+                <AlertTitle>Payment Succeessfully Comfirmed</AlertTitle>
+                Dear Client...You just completed a payment of 15
+                <strong>$!</strong>
+              </Alert>
+            </Collapse>
+          </Alertbar>
           <PaidAdminRegister />
         </div>
         {/* <Account>Account Created Successfully</Account> */}
