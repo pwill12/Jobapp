@@ -21,6 +21,7 @@ import {
   LocationOff,
   LocationOnRounded,
   Notifications,
+  Person,
   Search,
   VerifiedUserOutlined,
 } from "@mui/icons-material";
@@ -184,8 +185,8 @@ function MyNavbar() {
       <nav className="navbar">
         <div className="nav-container">
           <NavLink exact to="/" className="nav-logo">
-            <div style={{display: 'flex',alignItems: 'center',fontFamily: 'Roboto, sans-serif', letterSpacing: '2px', fontWeight: 'bold'}}>Will
-            <i class="fas fa-laptop-code" style={{ color: "grey" }}>
+            <div style={{display: 'flex',alignItems: 'center',fontFamily: 'Roboto, sans-serif', letterSpacing: '0px', fontWeight: 'bold',textTransform: 'uppercase'}}>Willjobs
+            <i class="fas fa-laptop-code" style={{ color: "lightslategrey" }}>
               {" "}
             </i>
             </div>
@@ -196,10 +197,10 @@ function MyNavbar() {
               <Search style={{ marginLeft: "-40px" }} />{" "}
             </MySearch>
           ) : (
-            <h5 style={{ color: "grey", fontSize: "20px", wordSpacing: "3px",marginTop: '0px' ,textAlign: 'center'}}>
+            <div style={{ color: "grey", fontSize: "20px", wordSpacing: "3px",marginTop: '0px' ,textAlign: 'center'}}>
               {" "}
-              Hi, Welcome Guest..{" "}
-            </h5>
+              Welcome{" "}
+            </div>
           )}
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             {" "}
@@ -212,7 +213,7 @@ function MyNavbar() {
                         {/* <Imgg src={user.img} /> */}
                         {user.img === undefined ? (
                           // <Imgg src="images/myuser.png" />
-                          <AccountCircle sx={{fontSize: '37px',color: 'lightgray'}}/>
+                          <Person sx={{fontSize: '37px',color: 'lightgray'}}/>
                         ) : (
                           <Imgg src={user.img} />
                         )}

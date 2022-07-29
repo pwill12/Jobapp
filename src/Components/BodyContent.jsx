@@ -4,6 +4,7 @@ import "aos/dist/aos.css";
 // import { Button } from "react-bootstrap";
 import styled from "styled-components";
 import { Mobile } from "../Mobile";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   padding: 0px;
@@ -125,8 +126,12 @@ function BodyContent() {
             amet consectetur adipisicing elit. Quas, fugiat.
           </Desc>
           <Button>
-            <Btn1>Apply</Btn1>
-            <Btn2>Post a Job</Btn2>
+            <Link to={'/login'}>
+              <Btn1>Apply</Btn1>
+            </Link>
+            <Link to={'/company'}>
+              <Btn2>Post a Job</Btn2>
+            </Link>
           </Button>
           <Trusted>
             <Trust>Trusted by 1500+ companies and business</Trust>

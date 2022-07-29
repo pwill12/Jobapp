@@ -16,9 +16,8 @@ import React, { useEffect, useState } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
-
 import styled from "styled-components";
-
+import { format } from "timeago.js";
 import { Mobile } from "../Mobile";
 import { Favourited } from "./favourited";
 import { useDispatch } from "react-redux";
@@ -420,7 +419,7 @@ function Jobitems({ tags, filters }) {
                         <Apply onClick={()=> dispatch(postsaved(props))}>Apply now</Apply>
                       </Link>
                     </Top>
-                    <Bottom>Date line:{props.createdAt}</Bottom>
+                    <Bottom>Posted: {format(props.createdAt)}</Bottom>
                   </RightSection>
                 </Item>
                 <TagsCon>

@@ -21,7 +21,7 @@ import {
   Twitter,
 } from "@mui/icons-material";
 import { Divider } from "@mui/material";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   updateSuccess,
   updateStart,
@@ -31,9 +31,11 @@ import { useSelector } from "react-redux";
 import { Form, ProgressBar } from "react-bootstrap";
 import toast, { ToastBar, Toaster } from "react-hot-toast";
 import { Mobile } from "../Mobile";
-import { Mymodals, MymodalsSocials } from "./Modals";
+import { Mymodals, MymodalsSkills, MymodalsSocials } from "./Modals";
 import styled from "styled-components";
 import { GlobalContext } from "../redux/Globalstate";
+import axios from "axios";
+import { publicRequest } from "../apirequests";
 // import { Link } from "react-router-dom";
 
 const Container = styled.div`
@@ -371,21 +373,39 @@ function Myprofile() {
   let user = useSelector((state) => state.user.currentUser);
 
   let updated = useSelector((state) => state.contact.contacts);
+  const userid = updated._id;
   //   const index = Favoritelist.indexOf(0);
   // if (index > -1) {
   //   Favoritelist.splice(index, 1);
-  //   // console.log(index) // 2nd parameter means remove one item only
+  //   // console.log(index) //
   // }
+
+  const [applied, setapplied] = useState([]);
+
+  useEffect(() => {
+    const getjobs = async () => {
+      try {
+        const res = await publicRequest.get("/findapplied/" + userid);
+        setapplied(res.data?.jobitems);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getjobs();
+  }, []);
+  console.log(applied);
 
   const { favorite } = useContext(GlobalContext);
   let count = favorite.length;
 
-  const resumedata = user.skills;
+  const resumedata = updated.skills;
+
+  // console.log(resumedata)
 
   let signupper = 20;
   let websiteper = updated.website;
   let emailper = updated.email;
-  console.log(websiteper);
+  // console.log(websiteper);
   let githubper = updated.github;
   let numper = 20;
 
@@ -548,7 +568,11 @@ function Myprofile() {
               <MobiD></MobiD>
               <LineDivide></LineDivide>
               <Applied>
-                <Save>0</Save>
+                {applied?.length === undefined ? (
+                  <p>No job applied yet</p>
+                ) : (
+                  <Save>{applied?.length}</Save>
+                )}
                 <SaveJ>Applied Jobs</SaveJ>
               </Applied>
               <LineDivide></LineDivide>
@@ -579,14 +603,25 @@ function Myprofile() {
           </Status>
           <Executive>
             <ExecSum>Executive Summary</ExecSum>
-            <EditSum>Edit</EditSum>
+            <EditSum>
+              <MymodalsSkills />
+            </EditSum>
+            {/* <MymodalsSkills/> */}
           </Executive>
           <Summary>
-            <>
-              {resumedata.map((data) => (
-                <AddedSkills key={data._id}>{data}</AddedSkills>
-              ))}
-            </>
+            {resumedata?.length === 0 ? (
+              <>
+                <EditSum>
+                  <MymodalsSkills />
+                </EditSum>
+              </>
+            ) : (
+              <>
+                {resumedata.map((data) => (
+                  <AddedSkills>{data}</AddedSkills>
+                ))}
+              </>
+            )}
           </Summary>
           <MyExper>Experience</MyExper>
           <Experience>

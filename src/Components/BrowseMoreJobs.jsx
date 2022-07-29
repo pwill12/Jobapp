@@ -11,7 +11,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { publicRequest, userRequest } from "../apirequests";
 import { Mobile } from "../Mobile";
-
+import { format } from "timeago.js";
 import styled from "styled-components";
 import { apply } from "../redux/applyapicalls";
 import { useDispatch, useSelector } from "react-redux";
@@ -513,11 +513,13 @@ function BrowseMoreJobs({ ids }) {
                 <Title>
                   <Header>{myjobs.title}</Header>
                   <Location>
-                    <LocationOnOutlined /> remote(worldwide)
+                    <LocationOnOutlined /> {myjobs.location?.map((prop) => (
+                      <span style={{ color: "lightslategray" }}>{prop},</span>
+                    ))}
                   </Location>
-                  <Location>
+                  {/* <Location>
                     <PunchClock /> california
-                  </Location>
+                  </Location> */}
                 </Title>
               </LeftSectionTitle>
               <RightSection>
@@ -625,24 +627,24 @@ function BrowseMoreJobs({ ids }) {
             <JobDetailsCon>
               <JobDetailsSec>
                 <JobDetails>
-                  published on:<Bold>{myjobs.createdAt}</Bold>
+                  published :<Bold>{format(myjobs.createdAt)}</Bold>
                 </JobDetails>
                 <JobDetails>
-                  Job Vacancies:<Bold>{myjobs.vacancy}</Bold>
+                  Job Vacancy:<Bold>{myjobs.vacancy} position</Bold>
                 </JobDetails>
                 <JobDetails>
                   Salary:<Bold>{myjobs.salary}</Bold>
                 </JobDetails>
-                <JobDetails>
+                {/* <JobDetails>
                   Location
                   <Bold style={{ display: "flex" }}>
                     {myjobs.location?.map((prop) => (
                       <span style={{ color: "red" }}>{prop},</span>
                     ))}
                   </Bold>
-                </JobDetails>
+                </JobDetails> */}
                 <JobDetails>
-                  Job Nature:<Bold>On site(fulltime)</Bold>
+                  Job Nature:<Bold>{myjobs.time}</Bold>
                 </JobDetails>
               </JobDetailsSec>
             </JobDetailsCon>

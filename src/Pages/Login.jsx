@@ -28,7 +28,7 @@ const Container = styled.div`
   }
 `;
 
-const CenterLogo = styled.h2`
+const CenterLogo = styled.h4`
   text-align: center;
   margin-bottom: 20px;
   ${"" /* position: absolute; */}
@@ -44,7 +44,8 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 24px;
+  font-size: 20px;
+  margin-bottom: 5px;
   font-weight: 300;
 `;
 
@@ -103,8 +104,8 @@ export default function Login() {
       <MyNavbar />
       <Container>
         <CenterLogo>
-          Hello,welcome back
-          <i class="fas fa-laptop-code" style={{ color: "black" }}></i>
+          Hello,welcome back 
+          <i class="fas fa-laptop-code" style={{ color: "lightslategrey",fontSize: '25px' }}></i>
         </CenterLogo>
         <Wrapper>
           {/* <CenterLogo>
