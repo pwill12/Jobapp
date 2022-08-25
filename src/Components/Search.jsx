@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import MultipleSelectChip from "./FilterItems";
 import { Mobile } from "../Mobile";
 import { MultipleSelected } from "./FilterItems";
 import { Button, TextField } from "@mui/material";
-import { InputOutlined, SearchOffOutlined, SearchRounded } from "@mui/icons-material";
+import {
+  InputOutlined,
+  SearchOffOutlined,
+  SearchRounded,
+} from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   ${"" /* margin-top: 30px; */}
@@ -73,19 +78,42 @@ const Multple = styled.div`
 // `
 
 function Search() {
+
+  const [change, setchange] = useState("");
+  const handleChange = (e) => {
+    setchange(e.target.value)
+  };
+  console.log(change)
+
   return (
     <Container>
       <Section>
         {/* <Input placeholder='search'/> */}
-        <TextField id="outlined-basic" label="Search e.g React" variant="outlined" style={{width: 300}}/>
+        <TextField
+          id="outlined-basic"
+          label="Search e.g React"
+          variant="outlined"
+          style={{ width: 300 }}
+          onChange={handleChange}
+        />
         <Multple>
           <MultipleSelected />
         </Multple>
         {/* <Select>
                 <Option disabled>school</Option>
             </Select> */}
-        <Button variant="contained" color="success" size="large" startIcon={<SearchRounded/>}>
-          Find Jobs
+        <Button
+          variant="contained"
+          color="success"
+          size="large"
+          startIcon={<SearchRounded />}
+        >
+          <Link
+            to={"/browsemorejobs/" + change}
+            style={{ textDecoration: "none",color: 'white' }}
+          >
+            Find Jobs
+          </Link>
         </Button>
       </Section>
     </Container>
