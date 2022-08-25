@@ -30,6 +30,7 @@ import Failed from "./Pages/Failed";
 import Admindashboard from "./Pages/Admindashboard";
 import Success from "./Components/Success";
 import Successfull from "./Pages/Success";
+import Applieds from "./Components/Applied";
 
 // import Bodysection from './Components/Body';
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -82,6 +83,7 @@ function App() {
             <Route path="/failed" element={<Failed />} />{" "}
             <Route path="/successfullyregistered" element={<Successfull />} />{" "}
             <Route path="/admin" element={<Admindashboard />} />{" "}
+            <Route path="/applied" element={<Applieds />} />{" "}
           </Routes>{" "}
         </ScrollToTop>{" "}
       </Router>{" "}

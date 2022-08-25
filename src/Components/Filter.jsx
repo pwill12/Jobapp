@@ -81,7 +81,7 @@ const LeftCon = styled.div`
 
 const Header = styled.h2`
   margin-bottom: 15px;
-  font-size: 20px;
+  font-size: 17px;
   font-family: "Roboto", sans-serif;
 `;
 
@@ -131,6 +131,7 @@ const JobList = styled.div`
   padding: 30px;
   align-items: center;
   border-radius: 5px;
+  min-width: 50vw;
   ${Mobile({
     flexDirection: "column",
     padding: "20px",
@@ -254,7 +255,7 @@ function Filter({ tags }) {
       <Section>
         <Left>
           <LeftCon>
-            <Header> Filter </Header> <Search placeholder="search" />
+            <Header> Filter Jobs</Header> <Search placeholder="search" />
             <Selectbtn1>
               <BasicSelect />
             </Selectbtn1>{" "}

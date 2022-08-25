@@ -571,7 +571,9 @@ function Myprofile() {
                 {applied?.length === undefined ? (
                   <p>No job applied yet</p>
                 ) : (
+                  <Link to={'/applied'} style={{ textDecoration: "none" }}>
                   <Save>{applied?.length}</Save>
+                  </Link>
                 )}
                 <SaveJ>Applied Jobs</SaveJ>
               </Applied>

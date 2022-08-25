@@ -22,6 +22,9 @@ import { Mobile } from "../Mobile";
 import { Favourited } from "./favourited";
 import { useDispatch } from "react-redux";
 import { postsaved } from "../redux/Postdata";
+import MySpinner from "./Spinner";
+import { Spinner } from "react-bootstrap";
+import { Skeleton } from "@mui/material";
 
 const Container = styled.div`
   display: flex;
@@ -280,24 +283,25 @@ const MyLoc = styled.div`
 `;
 
 function Jobitems({ tags, filters }) {
-
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
 
   const [jobs, setjobs] = useState([]);
+  const [loading, setloading] = useState(false);
   const [filtered, setFilteredjobs] = useState([]);
 
   useEffect(() => {
     const getjobs = async () => {
+      setloading(true);
       try {
         const res = await axios.get(
           tags
             ? `https://willdevjobs.herokuapp.com/api/findjobs?tags=${tags}`
             : "https://willdevjobs.herokuapp.com/api/findjobs"
         );
-
         setjobs(res.data);
+        setloading(false);
       } catch (err) {
         console.log(err);
       }
@@ -305,11 +309,7 @@ function Jobitems({ tags, filters }) {
     getjobs();
   }, [tags]);
 
-  //   const mmm = Object.fromEntries(filters)
-
-  // console.log(filtered);
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // filters,tags &&
@@ -325,6 +325,7 @@ function Jobitems({ tags, filters }) {
   return (
     <div>
       <>
+        {loading && <MySpinner/>}
         {filters
           ? filtered.map((props, i) => (
               <Container data-aos="fade-up">
@@ -416,7 +417,9 @@ function Jobitems({ tags, filters }) {
                         <Favourited jobs={props} />
                       </Save>
                       <Link to={"/jobinfo/" + props._id}>
-                        <Apply onClick={()=> dispatch(postsaved(props))}>Apply now</Apply>
+                        <Apply onClick={() => dispatch(postsaved(props))}>
+                          Apply now
+                        </Apply>
                       </Link>
                     </Top>
                     <Bottom>Posted: {format(props.createdAt)}</Bottom>

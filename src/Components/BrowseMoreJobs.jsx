@@ -40,7 +40,7 @@ const Left = styled.div`
   display: flex;
   flex: 2;
   ${Mobile({
-    order: 1,
+    order: 2,
   })}
 `;
 
@@ -376,9 +376,7 @@ function BrowseMoreJobs({ ids }) {
   const employerId2 = useSelector((state) => state.post.jobs);
 
   let employerId = employerId2.employerId;
-
-  console.log(currentUser.email);
-
+  
   const handleClick = (e) => {
     apply(dispatch, {
       user,
@@ -427,13 +425,11 @@ function BrowseMoreJobs({ ids }) {
       try {
         const res = await publicRequest.get("/findapplied/" + user);
         if (null) {
-          console.log("null yes");
+          // console.log("null yes");
           setapplied("");
         } else if (res.data !== null) {
           setapplied(res.data.jobitems);
         }
-        // setapplied(res.data.jobitems);
-        // console.log(res.data);
       } catch (err) {
         console.log(err);
       }
