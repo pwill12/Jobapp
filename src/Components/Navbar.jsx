@@ -185,7 +185,7 @@ function MyNavbar() {
       <nav className="navbar">
         <div className="nav-container">
           <NavLink exact to="/" className="nav-logo">
-            <div style={{display: 'flex',alignItems: 'center',fontFamily: 'Roboto, sans-serif', letterSpacing: '0px', fontWeight: 'bold',textTransform: 'uppercase'}}>
+            <div style={{display: 'flex',alignItems: 'center',letterSpacing: '0px', fontWeight: 'bold',textTransform: 'uppercase'}}>
             Willjobs<i class="fas fa-laptop-code" style={{ color: "lightslategrey" }}>
             </i>
             </div>

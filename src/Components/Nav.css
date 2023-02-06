@@ -17,10 +17,10 @@
     height: 80px;
     padding: 20px 70px;
     position: fixed;
-    /* background-color: #f9fbff; */
-    background-color: white;
+    background-color: #f1f0fe;
+    border-bottom: 0.5px solid lightgrey;
     top: 0;
-    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.2); */
 }
 
 
