@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://willdevjobs.herokuapp.com/api/";
+const BASE_URL = "https://jobs-api-u83r.onrender.com/api/";
 
 const user = JSON.parse(localStorage.getItem("persist:root"))?.user;
 const currentUser = user && JSON.parse(user).currentUser;
