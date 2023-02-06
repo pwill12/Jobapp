@@ -42,7 +42,7 @@ export default function Register() {
     mypost(dispatch, { username, firstname, email, number, password });
   };
 
-  const BASE_URL = "https://willdevjobs.herokuapp.com/api/";
+  const BASE_URL = "https://jobs-api-u83r.onrender.com/api/";
 
   const postuserRequest = axios.create({
     baseURL: BASE_URL,
