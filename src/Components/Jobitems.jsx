@@ -1,14 +1,5 @@
 import {
-  AttachMoney,
-  CurrencyExchangeOutlined,
-  CurrencyExchangeTwoTone,
-  CurrencyPoundOutlined,
-  LocationOnOutlined,
-  Money,
-  MoneyOff,
-  MoneyOffCsred,
   Public,
-  TimelineOutlined,
   WorkOutlined,
 } from "@mui/icons-material";
 import axios from "axios";

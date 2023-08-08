@@ -13,6 +13,7 @@ import {
   LocationOnOutlined,
   SavedSearch,
 } from "@mui/icons-material";
+import MySpinner from "./Spinner";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { addsaved } from "../redux/SavedJobs";
@@ -264,15 +265,19 @@ function JobSection() {
   const [jobs, setjobs] = useState([]);
   const [click, hanClick] = useState(false);
   const [favorite, setFavorite] = useState([]);
+  const [loading, setloading] = useState(false);
+
 
   useEffect(() => {
     const Jobsapicall = async () => {
+      setloading(true);
       try {
         const res = await axios.get(
           "https://jobs-api-u83r.onrender.com/api/findjobs"
         );
         // console.log(res)
         setjobs(res.data);
+        setloading(false);
       } catch (err) {
         console.log(err);
       }
@@ -283,23 +288,6 @@ function JobSection() {
   const dispatch = useDispatch();
 
   let findfavorite = jobs.filter((recipe) => favorite.includes(recipe._id));
-  // console.log(findfavorite);
-
-  // const fff = jobs.map((id) => id._id);
-
-  // console.log(fff)
-
-  // const addToFavorite = (id) => {
-  //   if (!favorite.includes(id)) setFavorite(favorite.concat(id));
-
-  //   // click ? hanClick(false) : hanClick(true);
-  //   dispatch(addsaved(findfavorite));
-  //   // console.log(id);
-  //   if (fff.includes(id)) {
-  //     console.log("yes");
-  //     hanClick(true);
-  //   }
-  // };
 
   const [favorites, setFavorites] = useState([]);
 
@@ -346,6 +334,8 @@ function JobSection() {
       </JobCon>
       <Section>
         <>
+        {loading && <MySpinner/>}
+
           {jobs.map((props, i) => (
             <Item key={i} data-aos="fade-up">
               <Left>
