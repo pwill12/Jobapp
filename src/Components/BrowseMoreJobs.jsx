@@ -5,11 +5,10 @@ import {
   Google,
   Instagram,
   LocationOnOutlined,
-  PunchClock,
   Twitter,
 } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
-import { publicRequest, userRequest } from "../apirequests";
+import { publicRequest} from "../apirequests";
 import { Mobile } from "../Mobile";
 import { format } from "timeago.js";
 import styled from "styled-components";
@@ -437,7 +436,7 @@ function BrowseMoreJobs({ ids }) {
       // userapplied()
     };
     userapplied();
-  }, []);
+  },[]);
 
   let storedJobs = applied.find((o) => o.jobs === ids);
   let qualify = myjobs.qualifications;
