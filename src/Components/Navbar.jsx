@@ -3,6 +3,7 @@ import { Mobile } from "../Mobile";
 import { Link, NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 import "./Nav.css";
 
 import styled from "styled-components";
@@ -384,7 +385,7 @@ function MyNavbar() {
           </ul>{" "}
           <div className="nav-icon" onClick={handleClick}>
             <div style={{ marginTop: "5px", width: "40px" , fontSize: '20px',color: 'grey'}}>
-              {click ? <MenuIcon/> : <MenuIcon/>}
+              {click ? <CloseIcon/> : <MenuIcon/>}
             </div>
             {user && (
               <>
