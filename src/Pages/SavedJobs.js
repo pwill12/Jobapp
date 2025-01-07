@@ -223,7 +223,7 @@ function SavedJobs() {
     // let ggg = Favoritelist.splice(1,1)
     console.log(storage1)
 
-    if (storage1=== []) {
+    if (storage1 === false) {
       console.log('ok')
       localStorage.removeItem('favorites')
       }

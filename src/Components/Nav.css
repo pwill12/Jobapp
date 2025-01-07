@@ -84,7 +84,7 @@
     background: black;
 }
 
-.nav-item .active {
+.nav-item .active{
     color: blue;
     border: 1px solid lightgrey;
 }
