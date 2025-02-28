@@ -14,8 +14,6 @@ import { Favourited } from "./favourited";
 import { useDispatch } from "react-redux";
 import { postsaved } from "../redux/Postdata";
 import MySpinner from "./Spinner";
-import { Spinner } from "react-bootstrap";
-import { Skeleton } from "@mui/material";
 
 const Container = styled.div`
   display: flex;

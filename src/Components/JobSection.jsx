@@ -285,11 +285,11 @@ function JobSection() {
     Jobsapicall();
   }, []);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  let findfavorite = jobs.filter((recipe) => favorite.includes(recipe._id));
+  // let findfavorite = jobs.filter((recipe) => favorite.includes(recipe._id));
 
-  const [favorites, setFavorites] = useState([]);
+  // const [favorites, setFavorites] = useState([]);
 
   // const addfav = (props) => {
   //   let array = favorites;

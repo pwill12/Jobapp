@@ -145,7 +145,7 @@ function BodyContent() {
           </Companies>
         </Left>
         <Right data-aos="fade-left">
-          <ImgCon src="images/xcc-min1.png" />
+          <ImgCon src="https://ik.imagekit.io/will12/xcc-min1.png?updatedAt=1740630850980" />
         </Right>
       </Wrapper>
     </Container>
