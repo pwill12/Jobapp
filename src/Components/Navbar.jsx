@@ -17,7 +17,6 @@ import {
   Dropdown,
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   AccountCircle,
   LocationOff,
