@@ -1,42 +1,27 @@
 import { Link } from "react-router-dom";
 
 import {
-  Add as Add,
+  Add,
   CheckBox,
   CheckBoxOutlineBlank,
-  CheckRounded,
-  Close,
-  Delete,
-  EmailOutlined,
   EmailRounded,
   FacebookRounded,
   GitHub,
-  HdrPlus,
   Instagram,
   LinkedIn,
   LinkOutlined,
-  MarkChatRead,
-  PhoneAndroidOutlined,
   PhoneAndroidRounded,
   Twitter,
 } from "@mui/icons-material";
-import { Divider } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
-import {
-  updateSuccess,
-  updateStart,
-  updateFailure,
-} from "../redux/updateContact";
 import { useSelector } from "react-redux";
 import { Form, ProgressBar } from "react-bootstrap";
-import toast, { ToastBar, Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import { Mobile } from "../Mobile";
 import { Mymodals, MymodalsSkills, MymodalsSocials } from "./Modals";
 import styled from "styled-components";
 import { GlobalContext } from "../redux/Globalstate";
-import axios from "axios";
-import { publicRequest } from "../apirequests";
-// import { Link } from "react-router-dom";
+import { publicRequest,userRequest } from "../apirequests";
 
 const Container = styled.div`
   ${"" /* background-color: rgb(251, 251, 255); */}
@@ -374,13 +359,13 @@ function Myprofile() {
 
   let updated = useSelector((state) => state.contact.contacts);
   const userid = updated._id;
-  //   const index = Favoritelist.indexOf(0);
-  // if (index > -1) {
-  //   Favoritelist.splice(index, 1);
-  //   // console.log(index) //
-  // }
 
+  console.log(user, updated)
   const [applied, setapplied] = useState([]);
+  const [data, setdata] = useState('')
+  const [loading, setloading] = useState(false)
+
+  
 
   useEffect(() => {
     const getjobs = async () => {
@@ -392,8 +377,21 @@ function Myprofile() {
       }
     };
     getjobs();
-  }, []);
-  console.log(applied);
+  }, [userid]);
+
+  useEffect(() => {
+    const findprofile = async () => {
+      setloading(true)
+      try {
+        const res = await userRequest.get("/profile/find/" + userid);
+        setdata(res.data);
+        setloading(false)
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    findprofile();
+  }, [userid]);
 
   const { favorite } = useContext(GlobalContext);
   let count = favorite.length;
@@ -457,32 +455,7 @@ function Myprofile() {
           <Executive>
             <ExecSum>Contact Info</ExecSum>
             <EditSum>
-              <Mymodals />
-              <Toaster
-                position="top-center"
-                reverseOrder={false}
-                gutter={8}
-                containerClassName=""
-                containerStyle={{}}
-                toastOptions={{
-                  // Define default options
-                  className: "",
-                  duration: 3000,
-                  style: {
-                    background: "white",
-                    padding: "20px",
-                    color: "lightgreen",
-                  },
-                  // Default options for specific types
-                  success: {
-                    duration: 3000,
-                    theme: {
-                      primary: "green",
-                      secondary: "white",
-                    },
-                  },
-                }}
-              />
+              <Mymodals/>
             </EditSum>
           </Executive>
           <Contact>
@@ -490,14 +463,16 @@ function Myprofile() {
               <Icon>
                 <EmailRounded />
               </Icon>
-              {updated.email}
+              {loading && 'loading'}
+              {data.email !== null || undefined || '' ? data.email : 'add email'}
             </Email>
             <Divide></Divide>
             <Number>
               <Icon>
                 <PhoneAndroidRounded />
               </Icon>
-              {updated.number ? updated.number : "add number"}
+              {loading && 'loading'}
+              {data.number !== null || undefined || '' ? data.number : 'add number'}
             </Number>
           </Contact>
           <Website>

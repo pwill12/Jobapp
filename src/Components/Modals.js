@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
-import ReactNotification from "react-notifications-component";
+import { toast } from "react-toastify"
 
 import { update } from "../redux/apicall2";
-import { updateSuccess } from "../redux/updateContact";
-import { login } from "../redux/apicalls";
 import { Button } from "@mui/material";
+import { userRequest } from "../apirequests";
 
 const notify = () => toast.success("Successfully updated contact");
+const user = JSON.parse(localStorage.getItem("persist:root"))?.user;
+const currentUser = user && JSON.parse(user).currentUser;
+const userid = currentUser._id
 export const Mymodals = () => {
   const user = useSelector((state) => state.user.currentUser);
   const updated = useSelector((state) => state.contact.contacts);
@@ -29,7 +29,19 @@ export const Mymodals = () => {
 
   const handleClick = (e) => {
     // e.preventDefault();
-    update(dispatch, { number, email });
+    const updateprofile = async () => {
+      try {
+        const res = await userRequest.put(`/put/${userid}`, { number, email });
+        console.log(res)
+        toast.success("updated successfully")
+        window.location.reload()
+        // handleClose()
+      } catch (error) {
+        console.log(error)
+        toast.error('error updating')
+      }
+    }
+    updateprofile()
     // user = updated
     console.log("clicked");
   };
@@ -71,11 +83,9 @@ export const Mymodals = () => {
             Close
           </Button>
           <Button
-            variant="primary"
+            variant="secondary"
             onClick={() => {
-              notify();
               handleClick();
-              handleClose();
             }}
           >
             Save Changes
@@ -154,7 +164,6 @@ export const MymodalsSocials = () => {
           <Button
             variant="primary"
             onClick={() => {
-              notify();
               handleClick();
               handleClose();
             }}
@@ -188,7 +197,6 @@ export const MymodalsSkills = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const notify2 = () => toast.success("Successfully updated skills..refresh ");
 
   const handleClick2 = (e) => {
     // e.preventDefault();
@@ -254,7 +262,6 @@ export const MymodalsSkills = () => {
           <Button
             variant="outlined"
             onClick={() => {
-              notify2();
               handleClick2();
               handleClose();
             }}
