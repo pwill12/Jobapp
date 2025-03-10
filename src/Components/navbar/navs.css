@@ -154,6 +154,7 @@ nav.px {
 
     nav.px {
         padding: 5px 20px;
+        height: 7vh;
         /* min-height: 50vh; */
         /* max-height: 100vh; */
     }
