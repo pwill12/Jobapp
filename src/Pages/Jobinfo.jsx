@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import MyNavbar from "../Components/Navbar";
+import MyNavbar from "../Components/navbar/Navbar";
 import BrowseMoreJobs from "../Components/BrowseMoreJobs";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";

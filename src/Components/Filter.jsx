@@ -30,6 +30,7 @@ const Container = styled.div`
   ${Mobile({
     overFlow: "hidden",
     padding: "0px",
+    marginTop: '40px'
   })}
 `;
 

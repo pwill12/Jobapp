@@ -1,6 +1,6 @@
 import React from 'react'
 import Employers from '../Components/Employer'
-import MyNavbar from '../Components/Navbar'
+import MyNavbar from '../Components/navbar/Navbar'
 import Pricing from '../Components/Pricing'
 
 function Employer() {

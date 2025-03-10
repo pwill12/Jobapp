@@ -1,0 +1,235 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* box-shadow: 0 4px 6px rgba(0, 84, 84, 0.238); */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.15);
+    /* background-color: #ffffff; */
+    padding: auto;
+    /* margin-bottom: 30px; */
+    z-index: 20;
+}
+
+nav.px {
+    padding: 10px 150px;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 20;
+    opacity: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    /* border-radius: 16px; */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    /* border: 1px solid rgba(255, 255, 255, 0.3); */
+}
+
+.signin {
+    display: flex;
+    gap: 15px;
+}
+
+.signin .login {
+    text-decoration: none;
+    text-transform: lowercase;
+}
+
+.signin button {
+    color: black;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 16px;
+    text-transform: capitalize;
+
+}
+
+.navbar .nav-list {
+    display: flex;
+    gap: 82px;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+}
+
+
+.humberger {
+    /* background-color: #FFA500; */
+    /* padding: 5px 10px; */
+    /* margin: auto; */
+    border: none;
+    color: lightblue;
+    /* border-radius: 5px; */
+    display: none;
+}
+
+.navbar .logos {
+    color: rgb(30, 30, 30);
+    /* padding-top: 10px; */
+    /* width: 200px; */
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar .dev {
+    margin: auto;
+    font-weight: 800;
+
+}
+
+.nav-item .active {
+    border-bottom: 2px solid #FFA500;
+    padding: 5px;
+}
+
+.mobilemenu {
+    display: none;
+}
+
+.mobcon {
+    top: 0px;
+    height: 30vh;
+    width: 10%;
+    padding: 12px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    position: fixed;
+    z-index: 20;
+    gap: 2px;
+    opacity: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    right: 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    margin-top: 70px;
+    margin-right: 130px;
+}
+
+.mobcon a {
+    color: rgb(53, 52, 52);
+    text-decoration: none;
+    margin: auto 0px;
+}
+
+.mobcon h5 {
+    font-size: 10px;
+    /* font-weight: 600; */
+    text-transform: capitalize;
+    /* background: #000; */
+    margin: auto 0px;
+    cursor: pointer;
+}
+
+.profiless{
+    display: flex;
+    gap: 10px;
+}
+
+.profiless p{
+    font-size: 13px;
+    margin: auto;
+}
+
+.divide{
+  height: 1px;
+  width: 100%;
+  background-color: lightgrey;
+}
+
+.desktop{
+    display: none;
+}
+
+@media screen and (max-width:768px) {
+
+    .navbar {
+        overflow: hidden;
+    }
+
+    nav.px {
+        padding: 5px 20px;
+        /* min-height: 50vh; */
+        /* max-height: 100vh; */
+    }
+
+    .navbar .nav-list {
+        display: none;
+        /* background: #000; */
+    }
+
+    .mobilemenu {
+        display: flex;
+        /* background: #000; */
+    }
+
+    .humberger {
+        display: block;
+        /* width: 45px; */
+    }
+
+    .navbar .signin {
+        display: none;
+    }
+
+    .nav-item .active {
+        border-bottom: none;
+        padding: 5px;
+    }
+
+    .desktop{
+        display: block;
+    }
+
+    .mobcon {
+        top: 0px;
+        height: 25vh;
+        width: 40%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        flex-direction: column;
+        position: fixed;
+        z-index: 20;
+        opacity: 100%;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        right: 0;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        margin-top: 50px;
+        margin-right: 20px;
+    }
+
+    .mobcon a {
+        color: black;
+        text-decoration: none;
+    }
+
+    .mobcon h5 {
+        font-size: 10px;
+        font-weight: 600;
+        text-transform: capitalize;
+    }
+
+    .profiless{
+        display: flex;
+        gap: 7px;
+    }
+
+    .profiless p{
+        font-size: 11px;
+    }
+
+    .close {
+        margin-bottom: 50px;
+        font-size: 60px;
+    }
+}

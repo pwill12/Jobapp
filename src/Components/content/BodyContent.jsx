@@ -3,21 +3,22 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 // import { Button } from "react-bootstrap";
 import styled from "styled-components";
-import { Mobile } from "../Mobile";
+import { Mobile } from "../../Mobile";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
   padding: 0px;
-  ${"" /* margin-top: -15px; */}
-  height: 90vh;
+  margin-top: 60px;
+  height: 95vh;
   display: flex;
   align-items: center;
-  background-color: #f1f0fe;
+  // background-color: #f1f0fe;
+  // background-color: black;
   ${"" /* justify-content: center; */}
   ${Mobile({
     padding: "10px",
     height: "100%",
-    marginTop: "0px",
+    marginTop: "40px",
     overflow: "hidden",
   })}
 `;
@@ -61,11 +62,12 @@ const ImgCon = styled.img`
 
 const Wrapper = styled.div`
   display: flex;
-  padding: 50px 120px;
+  padding: 40px 120px;
   justify-content: center;
   margin: auto;
   align-items: center;
   ${Mobile({ justifyContent: "start", padding: "20px" })}
+
 `;
 
 const Button = styled.div`

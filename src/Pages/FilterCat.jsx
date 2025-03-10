@@ -2,7 +2,7 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import Filter from '../Components/Filter'
 import Footer from '../Components/Footer'
-import MyNavbar from '../Components/Navbar'
+import MyNavbar from '../Components/navbar/Navbar'
 
 function FilterCat() {
 

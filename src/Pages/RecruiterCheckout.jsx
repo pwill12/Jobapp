@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom';
-import MyNavbar from '../Components/Navbar'
+import MyNavbar from '../Components/navbar/Navbar'
 
 function RecruiterCheckout() {
 

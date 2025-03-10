@@ -1,7 +1,7 @@
 import { Container } from "@mui/system";
 import React from "react";
 import styled from "styled-components";
-import MyNavbar from "../Components/Navbar";
+import MyNavbar from "../Components/navbar/Navbar";
 
 const Img = styled.img`
   width: 50%;

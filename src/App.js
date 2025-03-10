@@ -1,6 +1,7 @@
 import React from "react";
 import Home from "./Pages/Home";
-import "./custom.scss";
+import "./app.css"
+// import "./custom.scss";
 import Jobinfo from "./Pages/Jobinfo";
 import ScrollToTop from "./Scroll";
 import FilterCat from "./Pages/FilterCat";

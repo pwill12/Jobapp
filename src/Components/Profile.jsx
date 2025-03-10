@@ -14,14 +14,15 @@ import {
   Twitter,
 } from "@mui/icons-material";
 import React, { useContext, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Form, ProgressBar } from "react-bootstrap";
-import { Toaster } from "react-hot-toast";
 import { Mobile } from "../Mobile";
 import { Mymodals, MymodalsSkills, MymodalsSocials } from "./Modals";
 import styled from "styled-components";
 import { GlobalContext } from "../redux/Globalstate";
 import { publicRequest,userRequest } from "../apirequests";
+import { logout } from "../redux/users";
+import { Button } from "@mui/material";
 
 const Container = styled.div`
   ${"" /* background-color: rgb(251, 251, 255); */}
@@ -366,7 +367,6 @@ function Myprofile() {
   const [loading, setloading] = useState(false)
 
   
-
   useEffect(() => {
     const getjobs = async () => {
       try {

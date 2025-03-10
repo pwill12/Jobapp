@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "@mui/material/Button";
 import { login } from "../redux/apicalls";
-import MyNavbar from "../Components/Navbar";
+import MyNavbar from "../Components/navbar/Navbar";
 
 import { Mobile } from "../Mobile";
 import { Link } from "react-router-dom";

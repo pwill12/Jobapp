@@ -7,22 +7,16 @@ import { update } from "../redux/apicall2";
 import { Button } from "@mui/material";
 import { userRequest } from "../apirequests";
 
-const notify = () => toast.success("Successfully updated contact");
 const user = JSON.parse(localStorage.getItem("persist:root"))?.user;
 const currentUser = user && JSON.parse(user).currentUser;
-const userid = currentUser._id
+const userid = currentUser?._id
 export const Mymodals = () => {
   const user = useSelector((state) => state.user.currentUser);
-  const updated = useSelector((state) => state.contact.contacts);
 
   const [number, setphone] = useState(user?.number);
   const [email, setemail] = useState(user?.email);
-  const dispatch = useDispatch();
 
   const [show, setShow] = useState(false);
-  // const notify = () => {
-  //   toast('Basic notification')
-  // }
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -107,9 +101,6 @@ export const MymodalsSocials = () => {
   const dispatch = useDispatch();
 
   const [show, setShow] = useState(false);
-  // const notify = () => {
-  //   toast('Basic notification')
-  // }
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

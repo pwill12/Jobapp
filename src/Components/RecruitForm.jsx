@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { Mobile, Mobile as Mobiles } from "../Mobile";
 import { Removedetails } from "../redux/EmployerRedux";
 import { recruitadmin } from "../redux/RecruitApi";
-import MyNavbar from "./Navbar";
+import MyNavbar from "./navbar/Navbar";
 import MySpinner from "./Spinner";
 import StripeContainer from "./StripePayment";
 import Success from "./Success";
