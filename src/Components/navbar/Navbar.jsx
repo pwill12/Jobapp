@@ -79,14 +79,14 @@ const Navbar = () => {
 
                 <NavLink to='/login'><h5 onClick={handleLogout} className='dot'>logout</h5></NavLink>
                 <NavLink to='/' className='dot'><h5>for employers</h5></NavLink>
-                <Button variant='outlined' size='small' fullWidth color='primary'>Post a Job</Button>
+                <NavLink to='/post' className='dot btns'><Button variant='outlined' size='small' color='primary' fullWidth>Post a Job</Button></NavLink>
               </div>
               :
               <div className='mobcon desktop'>
                 <NavLink to='/' className='dot'><h5>Discover</h5></NavLink>
                 <NavLink to='/signup' className='dot'><h5>for job seekers</h5></NavLink>
                 <NavLink to='/' className='dot'><h5>for employers</h5></NavLink>
-                <NavLink to='/login' className='dot'><Button variant='outlined' size='small' fullWidth>login</Button></NavLink>
+                <NavLink to='/login' className='dot btns'><Button variant='outlined' size='small' fullWidth>login</Button></NavLink>
               </div>
 
           }
