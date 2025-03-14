@@ -338,6 +338,8 @@ const Alertbar = styled.div`
 `;
 function BrowseMoreJobs({ ids }) {
   const [myjobs, setjobs] = useState({});
+  const [errloading, seterrloading] = useState(false);
+  
 
   useEffect(() => {
     const getjobsinfo = async () => {

@@ -44,21 +44,19 @@ const Navbar = () => {
               </>
               :
               <>
-
                 <NavLink to="/employer" className='login'>
                   <Button variant='text'>For Employers</Button>
                 </NavLink>
                 <NavLink to="/login" className='login'>
                   <Button variant='outlined'>Login</Button>
                 </NavLink>
-
               </>
           }
         </div>
         <div className='mobilemenu'>
           <div className='humberger' onClick={showMenu}>
-          {user && <Person/>}
-          {menu ? <Close fontSize='small' /> : <Menu fontSize='small' color=''/>}
+            {user && <Link to='/profile' className='pro'><Person /></Link>}
+            {menu ? <Close fontSize='medium' /> : <Menu fontSize='medium' color='' />}
           </div>
         </div>
       </nav>
@@ -79,7 +77,7 @@ const Navbar = () => {
 
                 <NavLink to='/login'><h5 onClick={handleLogout} className='dot'>logout</h5></NavLink>
                 <NavLink to='/' className='dot'><h5>for employers</h5></NavLink>
-                <NavLink to='/post' className='dot btns'><Button variant='outlined' size='small' color='primary' fullWidth>Post a Job</Button></NavLink>
+                <NavLink to='/post' className='dot btns'><Button variant='outlined' size='small' fullWidth>Post a Job</Button></NavLink>
               </div>
               :
               <div className='mobcon desktop'>
@@ -88,7 +86,6 @@ const Navbar = () => {
                 <NavLink to='/' className='dot'><h5>for employers</h5></NavLink>
                 <NavLink to='/login' className='dot btns'><Button variant='outlined' size='small' fullWidth>login</Button></NavLink>
               </div>
-
           }
         </>
       }

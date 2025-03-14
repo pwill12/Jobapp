@@ -35,15 +35,15 @@ const Container = styled.div`
     transition: all 0.5s ease;
   }
   ${Mobile({
-    padding: " 0px 30px 6px 20px",
-    flexDirection: "column",
-    minHeight: "270px",
-    justifyContent: "center",
-    minWidth: "90vw",
-    //alignItems: "center",
-    overFlow: "hidden",
-    backgroundColor: "white",
-  })}
+  padding: " 0px 30px 6px 20px",
+  flexDirection: "column",
+  minHeight: "270px",
+  justifyContent: "center",
+  minWidth: "90vw",
+  //alignItems: "center",
+  overFlow: "hidden",
+  backgroundColor: "white",
+})}
 `;
 
 const Section = styled.div``;
@@ -66,17 +66,16 @@ const Item = styled.div`
   } */
   
   ${Mobile({
-    backgroundColor: "blue",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-around",
-    //overFlow: "hidden",
-  })}
+  backgroundColor: "blue",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "space-around",
+  //overFlow: "hidden",
+})}
 `;
 
 const Img = styled.img`
-  ${
-    "" /* max-width: 60px;
+  ${"" /* max-width: 60px;
   max-height: 50px; */
   }
   max-width: 60px;
@@ -93,9 +92,9 @@ const LeftSection = styled.div`
   display: flex;
   ${"" /* align-items: center; */}
   ${Mobile({
-    flexDirection: "row",
-    position: "absolute",
-  })}
+  flexDirection: "row",
+  position: "absolute",
+})}
 `;
 
 const ImgCon = styled.div`
@@ -111,11 +110,11 @@ const ImgCon = styled.div`
   ${"" /* background-color: rgb(240, 240, 240); */}
   object-fit: cover;
   ${Mobile({
-    maxWidth: "80px",
-    height: "90px",
-    marginRight: "15px",
-    overFlow: "hidden",
-  })}
+  maxWidth: "80px",
+  height: "90px",
+  marginRight: "15px",
+  overFlow: "hidden",
+})}
 `;
 
 const Title = styled.div`
@@ -131,19 +130,19 @@ const Info = styled.h1`
   font-weight: 600;
   font-family: "Roboto", sans-serif;
   ${Mobile({
-    fontSize: "17px",
-  })}
+  fontSize: "17px",
+})}
 `;
 
 const Location = styled.div`
   font-size: 20px;
   display: flex;
   ${Mobile({
-    display: "flex",
-    flexDirection: "column",
-    marginTop: "0px",
-    fontSize: "17px",
-  })}
+  display: "flex",
+  flexDirection: "column",
+  marginTop: "0px",
+  fontSize: "17px",
+})}
 `;
 
 const Span = styled.div`
@@ -151,28 +150,28 @@ const Span = styled.div`
   font-size: 15px;
   color: grey;
   ${Mobile({
-    marginTop: "0px",
-  })}
+  marginTop: "0px",
+})}
 `;
 
 const RightSection = styled.div`
   ${Mobile({
-    overFlow: "hidden",
-    position: "relative",
-    marginTop: "90px",
-    display: "flex",
-    flexDirection: "column",
-    order: 2,
-  })}
+  overFlow: "hidden",
+  position: "relative",
+  marginTop: "90px",
+  display: "flex",
+  flexDirection: "column",
+  order: 2,
+})}
 `;
 
 const Top = styled.div`
   display: flex;
   ${Mobile({
-    overFlow: "hidden",
-    flexDirection: "row",
-    order: 1,
-  })}
+  overFlow: "hidden",
+  flexDirection: "row",
+  order: 1,
+})}
 `;
 const Save = styled.div`
   background-color: hsl(205, 100%, 96%);
@@ -211,8 +210,8 @@ const Bottom = styled.h3`
   text-align: right;
   ${"" /* font-family: cursive; */}
   ${Mobile({
-    textAlign: "",
-  })}
+  textAlign: "",
+})}
 `;
 
 const LocateSpan = styled.div`
@@ -221,10 +220,10 @@ const LocateSpan = styled.div`
   margin-right: 15px;
   font-size: 17px;
   ${Mobile({
-    flexDirection: "row",
-    marginTop: "0px",
-    fontSize: "15px",
-  })}
+  flexDirection: "row",
+  marginTop: "0px",
+  fontSize: "15px",
+})}
 `;
 
 const Salary = styled.div`
@@ -232,8 +231,8 @@ const Salary = styled.div`
   font-size: 15px;
   margin-top: 3px;
   ${Mobile({
-    marginTop: "2px",
-  })}
+  marginTop: "2px",
+})}
 `;
 
 const Tag = styled.span`
@@ -246,20 +245,20 @@ const Tag = styled.span`
   margin-right: 10px;
   color: black;
   ${Mobile({
-    marginRight: "5px",
-    minWidth: "60px",
-    fontSize: "10px",
-    padding: "5px",
-  })}
+  marginRight: "5px",
+  minWidth: "60px",
+  fontSize: "10px",
+  padding: "5px",
+})}
 `;
 
 const TagsCon = styled.div`
   margin-top: 5px;
   minwidth: 170px;
   ${Mobile({
-    minWidth: "60px",
-    marginTop: "10px",
-  })}
+  minWidth: "60px",
+  marginTop: "10px",
+})}
 `;
 
 const MyLoc = styled.div`
@@ -267,8 +266,8 @@ const MyLoc = styled.div`
   color: grey;
   font-size: 16px;
   ${Mobile({
-    marginTop: "0px",
-  })}
+  marginTop: "0px",
+})}
 `;
 
 function Jobitems({ tags, filters }) {
@@ -279,6 +278,8 @@ function Jobitems({ tags, filters }) {
   const [jobs, setjobs] = useState([]);
   const [loading, setloading] = useState(false);
   const [filtered, setFilteredjobs] = useState([]);
+  const [errloading, seterrloading] = useState(false);
+
 
   useEffect(() => {
     const getjobs = async () => {
@@ -293,6 +294,8 @@ function Jobitems({ tags, filters }) {
         setloading(false);
       } catch (err) {
         console.log(err);
+        seterrloading(true)
+        setloading(false)
       }
     };
     getjobs();
@@ -313,12 +316,14 @@ function Jobitems({ tags, filters }) {
   // console.log(filtered)
   return (
     <div>
-      <>
-        {loading && <MySpinner/>}
-        {filters
-          ? filtered.map((props, i) => (
+      {loading ? <MySpinner /> : errloading ? <p>error loading jobs</p> :
+
+        <>
+          {/* {loading && <MySpinner />} */}
+          {filters
+            ? filtered.map((props, i) => (
               <Container data-aos="fade-up">
-                <Item key={i}>
+                <Item key={props._id}>
                   <LeftSection>
                     <ImgCon>
                       <Img src={props.img} />
@@ -343,7 +348,7 @@ function Jobitems({ tags, filters }) {
                           </Span>
                           <Salary style={{}}>{props.salary}</Salary>
 
-                          {}
+                          { }
                           {/* <Tag>{props.tag}</Tag> */}
                         </LocateSpan>
                       </Location>
@@ -369,7 +374,7 @@ function Jobitems({ tags, filters }) {
                 </TagsCon>
               </Container>
             ))
-          : jobs.map((props, i) => (
+            : jobs.map((props, i) => (
               <Container data-aos="fade-up">
                 <Item key={i}>
                   <LeftSection>
@@ -384,8 +389,9 @@ function Jobitems({ tags, filters }) {
                             <Public />
                           </Span>
                           {/* {props.location} */}
-                          {props.location?.map((prop) => (
-                            <MyLoc>{prop},</MyLoc>
+
+                          {props.location?.map((prop, i) => (
+                            <MyLoc key={i}>{prop},</MyLoc>
                           ))}
                         </LocateSpan>
                         <LocateSpan>
@@ -421,7 +427,8 @@ function Jobitems({ tags, filters }) {
                 </TagsCon>
               </Container>
             ))}
-      </>
+        </>
+      }
     </div>
   );
 }

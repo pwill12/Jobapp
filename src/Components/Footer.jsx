@@ -16,7 +16,7 @@ const Container = styled.div`
   height: 90vh;
   ${Mobile({
     overflow: "hidden",
-    height: "70vh",
+    height: "90vh",
   })}
 `;
 
@@ -196,7 +196,7 @@ function Footer() {
           </InputCon>
         </Right>
       </Section>
-      <Copyright>Copyright will©2022 All rights reserved</Copyright>
+      <Copyright>Copyright will©2025 all right reserved</Copyright>
     </Container>
   );
 }

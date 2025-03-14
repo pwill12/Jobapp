@@ -24,8 +24,7 @@ const Container = styled.div`
   padding: 20px;
   overflow: hidden;
   background-color: rgb(251, 251, 255);
-  ${
-    "" /* ${Mobile({
+  ${"" /* ${Mobile({
       height: '100%',
   })} */
   }
@@ -38,9 +37,9 @@ const JobCon = styled.div`
   ${"" /* align-items: center; */}
   margin-bottom: 15px;
   ${Mobile({
-    padding: "0px 30px",
-    justifyContent: "center",
-  })}
+  padding: "0px 30px",
+  justifyContent: "center",
+})}
 `;
 
 const Section = styled.div`
@@ -52,8 +51,8 @@ const Section = styled.div`
   padding: 0px 200px;
   width: 100%;
   ${Mobile({
-    padding: "0px",
-  })}
+  padding: "0px",
+})}
 `;
 const Item = styled.div`
   display: flex;
@@ -72,18 +71,18 @@ const Item = styled.div`
     transition: all 0.5s ease;
   }
   ${Mobile({
-    flexDirection: "column",
-    padding: "20px",
-    height: "250px",
-    alignItems: "start",
-    justifyContent: "space-around",
-  })}
+  flexDirection: "column",
+  padding: "20px",
+  height: "250px",
+  alignItems: "start",
+  justifyContent: "space-around",
+})}
 `;
 
 const Right = styled.div`
   ${Mobile({
-    marginRight: "0px",
-  })}
+  marginRight: "0px",
+})}
 `;
 const Left = styled.div`
   display: flex;
@@ -92,15 +91,15 @@ const Left = styled.div`
   justify-content: center;
   align-items: center;
   ${Mobile({
-    marginRight: "0px",
-  })}
+  marginRight: "0px",
+})}
 `;
 
 const Joblisting = styled.h1`
   font-size: 50px;
   ${Mobile({
-    display: "none",
-  })}
+  display: "none",
+})}
 `;
 
 const BrowseMore = styled.button`
@@ -129,9 +128,9 @@ const ImgCon = styled.div`
   // background-color: white;
   object-fit: cover;
   ${Mobile({
-    marginRight: "0px",
-    maxWidth: "80px",
-  })}
+  marginRight: "0px",
+  maxWidth: "80px",
+})}
 `;
 const Img = styled.img`
   max-width: 65px;
@@ -139,31 +138,31 @@ const Img = styled.img`
   max-height: 62px;
 
   ${Mobile({
-    maxHeight: "55px",
-    maxWidth: "59px",
-    minWidth: "59px",
-  })}
+  maxHeight: "55px",
+  maxWidth: "59px",
+  minWidth: "59px",
+})}
 `;
 
 const Title = styled.div`
   ${Mobile({
-    marginLeft: "20px",
-  })}
+  marginLeft: "20px",
+})}
 `;
 const Info = styled.h1`
   font-size: 20px;
   font-family: "Roboto", sans-serif;
   font-weight: 600;
   ${Mobile({
-    fontSize: "17px",
-  })}
+  fontSize: "17px",
+})}
 `;
 const Location = styled.h3`
   font-size: 20px;
   ${Mobile({
-    display: "flex",
-    flexDirection: "",
-  })}
+  display: "flex",
+  flexDirection: "",
+})}
 `;
 
 const Top = styled.div`
@@ -196,8 +195,7 @@ const Apply = styled.button`
     transition: all 0.3s ease;
     border: 1px solid lightgreen;
   }
-  ${
-    "" /* ${Mobile({
+  ${"" /* ${Mobile({
     display: 'none',
   })} */
   }
@@ -209,9 +207,9 @@ const Bottom = styled.h3`
   text-align: right;
   ${"" /* font-family: cursive; */}
   ${Mobile({
-    marginRight: "",
-    textAlign: "start",
-  })}
+  marginRight: "",
+  textAlign: "start",
+})}
 `;
 
 const Span = styled.span`
@@ -227,8 +225,8 @@ const Tag = styled.span`
   margin-right: 10px;
   color: black;
   ${Mobile({
-    display: "none",
-  })}
+  display: "none",
+})}
 `;
 
 const TagsCon = styled.div`
@@ -241,8 +239,8 @@ const MyLoc = styled.div`
   color: grey;
   font-size: 16px;
   ${Mobile({
-    marginTop: "0px",
-  })}
+  marginTop: "0px",
+})}
 `;
 
 const LocateSpan = styled.div`
@@ -251,10 +249,10 @@ const LocateSpan = styled.div`
   margin-right: 15px;
   font-size: 17px;
   ${Mobile({
-    flexDirection: "row",
-    marginTop: "0px",
-    fontSize: "15px",
-  })}
+  flexDirection: "row",
+  marginTop: "0px",
+  fontSize: "15px",
+})}
 `;
 
 function JobSection() {
@@ -266,6 +264,7 @@ function JobSection() {
   const [click, hanClick] = useState(false);
   const [favorite, setFavorite] = useState([]);
   const [loading, setloading] = useState(false);
+  const [errloading, seterrloading] = useState(false);
 
 
   useEffect(() => {
@@ -279,7 +278,8 @@ function JobSection() {
         setjobs(res.data);
         setloading(false);
       } catch (err) {
-        console.log(err);
+        setloading(false)
+        seterrloading(true)
       }
     };
     Jobsapicall();
@@ -333,49 +333,48 @@ function JobSection() {
         </Link>
       </JobCon>
       <Section>
-        <>
-        {loading && <MySpinner/>}
-
-          {jobs.map((props, i) => (
-            <Item key={i} data-aos="fade-up">
-              <Left>
-                <ImgCon>
-                  <Img src={props.img} />
-                </ImgCon>
-                <Title>
-                  <Info>{props.title}</Info>
-                  <Location>
-                    {/* <Span>
+        {loading ? <MySpinner /> : errloading ? <p>error loading jobs</p> :
+          <>
+            {jobs.map((props, i) => (
+              <Item key={i} data-aos="fade-up">
+                <Left>
+                  <ImgCon>
+                    <Img src={props.img} />
+                  </ImgCon>
+                  <Title>
+                    <Info>{props.title}</Info>
+                    <Location>
+                      {/* <Span>
                       <LocationOnOutlined style={{ marginRight: "7px" }} />
                       {props.location?.map((prop) => (
                         <MyLoc>{prop}</MyLoc>
                       ))}
                     </Span> */}
-                    <LocateSpan>
-                          <Span>
-                            <Location />
-                          </Span>
-                          {/* {props.location} */}
-                          {props.location?.map((prop) => (
-                            <MyLoc>{prop},</MyLoc>
-                          ))}
-                        </LocateSpan>
-                    <TagsCon>
-                      {props.tag?.map((prop) => (
-                        <Tag>{prop}</Tag>
-                      ))}
-                    </TagsCon>
-                  </Location>
-                </Title>
-              </Left>
+                      <LocateSpan>
+                        <Span>
+                          <Location />
+                        </Span>
+                        {/* {props.location} */}
+                        {props.location?.map((prop, i) => (
+                          <MyLoc key={i}>{prop},</MyLoc>
+                        ))}
+                      </LocateSpan>
+                      <TagsCon>
+                        {props.tag?.map((prop) => (
+                          <Tag>{prop}</Tag>
+                        ))}
+                      </TagsCon>
+                    </Location>
+                  </Title>
+                </Left>
 
-              <Right>
-                <Top>
-                  <Save>
-                    <Favorite
-                    // onClick={() => addfav({ props, i })}
-                    />
-                    {/* {favorites.includes(i) ? (
+                <Right>
+                  <Top>
+                    <Save>
+                      <Favorite
+                      // onClick={() => addfav({ props, i })}
+                      />
+                      {/* {favorites.includes(i) ? (
                       <Favorite
                         // onClick={() => addfav({ props, i })}
                         onClick={() => myfav({ props, i })}
@@ -387,16 +386,18 @@ function JobSection() {
                         onClick={() => myfav({ props, i })}
                       />
                     )} */}
-                  </Save>
-                  <Link to={"/jobinfo/" + props._id}>
-                    <Apply>Apply now</Apply>
-                  </Link>
-                </Top>
-                <Bottom>Date line:{props.createdAt}</Bottom>
-              </Right>
-            </Item>
-          ))}
-        </>
+                    </Save>
+                    <Link to={"/jobinfo/" + props._id}>
+                      <Apply>Apply now</Apply>
+                    </Link>
+                  </Top>
+                  <Bottom>Date line:{props.createdAt}</Bottom>
+                </Right>
+              </Item>
+            ))}
+
+          </>
+        }
       </Section>
     </Container>
   );

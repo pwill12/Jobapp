@@ -90,7 +90,7 @@ nav.px {
 .mobcon {
     top: 0px;
     height: 30vh;
-    width: 10%;
+    width: 12%;
     padding: 12px;
     overflow: hidden;
     display: flex;
@@ -131,6 +131,15 @@ nav.px {
     gap: 10px;
 }
 
+.dot button{
+    color: lightgreen;
+}
+
+.btns{
+    width: 100%;
+    color: lightgreen;
+}
+
 .profiless p{
     font-size: 13px;
     margin: auto;
@@ -166,7 +175,12 @@ nav.px {
 
     .mobilemenu {
         display: flex;
+        gap: 10px;
         /* background: #000; */
+    }
+
+    .pro{
+        margin-right: 5px;
     }
 
     .humberger {
@@ -190,7 +204,7 @@ nav.px {
     .mobcon {
         top: 0px;
         height: 30vh;
-        width: 40%;
+        width: 50%;
         overflow: hidden;
         display: flex;
         justify-content: center;
@@ -229,8 +243,13 @@ nav.px {
         font-size: 11px;
     }
 
+    .dot button{
+        color: lightgreen;
+    }
+
     .btns{
         width: 100%;
+        color: lightgreen;
     }
 
     .close {
