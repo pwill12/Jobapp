@@ -76,16 +76,15 @@ nav.px {
 }
 
 .navbar .dev {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 800;
+    font-size: 35px;
+    margin: auto;
     /* color: #FFA500; */
     /* margin-bottom: 10px; */
 
-}
-
-.navbar .logos h2{
-    font-size: 35px;
-    height: 100%;
-    margin-top: auto;
 }
 
 
@@ -137,32 +136,32 @@ nav.px {
     cursor: pointer;
 }
 
-.profiless{
+.profiless {
     display: flex;
     gap: 10px;
 }
 
-.dot button{
+.dot button {
     color: lightgreen;
 }
 
-.btns{
+.btns {
     width: 100%;
     color: lightgreen;
 }
 
-.profiless p{
+.profiless p {
     font-size: 13px;
     margin: auto;
 }
 
-.divide{
-  height: 1px;
-  width: 100%;
-  background-color: lightgrey;
+.divide {
+    height: 1px;
+    width: 100%;
+    background-color: lightgrey;
 }
 
-.desktop{
+.desktop {
     display: none;
 }
 
@@ -179,10 +178,8 @@ nav.px {
         /* max-height: 100vh; */
     }
 
-    .navbar .logos h2{
+    .navbar .logos h2 {
         font-size: 30px;
-        height: 100%;
-        margin-top: auto;
     }
 
     .navbar .nav-list {
@@ -196,7 +193,7 @@ nav.px {
         /* background: #000; */
     }
 
-    .pro{
+    .pro {
         margin-right: 5px;
     }
 
@@ -214,7 +211,7 @@ nav.px {
         padding: 5px;
     }
 
-    .desktop{
+    .desktop {
         display: block;
     }
 
@@ -251,20 +248,20 @@ nav.px {
         text-transform: capitalize;
     }
 
-    .profiless{
+    .profiless {
         display: flex;
         gap: 7px;
     }
 
-    .profiless p{
+    .profiless p {
         font-size: 11px;
     }
 
-    .dot button{
+    .dot button {
         color: lightgreen;
     }
 
-    .btns{
+    .btns {
         width: 100%;
         color: lightgreen;
     }
