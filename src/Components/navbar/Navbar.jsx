@@ -6,6 +6,7 @@ import { ArrowDownward, Close, Menu, Person } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '@mui/material';
 import { logout } from '../../redux/users';
+import Search from '../search/Search';
 
 const Navbar = () => {
 
@@ -34,6 +35,7 @@ const Navbar = () => {
           {
             user ?
               <>
+                <Search />
                 <NavLink to="/login" className='login'>
                   <Button variant='outlined'>Post a Job</Button>
                 </NavLink>
@@ -56,7 +58,7 @@ const Navbar = () => {
         <div className='mobilemenu'>
           <div className='humberger' onClick={showMenu}>
             {user && <Link to='/profile' className='pro'><Person /></Link>}
-            {menu ? <Close fontSize='medium' /> : <Menu fontSize='medium' color='' />}
+            {menu ? <Close /> : <Menu color='' />}
           </div>
         </div>
       </nav>

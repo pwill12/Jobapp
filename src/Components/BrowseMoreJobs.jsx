@@ -8,7 +8,7 @@ import {
   Twitter,
 } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
-import { publicRequest} from "../apirequests";
+import { publicRequest } from "../apirequests";
 import { Mobile } from "../Mobile";
 import { format } from "timeago.js";
 import styled from "styled-components";
@@ -23,6 +23,7 @@ const Container = styled.div`
   padding: 20px;
   background-color: rgb(249, 249, 253);
   scroll-behavior: smooth;
+  // margin-top: 70px
 `;
 
 const Section = styled.div`
@@ -30,24 +31,24 @@ const Section = styled.div`
   display: flex;
   justify-content: center;
   ${Mobile({
-    flexDirection: "column",
-    padding: "0px",
-  })}
+  flexDirection: "column",
+  padding: "0px",
+})}
 `;
 
 const Left = styled.div`
   display: flex;
   flex: 2;
   ${Mobile({
-    order: 2,
-  })}
+  order: 2,
+})}
 `;
 
 const Jobsection = styled.div`
   width: 96%;
   ${Mobile({
-    width: "100%",
-  })}
+  width: "100%",
+})}
 `;
 
 const Leftsection = styled.div`
@@ -57,8 +58,8 @@ const Leftsection = styled.div`
   padding: 30px;
   border-radius: 7px;
   ${Mobile({
-    flexDirection: "column",
-  })}
+  flexDirection: "column",
+})}
 `;
 
 const ImgContain = styled.div`
@@ -69,16 +70,16 @@ const ImgContain = styled.div`
   align-items: center;
   justify-content: center;
   ${Mobile({
-    maxWidth: "60px",
-    maxHeight: "55px",
-  })}
+  maxWidth: "60px",
+  maxHeight: "55px",
+})}
 `;
 
 const ImgCon = styled.img`
   ${Mobile({
-    maxWidth: "60px",
-    maxHeight: "55px",
-  })}
+  maxWidth: "60px",
+  maxHeight: "55px",
+})}
 `;
 
 const Title = styled.div`
@@ -91,14 +92,14 @@ const Header = styled.h2`
   font-weight: 400;
   font-family: "Roboto", sans-serif;
   ${Mobile({
-    fontSize: "19px",
-  })}
+  fontSize: "19px",
+})}
 `;
 
 const Location = styled.div`
   ${Mobile({
-    marginBottom: "5px",
-  })}
+  marginBottom: "5px",
+})}
 `;
 
 const RightSection = styled.div`
@@ -116,16 +117,16 @@ const RightSection = styled.div`
     transition: all 0.3s ease;
   }
   ${Mobile({
-    marginTop: "5px",
-  })}
+  marginTop: "5px",
+})}
 `;
 
 const LeftSectionTitle = styled.div`
   display: flex;
   align-items: center;
   ${Mobile({
-    alignItems: "start",
-  })}
+  alignItems: "start",
+})}
 `;
 
 const Right = styled.div`
@@ -134,9 +135,9 @@ const Right = styled.div`
   flex: 1;
   width: 100%;
   ${Mobile({
-    order: 1,
-    marginBottom: "10px",
-  })}
+  order: 1,
+  marginBottom: "10px",
+})}
 `;
 const RightCon = styled.div`
   width: 100%;
@@ -145,10 +146,11 @@ const JobSummary = styled.div`
   ${"" /* margin-bottom: 5px; */}
   background-color: white;
   padding: 30px;
+  border-radius: 7px;
   ${"" /* height: 100%; */}
   ${Mobile({
-    marginTop: "20px",
-  })}
+  marginTop: "20px",
+})}
 `;
 const JobDetailsCon = styled.div`
   margin-top: 4px;
@@ -303,20 +305,20 @@ const Back = styled.div`
   align-items: center;
   justify-content: flex-start;
   ${Mobile({
-    flexDirection: "row",
-    padding: "0px",
-    width: "100%",
-    justifyContent: "center",
-    margin: "10px 0px",
-  })}
+  flexDirection: "row",
+  padding: "0px",
+  width: "100%",
+  justifyContent: "center",
+  margin: "10px 0px",
+})}
 `;
 
 const Goback = styled.div`
   display: "flex";
   align-items: "flex-start"
     ${Mobile({
-      marginBottom: "5px",
-    })};
+  marginBottom: "3px",
+})};
 `;
 
 const Arrow = styled.a`
@@ -332,14 +334,16 @@ const Arrow = styled.a`
 
 const Alertbar = styled.div`
   padding: 0px 200px 14px;
+  margin-top: 70px;
   ${Mobile({
-    padding: "0px",
-  })}
-`;
+  padding: "0px",
+  marginTop: "40px",
+})}
+`
 function BrowseMoreJobs({ ids }) {
   const [myjobs, setjobs] = useState({});
   const [errloading, seterrloading] = useState(false);
-  
+
 
   useEffect(() => {
     const getjobsinfo = async () => {
@@ -377,7 +381,7 @@ function BrowseMoreJobs({ ids }) {
   const employerId2 = useSelector((state) => state.post.jobs);
 
   let employerId = employerId2.employerId;
-  
+
   const handleClick = (e) => {
     apply(dispatch, {
       user,
@@ -438,7 +442,7 @@ function BrowseMoreJobs({ ids }) {
       // userapplied()
     };
     userapplied();
-  },[]);
+  }, []);
 
   let storedJobs = applied.find((o) => o.jobs === ids);
   let qualify = myjobs.qualifications;

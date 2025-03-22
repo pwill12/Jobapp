@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import MultipleSelectChip from "./FilterItems";
-import { Mobile } from "../Mobile";
-import { MultipleSelected } from "./FilterItems";
+import MultipleSelectChip from "../FilterItems";
+import { Mobile } from "../../Mobile";
+import { MultipleSelected } from "../FilterItems";
 import { Button, TextField } from "@mui/material";
 import {
   InputOutlined,
@@ -13,16 +13,16 @@ import { Link } from "react-router-dom";
 
 const Container = styled.div`
   ${"" /* margin-top: 30px; */}
-  height: 30vh;
+  // height: 30vh;
   display: flex;
   justify-content: center;
   ${Mobile({ height: "40vh" })}
   background-color: rgb(251, 251, 255);
 `;
 const Section = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
   ${Mobile({ flexDirection: "column" })}
 `;
 const Input = styled.input`
@@ -93,19 +93,20 @@ function Search() {
           id="outlined-basic"
           label="Search e.g React"
           variant="outlined"
-          style={{ width: 300 }}
+          size="small"
+          // style={{ width: 200 }}
           onChange={handleChange}
         />
-        <Multple>
+        {/* <Multple>
           <MultipleSelected />
-        </Multple>
+        </Multple> */}
         {/* <Select>
                 <Option disabled>school</Option>
             </Select> */}
-        <Button
+        {/* <Button
           variant="contained"
           color="success"
-          size="large"
+          size="small"
           startIcon={<SearchRounded />}
         >
           <Link
@@ -114,7 +115,7 @@ function Search() {
           >
             Find Jobs
           </Link>
-        </Button>
+        </Button> */}
       </Section>
     </Container>
   );

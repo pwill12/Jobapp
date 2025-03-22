@@ -2,7 +2,7 @@ import { FormatQuoteOutlined, FormatQuoteTwoTone, QueueTwoTone } from "@mui/icon
 import React, { Component } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
-import { Mobile } from "../Mobile";
+import { Mobile } from "../../Mobile";
 
 const Cont = styled.div`
   ${Mobile({display: 'none'})}
