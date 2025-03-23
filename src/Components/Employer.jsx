@@ -8,7 +8,6 @@ const Cont = styled.div`
   padding: 0px 20px;
   background-color: #f1f0fe;
 
-
 `
 
 const Container = styled.div`
@@ -17,6 +16,7 @@ const Container = styled.div`
 //   height: 90vh;
   display: flex;
   align-items: center;
+  margin-top: 60px;
   ${"" /* justify-content: center; */}
   ${Mobile({
     padding: "10px",

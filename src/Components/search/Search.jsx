@@ -83,27 +83,26 @@ function Search() {
   const handleChange = (e) => {
     setchange(e.target.value)
   };
-  console.log(change)
 
   return (
     <Container>
       <Section>
-        {/* <Input placeholder='search'/> */}
-        <TextField
+        <Input placeholder='search'/>
+        {/* <TextField
           id="outlined-basic"
           label="Search e.g React"
           variant="outlined"
           size="small"
           // style={{ width: 200 }}
           onChange={handleChange}
-        />
+        /> */}
         {/* <Multple>
           <MultipleSelected />
         </Multple> */}
         {/* <Select>
                 <Option disabled>school</Option>
             </Select> */}
-        {/* <Button
+        <Button
           variant="contained"
           color="success"
           size="small"
@@ -115,7 +114,7 @@ function Search() {
           >
             Find Jobs
           </Link>
-        </Button> */}
+        </Button>
       </Section>
     </Container>
   );

@@ -20,6 +20,7 @@ import FormControl from "@mui/material/FormControl";
 import Chip from "@mui/material/Chip";
 import Jobitems from "./Jobitems";
 import { Select } from "@mui/material";
+import Searched from "./search/Searchtext";
 
 const Container = styled.div`
   padding: 15px;
@@ -28,20 +29,20 @@ const Container = styled.div`
   background-color: rgb(251, 251, 255);
   height: 100%;
   ${Mobile({
-    overFlow: "hidden",
-    padding: "0px",
-    marginTop: '40px'
-  })}
+  overFlow: "hidden",
+  padding: "0px",
+  marginTop: '40px'
+})}
 `;
 
 const Section = styled.div`
   padding: 50px 150px;
   display: flex;
   ${Mobile({
-    flexDirection: "column",
-    padding: "20px",
-    overFlow: "hidden",
-  })}
+  flexDirection: "column",
+  padding: "20px",
+  overFlow: "hidden",
+})}
 `;
 
 const Left = styled.div`
@@ -55,29 +56,29 @@ const Left = styled.div`
   position: sticky;
   top: 0;
   ${Mobile({
-    width: "100%",
-    flex: 0.7,
-    padding: "10px",
-    justifyContent: "center",
-    position: "relative",
-    overFlow: "hidden",
-  })}
+  width: "100%",
+  flex: 0.7,
+  padding: "10px",
+  justifyContent: "center",
+  position: "relative",
+  overFlow: "hidden",
+})}
 `;
 
 const LeftCon = styled.div`
   padding: 35px;
   text-align: left;
-  width: 10vw;
+  // width: 10vw;
   ${Mobile({
-    width: "",
-    textAlign: "center",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "15px 0px",
-    overFlow: "hidden",
-  })}
+  width: "",
+  textAlign: "center",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  padding: "15px 0px",
+  overFlow: "hidden",
+})}
 `;
 
 const Header = styled.h2`
@@ -90,8 +91,8 @@ const Selectbtn = styled.div`
   margin-top: 15px;
   display: none;
   ${Mobile({
-    display: "block",
-  })}
+  display: "block",
+})}
 `;
 
 const Right = styled.div`
@@ -100,18 +101,18 @@ const Right = styled.div`
   ${"" /* align-items: center; */}
   margin-left: 20px;
   ${Mobile({
-    margin: "0px",
-    flex: 1,
-    overFlow: "hidden",
-  })}
+  margin: "0px",
+  flex: 1,
+  overFlow: "hidden",
+})}
 `;
 
 const Search = styled.input`
   padding: 10px;
   width: 200px;
   ${Mobile({
-    display: "none",
-  })}
+  display: "none",
+})}
 `;
 
 const RightCon = styled.div`
@@ -119,10 +120,10 @@ const RightCon = styled.div`
   ${"" /* background-color: white; */}
   ${"" /* width: 100%; */}
   ${Mobile({
-    margin: "0px",
-    width: "100vw",
-    overFlow: "hidden",
-  })}
+  margin: "0px",
+  width: "100vw",
+  overFlow: "hidden",
+})}
 `;
 
 const JobList = styled.div`
@@ -134,11 +135,11 @@ const JobList = styled.div`
   border-radius: 5px;
   min-width: 50vw;
   ${Mobile({
-    flexDirection: "column",
-    padding: "20px",
-    alignItems: "start",
-    marginTop: "20px",
-  })}
+  flexDirection: "column",
+  padding: "20px",
+  alignItems: "start",
+  marginTop: "20px",
+})}
 `;
 
 const Job = styled.h2`
@@ -163,8 +164,8 @@ const Selectbtn1 = styled.div`
   margin-top: 15px;
   ${"" /* display: none; */}
   ${Mobile({
-    display: "block",
-  })}
+  display: "block",
+})}
 `;
 
 const Selects = styled.select`
@@ -256,10 +257,10 @@ function Filter({ tags }) {
       <Section>
         <Left>
           <LeftCon>
-            <Header> Filter Jobs</Header> <Search placeholder="search" />
+            <Header> Filter Jobs</Header> <Search placeholder="Search" />
             <Selectbtn1>
               <BasicSelect />
-            </Selectbtn1>{" "}
+            </Selectbtn1>
             <Selectbtn1>
               <BasicSelect2 />
             </Selectbtn1>{" "}

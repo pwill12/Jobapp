@@ -77,7 +77,7 @@ function App() {
               path="/jobinfo/:ids"
               element={user ? <Jobinfo replace /> : <Login />}
             />{" "}
-            <Route path="/company" element={<Employer />} />{" "}
+            <Route path="/employer" element={<Employer />} />{" "}
             <Route path="/checkout" element={<StripeContainer />} />{" "}
             <Route path="/info" element={<RecruitForm />} />{" "}
             <Route path="/success" element={<RecruiterCheckout />} />{" "}

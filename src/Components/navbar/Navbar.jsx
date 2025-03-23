@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '@mui/material';
 import { logout } from '../../redux/users';
 import Search from '../search/Search';
+import Searched from '../search/Searchtext';
 
 const Navbar = () => {
 
@@ -31,12 +32,12 @@ const Navbar = () => {
         <NavLink to="/" className='logos'>
           <h2 className='dev'>Devjobs</h2>
         </NavLink>
+        <Searched/>
         <div className="signin">
           {
             user ?
               <>
-                <Search />
-                <NavLink to="/login" className='login'>
+                <NavLink to="/employer" className='login'>
                   <Button variant='outlined'>Post a Job</Button>
                 </NavLink>
 

@@ -43,6 +43,7 @@ const Left = styled.div`
 const About = styled.div`
   display: flex;
   flex: 1;
+  margin-top: 45px;
   width: 23%;
   justify-content: space-between;
   color: lightgreen;
@@ -73,7 +74,7 @@ const Card = styled.div`
   flex-direction: column;
   border-radius: 10px;
   border: 1px solid lightgrey;
-  ${Mobile({ marginTop: "30px" })}
+  ${Mobile({ marginTop: "10px" })}
 
   ${"" /* box-shadow: 14px 14px 20px #cbced1,-14px -14px 20px white; */}
 `;
