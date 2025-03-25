@@ -1,5 +1,5 @@
 
-import { FavoriteBorderOutlined } from "@mui/icons-material";
+import { FavoriteBorder, FavoriteBorderOutlined, FavoriteBorderTwoTone, FavoriteOutlined } from "@mui/icons-material";
 import React, { useContext } from "react";
 import { Button } from "react-bootstrap";
 import styled from "styled-components";
@@ -20,6 +20,6 @@ export const Favourited = ({ jobs }) => {
   // console.log(storedFav)
 
   const favdisabled = storedFav ? true : false;
-  return <MyBtn disabled={favdisabled} onClick={() => addfav(jobs)} ><FavoriteBorderOutlined style={favdisabled?{color: 'red'}: {color: 'none'}}/></MyBtn>
+  return <MyBtn disabled={favdisabled} onClick={() => addfav(jobs)} ><FavoriteOutlined style={favdisabled?{color: 'lightskyblue',}: {color: 'lightgray'}}/></MyBtn>
   ;
 };

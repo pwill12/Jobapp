@@ -10,29 +10,32 @@ import {
   SearchRounded,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import Searched from "./Searchtext";
 
 const Container = styled.div`
-  ${"" /* margin-top: 30px; */}
+  // margin-top: 30px;
   // height: 30vh;
   display: flex;
   justify-content: center;
-  ${Mobile({ height: "40vh" })}
+  ${Mobile({ height: "5vh",marginBottom: '10px' })}
   background-color: rgb(251, 251, 255);
 `;
 const Section = styled.div`
   // display: flex;
   // justify-content: center;
   // align-items: center;
+  margin-top: 30px;
   ${Mobile({ flexDirection: "column" })}
 `;
 const Input = styled.input`
   padding: 10px;
   font-size: 20px;
   margin-right: 25px;
+  border-radius: 5px;
   border: 1px solid lightgrey;
   ${Mobile({
-    marginRight: "0px",
-    width: 300,
+    marginRight: "10px",
+    width: 200,
   })}
 `;
 const Select = styled.select`
@@ -88,20 +91,6 @@ function Search() {
     <Container>
       <Section>
         <Input placeholder='search'/>
-        {/* <TextField
-          id="outlined-basic"
-          label="Search e.g React"
-          variant="outlined"
-          size="small"
-          // style={{ width: 200 }}
-          onChange={handleChange}
-        /> */}
-        {/* <Multple>
-          <MultipleSelected />
-        </Multple> */}
-        {/* <Select>
-                <Option disabled>school</Option>
-            </Select> */}
         <Button
           variant="contained"
           color="success"

@@ -59,9 +59,8 @@ export default function Searched() {
     const fetchData = async () => {
       const res = await axios.get(`https://jobs-api-u83r.onrender.com/api/findjob?search=${query}`);
       setData(res.data);
-      console.log(res)
     };
-    if (query.length > 0 || query.length === 0) fetchData();
+    if (query.length > 0 || query.length !== 0) fetchData();
   }, [query]);
 
   return (

@@ -32,6 +32,8 @@ import Admindashboard from "./Pages/Admindashboard";
 import Success from "./Components/Success";
 import Successfull from "./Pages/Success";
 import Applieds from "./Components/Applied";
+import AdminPanel from "./Pages/admin";
+import Postjobs from "./Pages/posts-job";
 
 // import Bodysection from './Components/Body';
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -76,6 +78,14 @@ function App() {
             <Route
               path="/jobinfo/:ids"
               element={user ? <Jobinfo replace /> : <Login />}
+            />{" "}
+            <Route
+              path="/employer/admin"
+              element={user ? <AdminPanel replace /> : <Login />}
+            />{" "}
+            <Route
+              path="/post-job"
+              element={user ? <Postjobs replace /> : <Login />}
             />{" "}
             <Route path="/employer" element={<Employer />} />{" "}
             <Route path="/checkout" element={<StripeContainer />} />{" "}

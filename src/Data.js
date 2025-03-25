@@ -13,17 +13,16 @@ const size = { width: "60px" };
 export const category = [{
         id: 1,
         bg: "purple",
-        img: < img src = "images/icons8-javascript.gif"
-        style = { size }
-        />,
-        title: "Javascript Jobs",
-        tag: "javascript",
+        img: < img src = "images/icons8-javascript.gif"/>,
+        style: { size },
+        title: "Angular Jobs",
+        tag: "Angular",
         Total: 200,
     },
     {
         id: 2,
         bg: "blue",
-        img: < img src = "images/icons8-ruby-programming-language-64.png" / > ,
+        img: < img src = "images/icons8-ruby-programming-language-64.png" /> ,
         title: "Ruby on Rails",
         tag: "ruby on rails",
         Total: 300,
@@ -34,14 +33,14 @@ export const category = [{
         img: < img src = "images/icons8-c-sharp-logo-50.png"
         style = { size }
         />,
-        title: "C# Developers",
-        tag: "c#",
+        title: "React Developers",
+        tag: "React",
         Total: 300,
     },
     {
         id: 4,
         bg: "pink",
-        img: < img src = "images/icons8-php-64.png" / > ,
+        img: < img src = "images/icons8-php-64.png" /> ,
         title: "Php Developer",
         tag: "Php",
         Total: 300,
@@ -49,7 +48,7 @@ export const category = [{
     {
         id: 5,
         bg: "blue",
-        img: < img src = "images/go-language-icon.png" / > ,
+        img: < img src = "images/go-language-icon.png" /> ,
         tag: "Go lang",
         title: "Go lang",
         Total: 300,
@@ -57,7 +56,7 @@ export const category = [{
     {
         id: 6,
         bg: "black",
-        img: < img src = "images/icons8-python-64.png" / > ,
+        img: < img src = "images/icons8-python-64.png" /> ,
         title: "Python Developer",
         tag: "Python",
         Total: 300,
@@ -65,14 +64,14 @@ export const category = [{
     {
         id: 7,
         bg: "black",
-        img: < img src = "images/icons8-web-design-64.png" / > ,
+        img: < img src = "images/icons8-web-design-64.png" /> ,
         title: "UI & UX",
         Total: 300,
     },
     {
         id: 8,
         bg: "black",
-        img: < img src = "images/icons8-designthinking-64.png" / > ,
+        img: < img src = "images/icons8-designthinking-64.png" /> ,
         title: "Graphic Designer",
         Total: 300,
     },

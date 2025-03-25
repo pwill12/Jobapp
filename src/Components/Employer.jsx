@@ -13,14 +13,14 @@ const Cont = styled.div`
 const Container = styled.div`
   padding: 0px;
   ${"" /* margin-top: -15px; */}
-//   height: 90vh;
+  height: 95vh;
   display: flex;
   align-items: center;
   margin-top: 60px;
   ${"" /* justify-content: center; */}
   ${Mobile({
     padding: "10px",
-    height: "100%",
+    height: "90vh",
     marginTop: "0px",
     overflow: "hidden",
   })}

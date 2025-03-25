@@ -313,7 +313,11 @@ function Jobitems({ tags, filters }) {
       )
     );
   }, [jobs, tags, filters]);
-  // console.log(filtered)
+  const jbb = jobs.map((props) => {
+    return props._id
+  })
+
+  console.log(jbb)
   return (
     <div>
       {loading ? <MySpinner /> : errloading ? <p>error loading jobs</p> :
@@ -374,9 +378,9 @@ function Jobitems({ tags, filters }) {
                 </TagsCon>
               </Container>
             ))
-            : jobs.map((props, i) => (
+            : jobs?.map((props) => (
               <Container data-aos="fade-up">
-                <Item key={i}>
+                <Item key={props._id}>
                   <LeftSection>
                     <ImgCon>
                       <Img src={props.img} />

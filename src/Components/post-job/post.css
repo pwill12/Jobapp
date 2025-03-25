@@ -1,0 +1,20 @@
+.container{
+    margin-top: 60px;
+    padding: 20px 100px;
+    width: 50%;
+}
+
+.container h2{
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@media screen and (max-width: 760px){
+    .container{
+        margin-top: 70px;
+        padding: 40px 10px;
+        width: 100%;
+    }
+    
+}

@@ -37,7 +37,7 @@ const Navbar = () => {
           {
             user ?
               <>
-                <NavLink to="/employer" className='login'>
+                <NavLink to="/post-job" className='login'>
                   <Button variant='outlined'>Post a Job</Button>
                 </NavLink>
 
@@ -79,14 +79,14 @@ const Navbar = () => {
                 <div className='divide'></div>
 
                 <NavLink to='/login'><h5 onClick={handleLogout} className='dot'>logout</h5></NavLink>
-                <NavLink to='/' className='dot'><h5>for employers</h5></NavLink>
-                <NavLink to='/post' className='dot btns'><Button variant='outlined' size='small' fullWidth>Post a Job</Button></NavLink>
+                <NavLink to='/employer' className='dot'><h5>for employers</h5></NavLink>
+                <NavLink to='/post-job' className='dot btns'><Button variant='outlined' size='small' fullWidth>Post a Job</Button></NavLink>
               </div>
               :
               <div className='mobcon desktop'>
                 <NavLink to='/' className='dot'><h5>Discover</h5></NavLink>
                 <NavLink to='/signup' className='dot'><h5>for job seekers</h5></NavLink>
-                <NavLink to='/' className='dot'><h5>for employers</h5></NavLink>
+                <NavLink to='/employer' className='dot'><h5>for employers</h5></NavLink>
                 <NavLink to='/login' className='dot btns'><Button variant='outlined' size='small' fullWidth>login</Button></NavLink>
               </div>
           }

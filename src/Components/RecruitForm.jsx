@@ -13,12 +13,12 @@ import StripeContainer from "./StripePayment";
 import Success from "./Success";
 
 const Contain = styled.div`
-  ${Mobiles({display: 'none'})}
+  ${Mobiles({ display: 'none' })}
 `
 
 const Mobilesf = styled.div`
   display: none;
-  ${Mobile({display: 'block', textAlign: 'center'})}
+  ${Mobile({ display: 'block', textAlign: 'center' })}
 `
 
 
@@ -138,31 +138,31 @@ function RecruitForm() {
 
   return (
     <div>
-    <Contain>
-      <MyNavbar />
-      {isFetching === true ? (
-        <div style={{display: 'flex', justifyContent: 'center', marginTop: '120px'}}>
-          <MySpinner/>
-        </div>
-      ) : (
-        <>
-          {employer === null ? (
-            <div style={{ padding: "40px 120px" }}>
-              <h2 style={{ marginBottom: "20px" }}>
-                Tell Us About Your Company
-              </h2>
-              <GridComplexExample />
-            </div>
-          ) : (
-            <>
-              <Button onClick={handleRemove} style={{padding: '20px 80px'}}>Go back</Button>
-              <StripeContainer />
-            </>
-          )}
-        </>
-      )}    
-    </Contain>
-    <Mobilesf>Pls Switch to desktop</Mobilesf>
+      <Contain>
+        <MyNavbar />
+        {isFetching === true ? (
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '120px' }}>
+            <MySpinner />
+          </div>
+        ) : (
+          <>
+            {employer === null ? (
+              <div style={{ padding: "40px 120px" }}>
+                <h2 style={{ marginBottom: "20px" }}>
+                  Tell Us About Your Company
+                </h2>
+                <GridComplexExample />
+              </div>
+            ) : (
+              <>
+                <Button onClick={handleRemove} style={{ padding: '20px 80px' }}>Go back</Button>
+                <StripeContainer />
+              </>
+            )}
+          </>
+        )}
+      </Contain>
+      <Mobilesf>Pls Switch to desktop</Mobilesf>
     </div>
   );
 }

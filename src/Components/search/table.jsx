@@ -11,9 +11,11 @@ const Table = ({ data }) => {
           </tr> */}
                 {data.map((data) => (
                     <tr key={data._id}>
-                        <Link to={"/jobinfo/" + data._id} className="tdlink">
-                            <td>{data.title}</td>
-                        </Link>
+                        <td>
+                            <Link to={"/jobinfo/" + data._id} className="tdlink">
+                                {data.title}
+                            </Link>
+                        </td>
                     </tr>
                 ))}
             </tbody>

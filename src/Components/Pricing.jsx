@@ -20,11 +20,8 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      {/* <Link color="inherit" href="https://mui.com/"> */}
         Willjobs
-      {/* </Link>{' '} */}
       {new Date().getFullYear()}
-      {'.'}
     </Typography>
   );
 }
@@ -32,12 +29,12 @@ function Copyright(props) {
 const tiers = [
   {
     title: 'Basic Plan',
-    price: '50',
+    price: 'free',
     description: [
-      '1 post per week',
+      '1 post per month',
       'expires after one month',
       'Help center access',
-      'Email support',
+      'no Email support',
     ],
     buttonText: 'Sign up',
     buttonVariant: 'outlined',
@@ -47,8 +44,8 @@ const tiers = [
     subheader: 'Most popular',
     price: '15',
     description: [
-      '20 users included',
-      '10 GB of storage',
+      'Job tracking Dashboard',
+      '10 jobs listing per month',
       'Help center access',
       'Priority email support',
     ],
@@ -100,7 +97,7 @@ function PricingContent() {
       <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
       <CssBaseline />
       {/* Hero unit */}
-      <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
+      <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 2 }}>
         <Typography
           component="h1"
           variant="h2"
@@ -110,15 +107,10 @@ function PricingContent() {
         >
           Pricing
         </Typography>
-        <Typography variant="p" align="center" color="text.secondary" component="p">
-          Quickly build an effective pricing table for your potential customers with
-          this layout. It&apos;s built with default MUI components with little
-          customization.
-        </Typography>
       </Container>
       {/* End hero unit */}
       <Container maxWidth="md" component="main">
-        <Grid container spacing={5} alignItems="flex-end">
+        <Grid container spacing={4} alignItems="flex-end">
           {tiers.map((tier) => (
             // Enterprise card is full width at sm breakpoint
             <Grid
@@ -173,7 +165,7 @@ function PricingContent() {
                     ))}
                   </ul>
                 </CardContent>
-                <Link to={'/info'} style={{textDecoration: 'none'}}>
+                <Link to={'/post-job'} style={{textDecoration: 'none'}}>
                 <CardActions>
                   <Button fullWidth variant={tier.buttonVariant}>
                     {tier.buttonText}
@@ -195,28 +187,7 @@ function PricingContent() {
           py: [3, 6],
         }}
       >
-        <Grid container spacing={4} justifyContent="space-evenly">
-          {footers.map((footer) => (
-            <Grid item xs={6} sm={3} key={footer.title}>
-              <Typography variant="h6" color="text.secondary" gutterBottom>
-                {footer.title}
-              </Typography>
-              <ul>
-                {footer.description.map((item) => (
-                  <li key={item}>
-                    {/* <Link href="#" variant="subtitle1" color="text.primary">
-                      {item}
-                    </Link> */}
-                    <Link to={'/'}>
-                    {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </Grid>
-          ))}
-        </Grid>
-        <Copyright sx={{ mt: 5 }} />
+        <Copyright sx={{ mt: 0 }} />
       </Container>
       {/* End footer */}
     </React.Fragment>
