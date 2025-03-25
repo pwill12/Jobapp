@@ -17,7 +17,7 @@ const Container = styled.div`
   // height: 30vh;
   display: flex;
   justify-content: center;
-  ${Mobile({ height: "5vh",marginBottom: '10px' })}
+  ${Mobile({ height: "10vh",marginBottom: '0px' })}
   background-color: rgb(251, 251, 255);
 `;
 const Section = styled.div`
