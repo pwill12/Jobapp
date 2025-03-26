@@ -131,7 +131,7 @@ function BodyContent() {
             <Link to={'/login'}>
               <Btn1>Apply</Btn1>
             </Link>
-            <Link to={'/company'}>
+            <Link to={'/employer'}>
               <Btn2>Post a Job</Btn2>
             </Link>
           </Button>
