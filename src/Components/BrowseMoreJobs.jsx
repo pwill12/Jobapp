@@ -21,9 +21,9 @@ import { Alert, AlertTitle } from "@mui/material";
 
 const Container = styled.div`
   padding: 20px;
-  background-color: rgb(249, 249, 253);
+  // background-color: rgb(249, 249, 253);
   scroll-behavior: smooth;
-  // margin-top: 70px
+  margin-top: 50px
 `;
 
 const Section = styled.div`
@@ -334,10 +334,10 @@ const Arrow = styled.a`
 
 const Alertbar = styled.div`
   padding: 0px 200px 14px;
-  margin-top: 70px;
+  // margin-top: 70px;
   ${Mobile({
   padding: "0px",
-  marginTop: "40px",
+  marginTop: "10px",
 })}
 `
 function BrowseMoreJobs({ ids }) {

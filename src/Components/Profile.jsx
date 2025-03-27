@@ -28,12 +28,13 @@ const Container = styled.div`
   ${"" /* background-color: rgb(251, 251, 255); */}
   background-color: #f2f2f2;
   ${"" /* background-color: white; */}
-  padding: 40px 90px;
+  padding: 40px 120px;
   ${Mobile({ padding: "20px" })}
 `;
 const Section = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 40px;
   ${Mobile({ flexDirection: "column" })}
 `;
 const Left = styled.div`
@@ -82,7 +83,9 @@ const ImgCon = styled.div``;
 const Img = styled.img``;
 const Name = styled.h3``;
 const Headline = styled.div``;
-const Location = styled.div``;
+const Location = styled.div`
+  margin: 5px 0px;
+`;
 
 const Center = styled.div`
   flex: 2;
@@ -434,10 +437,10 @@ function Myprofile() {
   return (
     <Container>
       {/* <ReactNotification/> */}
-      <About>
+      {/* <About>
         <Me>About me</Me>
         <Edit>Edit</Edit>
-      </About>
+      </About> */}
       <Section>
         <Left>
           <Card>
@@ -452,6 +455,7 @@ function Myprofile() {
             <Name>{updated.lastname}</Name>
             <Headline>Headline+</Headline>
             <Location>Lagos,Nigeria</Location>
+            <Button variant="outlined" size="small">edit profile</Button>
           </Card>
           <Executive>
             <ExecSum>Contact Info</ExecSum>

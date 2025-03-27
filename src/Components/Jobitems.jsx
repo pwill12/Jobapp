@@ -317,7 +317,7 @@ function Jobitems({ tags, filters }) {
     return props._id
   })
 
-  console.log(jbb)
+  console.log(jobs)
   return (
     <div>
       {loading ? <MySpinner /> : errloading ? <p>error loading jobs</p> :
