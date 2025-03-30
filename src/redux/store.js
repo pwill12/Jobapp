@@ -8,8 +8,6 @@ import regcallReducer from './regsta'
 import registerusersReducer from './registerusers'
 
 
-
-
 import {
     persistStore,
     persistReducer,
@@ -27,7 +25,6 @@ const persistConfig = {
     version: 1,
     storage,
     blacklist: ['regcall', 'registerusers']
-
 };
 
 const rootReducer = combineReducers({ user: userReducer, contact: contactReducer, apply: applyReducer, employer: EmployerReducer, post: postReducer, regcall: regcallReducer, registerusers: registerusersReducer });
@@ -39,7 +36,7 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {
-                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+                ignoredActions: [FLUSH, PAUSE,REHYDRATE, PERSIST, PURGE, REGISTER],
             },
         }),
 });

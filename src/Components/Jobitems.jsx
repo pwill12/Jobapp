@@ -81,6 +81,7 @@ const Img = styled.img`
   max-width: 60px;
   min-width: 60px;
   max-height: 55px;
+  border-radius: 7px;
   ${Mobile({
     maxHeight: "55px",
     maxWidth: "59px",
@@ -313,14 +314,10 @@ function Jobitems({ tags, filters }) {
       )
     );
   }, [jobs, tags, filters]);
-  const jbb = jobs.map((props) => {
-    return props._id
-  })
 
-  console.log(jobs)
   return (
     <div>
-      {loading ? <MySpinner /> : errloading ? <p>error loading jobs</p> :
+      {loading ? <MySpinner /> : errloading ? <p>error loading jobs</p> : jobs.length === 0 ? <p>No jobs found</p> :
 
         <>
           {/* {loading && <MySpinner />} */}
@@ -330,7 +327,7 @@ function Jobitems({ tags, filters }) {
                 <Item key={props._id}>
                   <LeftSection>
                     <ImgCon>
-                      <Img src={props.img} />
+                      <Img src={`https://ik.imagekit.io/will12${props.img}`} />
                     </ImgCon>
                     <Title>
                       <Info>{props.title}</Info>
@@ -341,7 +338,7 @@ function Jobitems({ tags, filters }) {
                           </Span>
                           {/* {props.location} */}
                           {props.location?.map((prop) => (
-                            <MyLoc>{prop},</MyLoc>
+                            <MyLoc>{prop}</MyLoc>
                           ))}
                         </LocateSpan>
                         <LocateSpan>
@@ -383,7 +380,7 @@ function Jobitems({ tags, filters }) {
                 <Item key={props._id}>
                   <LeftSection>
                     <ImgCon>
-                      <Img src={props.img} />
+                      <Img src={`https://ik.imagekit.io/will12${props.img}`} />
                     </ImgCon>
                     <Title>
                       <Info>{props.title}</Info>
@@ -395,7 +392,7 @@ function Jobitems({ tags, filters }) {
                           {/* {props.location} */}
 
                           {props.location?.map((prop, i) => (
-                            <MyLoc key={i}>{prop},</MyLoc>
+                            <MyLoc key={i}>{prop}</MyLoc>
                           ))}
                         </LocateSpan>
                         <LocateSpan>
@@ -404,7 +401,11 @@ function Jobitems({ tags, filters }) {
                               style={{ fontSize: "", marginRight: "5px" }}
                             />
                           </Span>
-                          <Salary>{props.salary}</Salary>
+                          <>
+                          {props.salary?.map((props, i) => (
+                            <Salary key={i}>{props}</Salary>
+                          ))}
+                          </>
                         </LocateSpan>
                       </Location>
                     </Title>

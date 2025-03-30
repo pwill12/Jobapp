@@ -8,6 +8,8 @@ import { Button } from '@mui/material';
 import { logout } from '../../redux/users';
 import Search from '../search/Search';
 import Searched from '../search/Searchtext';
+import { useEffect } from 'react';
+import { useRef } from 'react';
 
 const Navbar = () => {
 
@@ -25,6 +27,22 @@ const Navbar = () => {
     dispatch(logout())
   }
 
+  let menuref = useRef();
+
+  useEffect(() => {
+    let removenav = (e) => {
+      if (!menuref.current.contains(e.target)) {
+        setMenu(false)
+      }
+    }
+    document.addEventListener('mousedown', removenav)
+
+    return()=>{
+    document.removeEventListener('mousedown', removenav)
+    }
+  })
+  
+
   return (
 
     <>
@@ -33,7 +51,7 @@ const Navbar = () => {
           <h2 className='dev'>Devjobs</h2>
         </NavLink>
         <Searched/>
-        <div className="signin">
+        <div className="signin" ref={menuref}>
           {
             user ?
               <>
@@ -42,7 +60,7 @@ const Navbar = () => {
                 </NavLink>
 
                 {/* <NavLink to="/profile" className='login'> */}
-                <Person fontSize='large' onClick={showMenu} />
+                <Person fontSize='large' onClick={showMenu}/>
                 {/* </NavLink> */}
               </>
               :
@@ -56,7 +74,7 @@ const Navbar = () => {
               </>
           }
         </div>
-        <div className='mobilemenu'>
+        <div className='mobilemenu' ref={menuref}>
           <div className='humberger' onClick={showMenu}>
             {user && <Link to='/profile' className='pro'><Person /></Link>}
             {menu ? <Close /> : <Menu color='' />}
@@ -67,7 +85,7 @@ const Navbar = () => {
         <>
           {
             user ?
-              <div className='mobcon'>
+              <div className='mobcon' ref={menuref}>
                 <div className='profiless'>
                   <Person />
                   <p>{user?.username}</p>
@@ -83,7 +101,7 @@ const Navbar = () => {
                 <NavLink to='/post-job' className='dot btns'><Button variant='outlined' size='small' fullWidth>Post a Job</Button></NavLink>
               </div>
               :
-              <div className='mobcon desktop'>
+              <div className='mobcon desktop' ref={menuref}>
                 <NavLink to='/' className='dot'><h5>Discover</h5></NavLink>
                 <NavLink to='/signup' className='dot'><h5>for job seekers</h5></NavLink>
                 <NavLink to='/employer' className='dot'><h5>for employers</h5></NavLink>

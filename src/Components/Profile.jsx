@@ -365,7 +365,7 @@ function Myprofile() {
   let updated = useSelector((state) => state.contact.contacts);
   const userid = updated._id;
 
-  // console.log(user, updated)
+  console.log(user?.accessToken)
   const [applied, setapplied] = useState([]);
   const [data, setdata] = useState('')
   const [loading, setloading] = useState(false)

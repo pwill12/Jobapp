@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import { Col, Form, Row} from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import { Col, Form, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import "./form.css"
-import axios from "axios";
 import { userRequest } from "../../apirequests";
 import { toast } from "react-toastify";
 import { Button } from "@mui/material";
+import Upload from "../upload-img/Upload";
+import InputFileUpload from "../upload-img/UploadButton";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 export default function Postform() {
-  const dispatch = useDispatch();
 
   const [img, setimgurl] = useState("");
   const [responsibilities, setresponsibilities] = useState([]);
@@ -26,10 +26,7 @@ export default function Postform() {
   const [content, setcontent] = useState('');
   const [tag, settag] = useState([]);
   const [checkbox, setcheckbox] = useState(true);
-
-
-
-
+  const [progress, setProgress] = useState(0);
 
 
 
@@ -50,26 +47,41 @@ export default function Postform() {
 
   const tagoption = [
     { value: 'React', label: 'React' },
+    { value: 'Angular', label: 'Angular' },
+    { value: 'Python', label: 'Python' },
   ]
-
-  // console.log(location.map((option) => {
-  //   return option.value
-  // }))
 
   let navigate = useNavigate()
 
   const postdetails = {
-    img, title, content, location, responsibilities, qualifications, vacancy, salary, time, tag
+    img: img?.filePath, title, content, location, responsibilities, qualifications, vacancy, salary, time, tag
   }
+
+  // if (!postdetails.img || postdetails.title || postdetails.content || postdetails.responsibilities.length === 0) {
+  // }
 
   const handlecheckbox = () => {
     setcheckbox(!checkbox)
   }
-  console.log(checkbox)
+
+  let user = useSelector((state) => state.user.currentUser);
+
+  const TOKEN = user?.accessToken
+
+  console.log(
+    TOKEN
+  )
+
+  const BASE_URL = "https://jobs-api-u83r.onrender.com/api/";
+
+  const userRequest = axios.create({
+    baseURL: BASE_URL,
+    headers: { token: `Bearer ${TOKEN}` },
+  });
+
   const handleClick = async () => {
     try {
-      const submitpost = await userRequest.post('https://jobs-api-u83r.onrender.com/api/jobs', postdetails)
-      console.log(submitpost)
+      await userRequest.post('/jobs', postdetails)
       toast.success("Job posted successfully")
       navigate('/')
     } catch (error) {
@@ -78,6 +90,7 @@ export default function Postform() {
     }
   }
 
+  console.log(img)
 
 
   return (
@@ -95,19 +108,19 @@ export default function Postform() {
               onChange={(e) => settitle(e.target.value)}
             />
           </Form.Group>
-          <Form.Group as={Col} controlId="formGridText" className="mb-3">
-            <Form.Label>Cover Image</Form.Label>
-            <Form.Control
+          <Form.Group as={Row} controlId="formGridText" className="mb-0">
+            <Form.Label>Cover Image : <Upload type='image' setData={setimgurl} setProgress={setProgress} /></Form.Label>
+            {/* <Form.Control
               type="text"
               size="lg"
               placeholder="Enter Image Url"
               onChange={(e) => setimgurl(e.target.value)}
-            />
+            /> */}
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridCity" className="mb-3">
             <Form.Label>Location</Form.Label>
-            <Select
+            <CreatableSelect
               // defaultValue={[colourOptions[2], colourOptions[3]]}
               isMulti
               name="colors"
@@ -146,7 +159,6 @@ export default function Postform() {
             {/* <Form.Control /> */}
           </Form.Group>
 
-
           <Form.Group as={Col} controlId="formGridText" className="mb-3">
             <Form.Label>Vacancy</Form.Label>
             <Form.Control
@@ -183,7 +195,7 @@ export default function Postform() {
 
         <Form.Group as={Col} controlId="formGridCity" className="mb-3">
           <Form.Label>tag</Form.Label>
-          <Select
+          <CreatableSelect
             // defaultValue={[colourOptions[2], colourOptions[3]]}
             isMulti
             name="colors"
@@ -203,7 +215,7 @@ export default function Postform() {
         </Form.Group>
 
         <Form.Group className="mb-3" id="formGridCheckbox">
-          <Form.Check type="checkbox" label="You accept to our terms and condition" onChange={handlecheckbox}/>
+          <Form.Check type="checkbox" label="You accept to our terms and condition" onChange={handlecheckbox} />
         </Form.Group>
         {/* <Link to="/checkout"> */}
         <Button

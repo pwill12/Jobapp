@@ -333,13 +333,13 @@ function JobSection() {
         </Link>
       </JobCon>
       <Section>
-        {loading ? <MySpinner /> : errloading ? <p>error loading jobs</p> :
+        {loading ? <MySpinner /> : errloading ? <p>error loading jobs</p> : jobs.length === 0 ? <p>no jobs found</p> :
           <>
             {jobs.map((props, i) => (
               <Item key={i} data-aos="fade-up">
                 <Left>
                   <ImgCon>
-                    <Img src={props.img} />
+                    <Img src={`https://ik.imagekit.io/will12${props.img}`} />
                   </ImgCon>
                   <Title>
                     <Info>{props.title}</Info>

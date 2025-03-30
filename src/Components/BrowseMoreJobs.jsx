@@ -64,7 +64,8 @@ const Leftsection = styled.div`
 
 const ImgContain = styled.div`
   // background-color: lightgrey;
-  height: 70px;
+  max-height: 70px;
+  max-width: 60px;
   padding: 10px;
   display: flex;
   align-items: center;
@@ -76,6 +77,8 @@ const ImgContain = styled.div`
 `;
 
 const ImgCon = styled.img`
+  max-height: 70px;
+  max-width: 60px;
   ${Mobile({
   maxWidth: "60px",
   maxHeight: "55px",
@@ -446,6 +449,8 @@ function BrowseMoreJobs({ ids }) {
 
   let storedJobs = applied.find((o) => o.jobs === ids);
   let qualify = myjobs.qualifications;
+  const salary = myjobs?.salary
+  console.log(salary)
 
   // console.log(myjobs)
 
@@ -509,7 +514,7 @@ function BrowseMoreJobs({ ids }) {
             <Leftsection>
               <LeftSectionTitle>
                 <ImgContain>
-                  <ImgCon src={myjobs.img} />
+                  <ImgCon src={`https://ik.imagekit.io/will12${myjobs.img}`} />
                 </ImgContain>
                 <Title>
                   <Header>{myjobs.title}</Header>
@@ -634,7 +639,9 @@ function BrowseMoreJobs({ ids }) {
                   Job Vacancy:<Bold>{myjobs.vacancy} position</Bold>
                 </JobDetails>
                 <JobDetails>
-                  Salary:<Bold>{myjobs.salary}</Bold>
+                  Salary: {salary?.map((props) => (
+                  <Bold>{props}</Bold>
+                ))}
                 </JobDetails>
                 {/* <JobDetails>
                   Location
