@@ -264,9 +264,9 @@ function Filter({ tags }) {
             <Selectbtn1>
               <BasicSelect2 />
             </Selectbtn1>{" "}
-            <Selectbtn>
+            {/* <Selectbtn>
               <BasicSelect />
-            </Selectbtn>{" "}
+            </Selectbtn> */}
           </LeftCon>{" "}
         </Left>{" "}
         <Right>

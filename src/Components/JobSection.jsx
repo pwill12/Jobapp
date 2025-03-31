@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { addsaved } from "../redux/SavedJobs";
 import { useDispatch, useSelector } from "react-redux";
+import { format } from "timeago.js";
 
 const Container = styled.div`
   height: 100%;
@@ -336,7 +337,7 @@ function JobSection() {
         {loading ? <MySpinner /> : errloading ? <p>error loading jobs</p> : jobs.length === 0 ? <p>no jobs found</p> :
           <>
             {jobs.map((props, i) => (
-              <Item key={i} data-aos="fade-up">
+              <Item key={props._id} data-aos="fade-up">
                 <Left>
                   <ImgCon>
                     <Img src={`https://ik.imagekit.io/will12${props.img}`} />
@@ -356,12 +357,12 @@ function JobSection() {
                         </Span>
                         {/* {props.location} */}
                         {props.location?.map((prop, i) => (
-                          <MyLoc key={i}>{prop},</MyLoc>
+                          <MyLoc key={i}>{prop}</MyLoc>
                         ))}
                       </LocateSpan>
                       <TagsCon>
-                        {props.tag?.map((prop) => (
-                          <Tag>{prop}</Tag>
+                        {props.tag?.map((prop, i) => (
+                          <Tag key={i}>{prop}</Tag>
                         ))}
                       </TagsCon>
                     </Location>
@@ -391,7 +392,7 @@ function JobSection() {
                       <Apply>Apply now</Apply>
                     </Link>
                   </Top>
-                  <Bottom>Date line:{props.createdAt}</Bottom>
+                  <Bottom>Date line: {format(props.createdAt)}</Bottom>
                 </Right>
               </Item>
             ))}

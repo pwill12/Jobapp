@@ -83,9 +83,9 @@ const Img = styled.img`
   max-height: 55px;
   border-radius: 7px;
   ${Mobile({
-    maxHeight: "55px",
-    maxWidth: "59px",
-    minWidth: "59px",
+    maxHeight: "65px",
+    maxWidth: "65px",
+    minWidth: "65px",
   })}
 `;
 
@@ -317,14 +317,13 @@ function Jobitems({ tags, filters }) {
 
   return (
     <div>
-      {loading ? <MySpinner /> : errloading ? <p>error loading jobs</p> : jobs.length === 0 ? <p>No jobs found</p> :
-
-        <>
-          {/* {loading && <MySpinner />} */}
-          {filters
-            ? filtered.map((props, i) => (
-              <Container data-aos="fade-up">
-                <Item key={props._id}>
+      {loading ? <MySpinner /> : errloading ? <p>error loading jobs</p> : jobs.length === 0 ? <p>No jobs found</p> : filtered.length === 0 ? <p>No jobs found</p> :
+        filters
+          ?
+          <>
+            {filtered.map((props, i) => (
+              <Container data-aos="fade-up" key={props._id}>
+                <Item>
                   <LeftSection>
                     <ImgCon>
                       <Img src={`https://ik.imagekit.io/will12${props.img}`} />
@@ -337,8 +336,8 @@ function Jobitems({ tags, filters }) {
                             <Public />
                           </Span>
                           {/* {props.location} */}
-                          {props.location?.map((prop) => (
-                            <MyLoc>{prop}</MyLoc>
+                          {props.location?.map((prop, i) => (
+                            <MyLoc key={i}>{prop}</MyLoc>
                           ))}
                         </LocateSpan>
                         <LocateSpan>
@@ -347,7 +346,12 @@ function Jobitems({ tags, filters }) {
                               style={{ fontSize: "", marginRight: "5px" }}
                             />
                           </Span>
-                          <Salary style={{}}>{props.salary}</Salary>
+                          <>
+                            {props.salary?.map((props, i) => (
+                              <Salary key={i}>{props}</Salary>
+                            ))}
+                          </>
+                          {/* <Salary style={{}}>{props.salary}</Salary> */}
 
                           { }
                           {/* <Tag>{props.tag}</Tag> */}
@@ -359,25 +363,28 @@ function Jobitems({ tags, filters }) {
                   <RightSection>
                     <Top>
                       <Save>
-                        <Favourited jobs={props} />
+                        <Favourited jobs={props}/>
                       </Save>
                       <Link to={"/jobinfo/" + props._id}>
                         <Apply>Apply now</Apply>
                       </Link>
                     </Top>
-                    <Bottom>Date line:{props.createdAt}</Bottom>
+                    <Bottom>Date:{format(props.createdAt)}</Bottom>
                   </RightSection>
                 </Item>
                 <TagsCon>
-                  {props.tag?.map((prop) => (
-                    <Tag>{prop}</Tag>
+                  {props.tag?.map((prop,i) => (
+                    <Tag key={i}>{prop}</Tag>
                   ))}
                 </TagsCon>
               </Container>
-            ))
-            : jobs?.map((props) => (
-              <Container data-aos="fade-up">
-                <Item key={props._id}>
+            ))}
+          </>
+          :
+          <>
+            {jobs?.map((props) => (
+              <Container data-aos="fade-up" key={props._id}>
+                <Item>
                   <LeftSection>
                     <ImgCon>
                       <Img src={`https://ik.imagekit.io/will12${props.img}`} />
@@ -402,9 +409,9 @@ function Jobitems({ tags, filters }) {
                             />
                           </Span>
                           <>
-                          {props.salary?.map((props, i) => (
-                            <Salary key={i}>{props}</Salary>
-                          ))}
+                            {props.salary?.map((props, i) => (
+                              <Salary key={i}>{props}</Salary>
+                            ))}
                           </>
                         </LocateSpan>
                       </Location>
@@ -426,13 +433,13 @@ function Jobitems({ tags, filters }) {
                   </RightSection>
                 </Item>
                 <TagsCon>
-                  {props.tag?.map((prop) => (
-                    <Tag>{prop}</Tag>
+                  {props.tag?.map((prop, i) => (
+                    <Tag key={i}>{prop}</Tag>
                   ))}
                 </TagsCon>
               </Container>
             ))}
-        </>
+          </>
       }
     </div>
   );
