@@ -1,5 +1,18 @@
 import {
+  AttachMoney,
+  AttachMoneySharp,
+  LocationCityOutlined,
+  LocationOn,
+  MapOutlined,
+  MapRounded,
+  MapTwoTone,
+  MoneyOff,
+  MoneyOutlined,
+  MoneyRounded,
+  MoneySharp,
+  MoneyTwoTone,
   Public,
+  WorkOutline,
   WorkOutlined,
 } from "@mui/icons-material";
 import axios from "axios";
@@ -21,7 +34,6 @@ const Container = styled.div`
   flex-direction: column;
   min-width: 50vw;
   height: 170px;
-  margin-bottom: 30px;
   ${"" /* height: 270px; */}
   justify-content: center;
   ${"" /* align-items: flex-start; */}
@@ -45,8 +57,6 @@ const Container = styled.div`
   backgroundColor: "white",
 })}
 `;
-
-const Section = styled.div``;
 
 const Item = styled.div`
   display: flex;
@@ -119,19 +129,22 @@ const ImgCon = styled.div`
 `;
 
 const Title = styled.div`
-  font-family: "Roboto", sans-serif;
+  // font-family: "Roboto", sans-serif;
   display: flex;
+  margin-top: -10px;
   justify-content: center;
   flex-direction: column;
-  ${Mobile({ marginTop: "10px" })}
+  ${Mobile({ marginTop: "5px" })}
 `;
 
 const Info = styled.h1`
   font-size: 19px;
   font-weight: 600;
-  font-family: "Roboto", sans-serif;
+  // font-family: "Roboto", sans-serif;
+  margin-bottom: 4px;
   ${Mobile({
   fontSize: "17px",
+  marginBottom: "1px"
 })}
 `;
 
@@ -206,12 +219,14 @@ const Apply = styled.button`
 
 const Bottom = styled.h3`
   color: lightgrey;
-  font-size: 16px;
+  font-size: 12px;
   margin-top: 10px;
+  left: 0px;
   text-align: right;
   ${"" /* font-family: cursive; */}
   ${Mobile({
-  textAlign: "",
+  textAlign: "left",
+  marginTop: "0px"
 })}
 `;
 
@@ -253,6 +268,23 @@ const Tag = styled.span`
 })}
 `;
 
+const TagLoc = styled.span`
+  background-color: hsl(205, 100%, 96%);
+  padding: 5px;
+  min-width: 70px;
+  font-size: 13px;
+  font-weight: 560;
+  border-radius: 5px;
+  margin-right: 10px;
+  color: black;
+  cursor: pointer;
+  ${Mobile({
+  marginRight: "5px",
+  minWidth: "60px",
+  fontSize: "10px",
+  padding: "5px",
+})}
+`;
 const TagsCon = styled.div`
   margin-top: 5px;
   minwidth: 170px;
@@ -263,7 +295,7 @@ const TagsCon = styled.div`
 `;
 
 const MyLoc = styled.div`
-  margin-left: 5px;
+  margin-left: 7px;
   color: grey;
   font-size: 16px;
   ${Mobile({
@@ -335,9 +367,11 @@ function Jobitems({ tags, filters }) {
                           <Span>
                             <Public />
                           </Span>
-                          {/* {props.location} */}
-                          {props.location?.map((prop, i) => (
+                          {/* {props.location?.map((prop, i) => (
                             <MyLoc key={i}>{prop}</MyLoc>
+                          ))} */}
+                          {props.location?.map((prop, i) => (
+                            <MyLoc key={i}><TagLoc>{prop}</TagLoc></MyLoc>
                           ))}
                         </LocateSpan>
                         <LocateSpan>
@@ -363,7 +397,7 @@ function Jobitems({ tags, filters }) {
                   <RightSection>
                     <Top>
                       <Save>
-                        <Favourited jobs={props}/>
+                        <Favourited jobs={props} />
                       </Save>
                       <Link to={"/jobinfo/" + props._id}>
                         <Apply>Apply now</Apply>
@@ -373,7 +407,7 @@ function Jobitems({ tags, filters }) {
                   </RightSection>
                 </Item>
                 <TagsCon>
-                  {props.tag?.map((prop,i) => (
+                  {props.tag?.map((prop, i) => (
                     <Tag key={i}>{prop}</Tag>
                   ))}
                 </TagsCon>
@@ -394,17 +428,17 @@ function Jobitems({ tags, filters }) {
                       <Location>
                         <LocateSpan>
                           <Span>
-                            <Public />
+                            <MapOutlined />
                           </Span>
                           {/* {props.location} */}
 
                           {props.location?.map((prop, i) => (
-                            <MyLoc key={i}>{prop}</MyLoc>
+                            <MyLoc key={i}><TagLoc>{prop}</TagLoc></MyLoc>
                           ))}
                         </LocateSpan>
                         <LocateSpan>
                           <Span>
-                            <WorkOutlined
+                            <WorkOutline
                               style={{ fontSize: "", marginRight: "5px" }}
                             />
                           </Span>
