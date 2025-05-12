@@ -20,9 +20,10 @@ import MySpinner from "./Spinner";
 const Container = styled.div`
   display: flex;
   padding: 20px;
+  overflow: hidden;
   flex-direction: column;
   min-width: 50vw;
-  height: 170px;
+  height: 150px;
   ${"" /* height: 270px; */}
   justify-content: center;
   ${"" /* align-items: flex-start; */}
@@ -38,7 +39,7 @@ const Container = styled.div`
   ${Mobile({
   padding: " 0px 30px 6px 20px",
   flexDirection: "column",
-  minHeight: "270px",
+  minHeight: "230px",
   justifyContent: "center",
   minWidth: "90vw",
   //alignItems: "center",
@@ -193,17 +194,22 @@ const Save = styled.div`
 
 const Apply = styled.button`
   margin-left: 20px;
-  width: 130px;
+  width: 170px;
+  color: green;
   height: 40px;
-  border-radius: 10px;
+  border-radius: 5px;
   border: none;
-  background-color: lightgreen;
+  background-color: transparent;
+  border: 1px solid lightgreen;
   &&:hover {
-    color: green;
-    background-color: transparent;
+    color: white;
+    background-color: lightgreen;
     transition: all 0.3s ease;
     border: 1px solid lightgreen;
   }
+    ${Mobile({
+  width: "270px"
+})}
 `;
 
 const Bottom = styled.h3`
@@ -215,7 +221,7 @@ const Bottom = styled.h3`
   ${"" /* font-family: cursive; */}
   ${Mobile({
   textAlign: "left",
-  marginTop: "0px"
+  marginTop: "10px"
 })}
 `;
 
@@ -226,7 +232,8 @@ const LocateSpan = styled.div`
   font-size: 17px;
   ${Mobile({
   flexDirection: "row",
-  marginTop: "0px",
+  marginBottom: "5px",
+  marginTop: "3px",
   fontSize: "15px",
 })}
 `;
@@ -236,7 +243,7 @@ const Salary = styled.div`
   font-size: 15px;
   margin-top: 3px;
   ${Mobile({
-  marginTop: "2px",
+  marginTop: "",
 })}
 `;
 
@@ -258,7 +265,7 @@ const Tag = styled.span`
 `;
 
 const TagLoc = styled.span`
-  background-color: hsl(205, 100%, 96%);
+  background-color: hsl(0, 0.00%, 96.10%);
   padding: 5px;
   min-width: 70px;
   font-size: 13px;
@@ -353,9 +360,9 @@ function Jobitems({ tags, filters }) {
                       <Info>{props.title}</Info>
                       <Location>
                         <LocateSpan>
-                          <Span>
+                          {/* <Span>
                             <Public />
-                          </Span>
+                          </Span> */}
                           {/* {props.location?.map((prop, i) => (
                             <MyLoc key={i}>{prop}</MyLoc>
                           ))} */}
@@ -416,9 +423,9 @@ function Jobitems({ tags, filters }) {
                       <Info>{props.title}</Info>
                       <Location>
                         <LocateSpan>
-                          <Span>
+                          {/* <Span>
                             <MapOutlined />
-                          </Span>
+                          </Span> */}
                           {/* {props.location} */}
 
                           {props.location?.map((prop, i) => (

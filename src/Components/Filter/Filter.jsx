@@ -1,26 +1,17 @@
 // import { Select } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import MultipleSelectChip, {
-  MultipleSelectChip2,
-  MultipleSelected,
-} from "./FilterItems";
-import { Mobile } from "../Mobile";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import { Favourited } from "./favourited";
+} from "../FilterItems";
+import { Mobile } from "../../Mobile";
 // import * as React from 'react';
-import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 // import Select from '@mui/material/Select';
-import Chip from "@mui/material/Chip";
-import Jobitems from "./Jobitems";
+import Jobitems from "../Jobitems";
 import { Select } from "@mui/material";
-import Searched from "./search/Searchtext";
 
 const Container = styled.div`
   padding: 15px;
@@ -85,14 +76,6 @@ const Header = styled.h2`
   margin-bottom: 15px;
   font-size: 17px;
   font-family: "Roboto", sans-serif;
-`;
-
-const Selectbtn = styled.div`
-  margin-top: 15px;
-  display: none;
-  ${Mobile({
-  display: "block",
-})}
 `;
 
 const Right = styled.div`
@@ -166,19 +149,6 @@ const Selectbtn1 = styled.div`
   ${Mobile({
   display: "block",
 })}
-`;
-
-const Selects = styled.select`
-  padding: 10px;
-  margin-right: 100px;
-  border: 1px solid lightgrey;
-  ${Mobile({ margin: "10px 0px" })}
-`;
-const Option = styled.option`
-  padding: 50px;
-`;
-const mywidth = styled.option`
-  min-width: 200;
 `;
 
 function Filter({ tags }) {

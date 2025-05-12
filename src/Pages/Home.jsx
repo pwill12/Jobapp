@@ -12,6 +12,7 @@ import Faq from "../Components/Faq";
 import Tabs from "../Components/Tabs";
 
 function Home() {
+
   return (
     <>
       <MyNavbar />

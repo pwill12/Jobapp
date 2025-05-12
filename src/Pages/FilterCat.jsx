@@ -1,7 +1,6 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
-import Filter from '../Components/Filter'
-import Footer from '../Components/Footer'
+import Filter from '../Components/Filter/Filter'
 import MyNavbar from '../Components/navbar/Navbar'
 
 function FilterCat() {
@@ -12,7 +11,6 @@ function FilterCat() {
     <div>
         <MyNavbar/>
         <Filter tags={tag}/>
-        <Footer/>
     </div>
   )
 }
