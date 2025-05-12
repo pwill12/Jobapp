@@ -208,7 +208,7 @@ const Apply = styled.button`
     border: 1px solid lightgreen;
   }
     ${Mobile({
-  width: "270px"
+  width: "200px"
 })}
 `;
 
@@ -429,7 +429,7 @@ function Jobitems({ tags, filters }) {
                           {/* {props.location} */}
 
                           {props.location?.map((prop, i) => (
-                            <MyLoc key={i}><TagLoc>{prop}</TagLoc></MyLoc>
+                            <MyLoc key={i}><TagLoc>{prop.slice(0,7)}</TagLoc></MyLoc>
                           ))}
                         </LocateSpan>
                         <LocateSpan>

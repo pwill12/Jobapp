@@ -16,7 +16,7 @@ const Container = styled.div`
   height: 90vh;
   ${Mobile({
     overflow: "hidden",
-    height: "55vh",
+    height: "65vh",
   })}
 `;
 
@@ -121,7 +121,7 @@ const Copyright = styled.h3`
   text-align: center;
   font-size: 22px;
   ${Mobile({
-    marginTop: "20px",
+    marginTop: "10px",
   })}
 `;
 
