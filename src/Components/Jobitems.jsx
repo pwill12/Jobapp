@@ -366,8 +366,8 @@ function Jobitems({ tags, filters }) {
                           {/* {props.location?.map((prop, i) => (
                             <MyLoc key={i}>{prop}</MyLoc>
                           ))} */}
-                          {props.location?.map((prop, i) => (
-                            <MyLoc key={i}><TagLoc>{prop}</TagLoc></MyLoc>
+                          {props.location?.slice(0,4).map((prop, i) => (
+                            <MyLoc key={i}><TagLoc>{prop.slice(0,7)}</TagLoc></MyLoc>
                           ))}
                         </LocateSpan>
                         <LocateSpan>
@@ -428,7 +428,7 @@ function Jobitems({ tags, filters }) {
                           </Span> */}
                           {/* {props.location} */}
 
-                          {props.location?.map((prop, i) => (
+                          {props.location?.slice(0,4).map((prop, i) => (
                             <MyLoc key={i}><TagLoc>{prop.slice(0,7)}</TagLoc></MyLoc>
                           ))}
                         </LocateSpan>

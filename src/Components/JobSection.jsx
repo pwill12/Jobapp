@@ -356,8 +356,8 @@ function JobSection() {
                           <Location />
                         </Span>
                         {/* {props.location} */}
-                        {props.location?.map((prop, i) => (
-                          <MyLoc key={i}>{prop}</MyLoc>
+                        {props.location?.slice(0,4).map((prop, i) => (
+                          <MyLoc key={i}>{prop.slice(0,7)}</MyLoc>
                         ))}
                       </LocateSpan>
                       <TagsCon>
